@@ -12,15 +12,15 @@ const { class: className, href } = Astro.props;
 
 {
 	href ? (
-		<div class="group hover:drop-shadow transition-shadow">
+		<div class="group hover:drop-shadow-md transition-all hover:-translate-y-1">
 			<Link href={href} class="block group/link">
-				<div class={cn("rounded-lg border border-border p-4 bg-card break-words", className)}>
+				<div class={cn("rounded-lg border border-border p-4 bg-card break-words space-y-4", className)}>
 					<slot />
 				</div>
 			</Link>
 		</div>
 	) : (
-		<div class={cn("rounded-lg border border-border p-4 bg-card break-words", className)}>
+		<div class={cn("rounded-lg border border-border p-4 bg-card break-words space-y-4", className)}>
 			<slot />
 		</div>
 	)

@@ -1,0 +1,47 @@
+---
+import Card from "../components/Card.astro";
+import Heading from "../components/Heading.astro";
+import Link from "../components/Link.astro";
+---
+
+<section id="featured-projects">
+  <Heading level="h2" size="3xl">
+    Featured Projects
+  </Heading>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <Card>
+      <Heading level="h3" size="2xl" class='mb-0'>
+        min. tasks
+      </Heading>
+      <p>
+        A simple task manager built with Next.js, shadcn/ui, and Xata.
+      </p>
+      <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6" />
+      <div class="flex flex-col gap-4 md:flex-row">
+        <Link href="/projects/min-tasks" variant="primary" size='button'>
+          View Project
+        </Link>
+        <Link href="https://github.com/ryanfurrer/min-tasks" externalLink={true} variant="outline" size='button'>
+          View GitHub
+        </Link>
+      </div>
+    </Card>
+    <Card>
+      <Heading level="h3" size="2xl" class='mb-0'>
+        min. tasks
+      </Heading>
+      <p>
+        A simple task manager built with Next.js, shadcn/ui, and Xata.
+      </p>
+      <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6" />
+      <div class="flex flex-col gap-4 md:flex-row">
+        <Link href="/projects/min-tasks" variant="primary" size='button'>
+          View Project
+        </Link>
+        <Link href="https://github.com/ryanfurrer/min-tasks" externalLink={true} variant="outline" size='button'>
+          View GitHub
+        </Link>
+      </div>
+    </Card>
+  </div>
+</section>

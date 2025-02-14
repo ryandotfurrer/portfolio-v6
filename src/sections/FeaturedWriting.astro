@@ -1,0 +1,75 @@
+---
+import Card from "../components/Card.astro";
+import Heading from "../components/Heading.astro";
+import Link from "../components/Link.astro";
+---
+
+<section id="featured-writing">
+  <Heading level="h2" size="3xl">
+    Featured Writing
+  </Heading>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <Card>
+      <Heading level="h3" size="2xl" class='mb-0'>
+        Blog Post 1
+      </Heading>
+      <p class="text-sm">
+        Feb 15, 2025
+      </p>
+      <p class="line-clamp-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. 
+      </p>
+      <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6" />
+      <div class="flex flex-col gap-4 md:gap-0 md:justify-between md:flex-row md:items-center">
+        <Link href="/projects/min-tasks" variant="primary" size='button'>
+          Read
+        </Link>
+        <div class="flex flex-row gap-2">
+          <p class="text-xs p-1 bg-secondary rounded-sm">
+            #webdev
+          </p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">
+            #webdev
+          </p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">
+            #webdev
+          </p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">
+            #webdev
+          </p>
+        </div>
+      </div>
+    </Card>
+    <Card>
+      <Heading level="h3" size="2xl" class='mb-0'>
+        Blog Post 2 
+      </Heading>
+      <p class="text-sm">
+        Feb 15, 2025
+      </p>
+      <p class="line-clamp-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. 
+      </p>
+        <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6" />
+        <div class="flex flex-col gap-4 md:gap-0 md:justify-between md:flex-row md:items-center">
+        <Link href="/projects/min-tasks" variant="primary" size='button'>
+          Read
+        </Link>
+        <div class="flex flex-row gap-2">
+          <p class="text-xs p-1 bg-secondary rounded-sm">
+            #webdev
+          </p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">
+            #webdev
+          </p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">
+            #webdev
+          </p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">
+            #webdev
+          </p>
+        </div>
+      </div>
+    </Card>
+  </div>
+</section>

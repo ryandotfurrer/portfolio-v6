@@ -84,4 +84,8 @@
   h6 {
     @apply text-foreground font-serif font-bold tracking-tight text-balance;
   }
+
+  section {
+    @apply space-y-8 py-24;
+  }
 }

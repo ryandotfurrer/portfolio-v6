@@ -12,9 +12,9 @@ const linkVariants = cva(
           'text-primary-muted underline-offset-4 hover:underline hover:text-primary',
         primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80 outline-outline outline',
+          'bg-secondary text-foreground hover:bg-secondary/80 outline-outline outline',
         outline:
-          'outline-outline outline bg-background hover:bg-secondary/90 hover:text-secondary-foreground',
+          'outline-outline outline bg-transparent hover:bg-secondary/90 text-foreground',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
@@ -73,7 +73,7 @@ const externalProps = externalLink
   {...props}
 >
   <slot />
-  {withIcon && (
+  {withIcon && !externalLink && (
     <svg
       data-icon
       xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@ const externalProps = externalLink
       <path d="m12 16 4-4-4-4"/>
     </svg>
   )}
-  {externalLink && (
+  {externalLink && withIcon && (
     <svg
       data-icon
       xmlns="http://www.w3.org/2000/svg"

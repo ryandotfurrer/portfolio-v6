@@ -20,12 +20,12 @@ const { pageTitle, pageDescription, hasCTA = false } = Astro.props;
   </p>
   {
     hasCTA && (
-      <div class="mt-6 flex gap-4">
+      <div class="mt-6 flex gap-4 flex-col md:flex-row">
         <Link href="/contact" variant="primary" size="button">
           Contact Me
         </Link>
 
-        <Link href="/work" variant="secondary" size="button">
+        <Link href="/work" variant="outline" size="button">
           View work
         </Link>
       </div>
