@@ -24,7 +24,9 @@ export default function MobileMenu() {
         <ul className='flex flex-col gap-8'>
           {NavLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
+              <a href={link.href} className='block'>
+                {link.label}
+              </a>
             </li>
           ))}
           <li>

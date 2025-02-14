@@ -1,0 +1,34 @@
+---
+import { cn } from '../utils/utils';
+import Link from './Link.astro';
+
+export interface CardProps {
+  class?: string;
+  href?: string;
+}
+
+const { class: className, href } = Astro.props;
+---
+
+{
+	href ? (
+		<div class="group hover:drop-shadow transition-shadow">
+			<Link href={href} class="block group/link">
+				<div class={cn("rounded-lg border border-border p-4 bg-card break-words", className)}>
+					<slot />
+				</div>
+			</Link>
+		</div>
+	) : (
+		<div class={cn("rounded-lg border border-border p-4 bg-card break-words", className)}>
+			<slot />
+		</div>
+	)
+} 
+
+<style>
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+</style>
