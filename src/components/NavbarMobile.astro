@@ -1,0 +1,21 @@
+---
+import Link from './Link.astro';
+import { NavLinks } from './Navbar.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<div class="p-4 rounded-lg border border-border text-right w-1/2">
+  <ul class="flex flex-col gap-8">
+    {NavLinks.map((link) => (
+      <li>
+        <Link href={link.href} class={currentPath === link.href ? 'underline decoration-accent' : 'hover:no-underline'}>{link.label}</Link>
+      </li>
+    ))}
+    <li>
+      <Link href="/contact" variant="primary" size="button" size="sm" class='lowercase'>
+        Contact
+      </Link>
+    </li>
+  </ul> 
+</div>

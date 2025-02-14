@@ -1,0 +1,37 @@
+---
+import Link from './Link.astro';
+import MobileMenu from './react/MobileMenu.tsx';
+
+export const NavLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/work', label: 'Work' },
+  { href: '/writing', label: 'Writing' },
+  { href: '/speaking', label: 'Speaking' },
+  { href: '/about', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="flex items-center justify-between p-4 bg-card border border-border rounded-lg">
+  <Link href="/" class="font-serif text-xl font-semibold text-foreground hover:text-accent">
+    &lt;RF /&gt;
+  </Link>
+
+  <ul class="gap-4 hidden md:flex">
+    {NavLinks.map((link) => (
+      <li>
+        <Link href={link.href} class={currentPath === link.href ? 'underline decoration-accent' : 'hover:no-underline'}>
+          {link.label.toLowerCase()}
+        </Link>
+      </li>
+    ))}
+  </ul>
+
+  <Link href="/contact" variant="primary" size="button" size="sm" class='lowercase hidden md:flex'>
+    Contact
+  </Link>
+
+  <MobileMenu client:load />
+
+</nav>
