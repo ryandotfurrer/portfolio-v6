@@ -4,6 +4,7 @@ import HGroup from '../components/HGroup.astro';
 import Navbar from '../components/Navbar.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import Newsletter from '../components/Newsletter.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 interface Props {
@@ -32,6 +33,7 @@ const { pageTitle, pageDescription, hasCTA = false } = Astro.props;
       <main class="py-24">
         <slot />
       </main>
+      <Newsletter />
       <Footer />
     </div>
   </body>
