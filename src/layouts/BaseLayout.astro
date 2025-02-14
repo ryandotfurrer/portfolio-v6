@@ -3,7 +3,7 @@ import '../styles/global.css';
 import HGroup from '../components/HGroup.astro';
 import Navbar from '../components/Navbar.astro';
 import BaseHead from '../components/BaseHead.astro';
-
+import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 interface Props {
@@ -23,15 +23,16 @@ const { pageTitle, pageDescription, hasCTA = false } = Astro.props;
     <div class="container mx-auto max-w-screen-xl px-4 py-8">
       <header>
         <Navbar />
-      </header>
-      <main>
         <HGroup
           pageTitle={pageTitle}
           pageDescription={pageDescription}
           hasCTA={hasCTA}
         />
+      </header>
+      <main class="py-24">
         <slot />
       </main>
+      <Footer />
     </div>
   </body>
 </html>

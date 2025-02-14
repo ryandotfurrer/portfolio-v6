@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { NavLinks } from '../Navbar.astro';
+import { NavLinks } from '../../utils/utils';
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,9 +24,7 @@ export default function MobileMenu() {
         <ul className='flex flex-col gap-8'>
           {NavLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className='hover:text-accent'>
-                {link.label}
-              </a>
+              <a href={link.href}>{link.label}</a>
             </li>
           ))}
           <li>
@@ -34,7 +32,7 @@ export default function MobileMenu() {
               href='/contact'
               className='bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3 inline-flex items-center justify-center'
             >
-              Contact
+              contact
             </a>
           </li>
         </ul>

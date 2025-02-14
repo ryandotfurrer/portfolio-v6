@@ -1,14 +1,8 @@
 ---
 import Link from './Link.astro';
 import MobileMenu from './react/MobileMenu.tsx';
+import { NavLinks } from '../utils/utils';
 
-export const NavLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/work', label: 'Work' },
-  { href: '/writing', label: 'Writing' },
-  { href: '/speaking', label: 'Speaking' },
-  { href: '/about', label: 'About' },
-];
 
 const currentPath = Astro.url.pathname;
 ---
@@ -22,7 +16,7 @@ const currentPath = Astro.url.pathname;
     {NavLinks.map((link) => (
       <li>
         <Link href={link.href} class={currentPath === link.href ? 'underline decoration-accent' : 'hover:no-underline'}>
-          {link.label.toLowerCase()}
+          {link.label}
         </Link>
       </li>
     ))}
