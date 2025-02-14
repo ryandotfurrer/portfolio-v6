@@ -9,8 +9,8 @@ import Link from "../components/Link.astro";
     Featured Projects
   </Heading>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <Card>
-      <Heading level="h3" size="2xl" class='mb-0'>
+    <Card class="group">
+      <Heading level="h3" size="2xl" class='mb-0 group-hover:text-accent transition-color'>
         min. tasks
       </Heading>
       <p>
@@ -26,8 +26,8 @@ import Link from "../components/Link.astro";
         </Link>
       </div>
     </Card>
-    <Card>
-      <Heading level="h3" size="2xl" class='mb-0'>
+    <Card class="group">
+      <Heading level="h3" size="2xl" class='mb-0 group-hover:text-accent transition-color'>
         min. tasks
       </Heading>
       <p>
@@ -44,4 +44,7 @@ import Link from "../components/Link.astro";
       </div>
     </Card>
   </div>
+  <Link href="/projects" withIcon={true} class="text-primary-muted group-hover:text-foreground">
+    View All Projects
+  </Link>
 </section>

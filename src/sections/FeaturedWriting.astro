@@ -9,8 +9,8 @@ import Link from "../components/Link.astro";
     Featured Writing
   </Heading>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <Card>
-      <Heading level="h3" size="2xl" class='mb-0'>
+    <Card class="group">
+      <Heading level="h3" size="2xl" class='mb-0 group-hover:text-accent transition-color'>
         Blog Post 1
       </Heading>
       <p class="text-sm">
@@ -40,8 +40,8 @@ import Link from "../components/Link.astro";
         </div>
       </div>
     </Card>
-    <Card>
-      <Heading level="h3" size="2xl" class='mb-0'>
+    <Card class="group">
+      <Heading level="h3" size="2xl" class='mb-0 group-hover:text-accent transition-color'>
         Blog Post 2 
       </Heading>
       <p class="text-sm">
@@ -72,4 +72,7 @@ import Link from "../components/Link.astro";
       </div>
     </Card>
   </div>
+  <Link href="/writing" withIcon={true} class="text-primary-muted group-hover:text-foreground">
+    View All Writing
+  </Link>
 </section>
