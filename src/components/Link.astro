@@ -74,24 +74,23 @@ const externalProps = externalLink
 >
   <slot />
   {withIcon && !externalLink && (
-    <svg
-      data-icon
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-circle-arrow-right opacity-0 group-hover/link:opacity-100 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 group-hover/link:translate-x-0"
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="24" 
+      height="24" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      class="lucide lucide-arrow-right md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-0 md:group-hover/link:translate-x-0 mt-0.5 !size-5"
     >
-      <circle cx="12" cy="12" r="10"/>
-      <path d="M8 12h8"/>
-      <path d="m12 16 4-4-4-4"/>
+      <path d="M5 12h14"/>
+      <path d="m12 5 7 7-7 7"/>
     </svg>
   )}
+  
   {externalLink && withIcon && (
     <svg
       data-icon
@@ -104,7 +103,7 @@ const externalProps = externalLink
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="lucide lucide-external-link opacity-0 group-hover/link:opacity-100 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 group-hover/link:translate-x-0"
+      class="lucide lucide-external-link md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-0 md:group-hover/link:translate-x-0"
     >
       <path d="M15 3h6v6" />
       <path d="M10 14 21 3" />
