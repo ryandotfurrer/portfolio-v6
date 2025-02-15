@@ -69,7 +69,7 @@
 
 @layer base {
   * {
-    @apply min-w-0 duration-300;
+    @apply min-w-0;
   }
 
   body {
