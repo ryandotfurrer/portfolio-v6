@@ -4,41 +4,41 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import type { HTMLAttributes } from 'astro/types';
 
 const linkVariants = cva(
-  'cursor-pointer inline-flex items-center justify-center gap-2 rounded-md text-base ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&>[data-icon]]:pointer-events-none [&>[data-icon]]:size-4 [&>[data-icon]]:shrink-0 group',
-  {
-    variants: {
-      variant: {
-        default:
-          'text-primary-muted underline-offset-4 hover:underline hover:text-primary',
-        primary: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
-        secondary:
-            'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
-        outline:
-            'border border-border bg-card hover:border-accent/50 hover:text-accent/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        warning: 'bg-warning text-warning-foreground hover:bg-warning/90',
-        success: 'bg-success text-success-foreground hover:bg-success/90',
-      },
-      size: {
-        default: '',
-        button: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8',
-        icon: 'h-10 w-10',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
-    },
-  },
+    'cursor-pointer inline-flex items-center justify-center gap-2 rounded-md text-base ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&>[data-icon]]:pointer-events-none [&>[data-icon]]:size-4 [&>[data-icon]]:shrink-0 group',
+    {
+        variants: {
+            variant: {
+                default:
+                    'text-primary-muted underline-offset-4 hover:underline hover:text-primary',
+                primary: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+                secondary:
+                    'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
+                outline:
+                    'border border-border bg-card hover:border-accent/50 hover:text-accent/80',
+                ghost: 'hover:bg-accent hover:text-accent-foreground',
+                destructive:
+                    'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+                warning: 'bg-warning text-warning-foreground hover:bg-warning/90',
+                success: 'bg-success text-success-foreground hover:bg-success/90',
+            },
+            size: {
+                default: '',
+                button: 'h-10 px-4 py-2',
+                sm: 'h-9 rounded-md px-3',
+                lg: 'h-11 rounded-md px-8',
+                icon: 'h-10 w-10',
+            },
+        },
+        defaultVariants: {
+            variant: 'default',
+            size: 'default',
+        },
+    }
 );
 
 export interface Props
-  extends HTMLAttributes<'a'>,
-    VariantProps<typeof linkVariants> {
+    extends HTMLAttributes<'a'>,
+        VariantProps<typeof linkVariants> {
   class?: string;
   href: string;
   externalLink?: boolean;
@@ -47,8 +47,8 @@ export interface Props
 
 const {
   class: className,
-  variant = 'default',
-  size = 'default',
+    variant,
+    size,
   href,
   externalLink = false,
   withIcon = false,
@@ -56,58 +56,58 @@ const {
 } = Astro.props;
 
 const externalProps = externalLink
-  ? {
+    ? {
       target: '_blank',
       rel: 'noopener noreferrer',
     }
-  : {};
+    : {};
 ---
 
 <a
-  href={href}
-  class={cn(
-    linkVariants({ variant, size, className }),
-    (withIcon || externalLink) && "hover:no-underline"
-  )}
-  {...externalProps}
-  {...props}
+        href={href}
+        class={cn(
+            linkVariants({variant, size, className}),
+            (withIcon || externalLink) && "hover:no-underline"
+        )}
+        {...externalProps}
+        {...props}
 >
   <slot />
   {withIcon && !externalLink && (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width="24" 
-      height="24" 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      stroke-width="2" 
-      stroke-linecap="round" 
-      stroke-linejoin="round" 
-      class="lucide lucide-arrow-right md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-0 md:group-hover/link:translate-x-0 mt-0.5 !size-5"
-    >
-      <path d="M5 12h14"/>
-      <path d="m12 5 7 7-7 7"/>
-    </svg>
+          <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-arrow-right md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-0 md:group-hover/link:translate-x-0 mt-0.5 !size-5"
+          >
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+          </svg>
   )}
-  
+
   {externalLink && withIcon && (
-    <svg
-      data-icon
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-external-link md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-0 md:group-hover/link:translate-x-0"
-    >
-      <path d="M15 3h6v6" />
-      <path d="M10 14 21 3" />
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    </svg>
+          <svg
+                  data-icon
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-external-link md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-0 md:group-hover/link:translate-x-0"
+          >
+              <path d="M15 3h6v6"/>
+              <path d="M10 14 21 3"/>
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          </svg>
   )}
 </a>
