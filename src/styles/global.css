@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'Permanent Marker';
-  src: url('/fonts/PermanentMarker.ttf') format('truetype-variations');
+  src: url('/fonts/PermanentMarker-Regular.ttf') format('truetype-variations');
   font-weight: 400;
   font-style: normal;
 }
@@ -33,7 +33,7 @@
   --font-serif: 'Fraunces', serif;
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'Geist Mono', monospace;
-  --font-handwritten: 'Permanent Marker', cursive;
+  --font-handwritten: 'Permanent Marker', var(--font-serif), script;
 
   --color-background: var(--color-zinc-100);
   --color-foreground: var(--color-zinc-900);
