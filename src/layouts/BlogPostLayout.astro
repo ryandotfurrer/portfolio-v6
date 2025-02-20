@@ -1,14 +1,33 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Navbar from '../components/Navbar.astro';
 import Link from '../components/Link.astro';
+import Navbar from '../components/Navbar.astro';
 import Newsletter from '../components/Newsletter.astro';
+import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'blog'>['data'];
+
+const currentPath = Astro.url.pathname;
+
+let backLink = '';
+let backLinkText = '';
+
+if (currentPath.includes('/work')) {
+  backLink = '/work';
+  backLinkText = 'view all work';
+} else if (currentPath.includes('/writing')) {
+  backLink = '/writing';
+  backLinkText = 'view all writing';
+} else if (currentPath.includes('/speaking')) {
+  backLink = '/speaking';
+  backLinkText = 'view all speaking';
+} else if (currentPath.includes('/about')) {
+  backLink = '/about';
+  backLinkText = 'learn more about Ryan';
+}
 
 const {
   title,
@@ -21,9 +40,10 @@ const {
 } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
 
   <body>
@@ -34,24 +54,33 @@ const {
       <main class="pb-12">
         <article class="prose prose-zinc mx-auto">
           <header id="article-header" class="pt-16 md:pt-24 lg:pt-28 xl:pt-32">
-            <Link
-              href="/blog"
-              class="flex justify-start !no-underline text-foreground-muted hover:text-foreground group transition-all duration-300"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-arrow-left size-5 group-hover:opacity-100 md:opacity-0 transition-all duration-300 md:-translate-x-7 group-hover:translate-x-0"
-                ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg
-              ><span
-                class="md:-translate-x-7 group-hover:translate-x-0 transition-all duration-300"
-                >view all writing</span
-              ></Link
-            >
+            {
+              currentPath.includes('about') ? (
+                void 0
+              ) : (
+                <Link
+                  href={backLink}
+                  class="flex justify-start !no-underline text-foreground-muted hover:text-foreground group transition-all duration-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-left size-5 group-hover:opacity-100 md:opacity-0 transition-all duration-300 md:-translate-x-7 group-hover:translate-x-0"
+                  >
+                    <path d="m12 19-7-7 7-7" />
+                    <path d="M19 12H5" />
+                  </svg>
+                  <span class="md:-translate-x-7 group-hover:translate-x-0 transition-all duration-300">
+                    {backLinkText}
+                  </span>
+                </Link>
+              )
+            }
             <div>
               {
                 heroImage && (
@@ -66,12 +95,18 @@ const {
             <div>
               <div>
                 <div>
-                  <FormattedDate date={pubDate} />
                   {
-                    updatedDate && (
-                      <span>
-                        Last updated on <FormattedDate date={updatedDate} />
-                      </span>
+                    pubDate ? (
+                      <>
+                        <FormattedDate date={pubDate} />
+                        {updatedDate && (
+                          <span>
+                            Last updated on <FormattedDate date={updatedDate} />
+                          </span>
+                        )}
+                      </>
+                    ) : (
+                      ''
                     )
                   }
                 </div>

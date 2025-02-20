@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Heading from '../../components/Heading.astro';
+import FeaturedWriting from '../../sections/FeaturedWriting.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)
+);
+---
+
+<BaseLayout
+  pageTitle="writing"
+  pageDescription="a collection of my writing and articles"
+>
+  <FeaturedWriting />
+  <section>
+    <Heading level="h2" size="2xl"> everything else </Heading>
+    <ul class="space-y-8">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/writing/${post.id}/`}>
+              <Heading level="h3" size="xl">
+                {post.data.title}
+              </Heading>
+              <p class="date">
+                <FormattedDate date={post.data.pubDate ?? new Date()} />
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

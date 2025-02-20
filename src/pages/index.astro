@@ -5,10 +5,12 @@ import FeaturedWork from '../sections/FeaturedWork.astro';
 import FeaturedWriting from '../sections/FeaturedWriting.astro';
 ---
 
-<BaseLayout pageTitle="Ryan Furrer" pageDescription="frontend engineer. designer. blogger. podcaster. streamer." hasCTA={true}>
-	<main>
-		<WhatIDo />
-		<FeaturedWork onHomePage={true}/>
-		<FeaturedWriting onHomePage={true} />
-	</main>
+<BaseLayout
+  pageTitle="Ryan Furrer"
+  pageDescription="frontend engineer. designer. blogger. podcaster. streamer."
+  hasCTA={true}
+>
+  <WhatIDo />
+  <FeaturedWork onHomePage={true} />
+  <FeaturedWriting onHomePage={true} />
 </BaseLayout>

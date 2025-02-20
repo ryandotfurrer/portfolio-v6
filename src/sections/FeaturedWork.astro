@@ -20,7 +20,7 @@ const currentPath = Astro.url.pathname;
       </p>
       <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6" />
       <div class="flex flex-col gap-4 md:flex-row">
-        <Link href="/projects/min-tasks" variant="primary" size='button'>
+        <Link href="/work/min-tasks" variant="primary" size='button'>
           View Project
         </Link>
         <Link href="https://github.com/ryanfurrer/min-tasks" externalLink={true} variant="outline" size='button'>
@@ -37,7 +37,7 @@ const currentPath = Astro.url.pathname;
       </p>
       <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6" />
       <div class="flex flex-col gap-4 md:flex-row">
-        <Link href="/projects/min-tasks" variant="primary" size='button'>
+        <Link href="/work/min-tasks" variant="primary" size='button'>
           View Project
         </Link>
         <Link href="https://github.com/ryanfurrer/min-tasks" externalLink={true} variant="outline" size='button'>
@@ -48,7 +48,7 @@ const currentPath = Astro.url.pathname;
   </div>
   {
     currentPath === '/' && (
-      <Link href="/projects" withIcon={true} class="text-primary-muted group-hover:text-foreground text-lg">
+      <Link href="/work" withIcon={true} class="text-primary-muted group-hover:text-foreground text-lg">
         view all work
       </Link>
     )
