@@ -55,7 +55,7 @@ importers:
         version: 4.0.6
     devDependencies:
       '@tailwindcss/typography':
-        specifier: github:tailwindcss/typography
+        specifier: tailwindcss/typography
         version: git+https://git@github.com:tailwindcss/typography.git#c92dc1c120f71d402a54becd6958af692ff426dd(tailwindcss@4.0.6)
       prettier:
         specifier: ^3.5.0
