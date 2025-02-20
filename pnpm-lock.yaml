@@ -55,8 +55,8 @@ importers:
         version: 4.0.6
     devDependencies:
       '@tailwindcss/typography':
-        specifier: tailwindcss/typography
-        version: git+https://git@github.com:tailwindcss/typography.git#c92dc1c120f71d402a54becd6958af692ff426dd(tailwindcss@4.0.6)
+        specifier: ^0.5.9
+        version: 0.5.16(tailwindcss@4.0.6)
       prettier:
         specifier: ^3.5.0
         version: 3.5.0
@@ -710,9 +710,8 @@ packages:
     resolution: {integrity: sha512-lVyKV2y58UE9CeKVcYykULe9QaE1dtKdxDEdrTPIdbzRgBk6bdxHNAoDqvcqXbIGXubn3VOl1O/CFF77v/EqSA==}
     engines: {node: '>= 10'}
 
-  '@tailwindcss/typography@git+https://git@github.com:tailwindcss/typography.git#c92dc1c120f71d402a54becd6958af692ff426dd':
-    resolution: {commit: c92dc1c120f71d402a54becd6958af692ff426dd, repo: git@github.com:tailwindcss/typography.git, type: git}
-    version: 0.5.16
+  '@tailwindcss/typography@0.5.16':
+    resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
@@ -3100,7 +3099,7 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.0.6
       '@tailwindcss/oxide-win32-x64-msvc': 4.0.6
 
-  '@tailwindcss/typography@git+https://git@github.com:tailwindcss/typography.git#c92dc1c120f71d402a54becd6958af692ff426dd(tailwindcss@4.0.6)':
+  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.6)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
