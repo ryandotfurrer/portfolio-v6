@@ -1,5 +1,6 @@
 ---
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+// import { TabsCustom as Tabs } from '../../components/react/tabs.tsx';
 ---
 
 <BlogPostLayout
@@ -7,4 +8,28 @@ import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
   description="Lorem ipsum dolor sit amet"
   pubDate={new Date('August 08 2021')}
   heroImage="/blog-placeholder-about.jpg"
-/>
+>
+  <!-- <Tabs
+    client:visible
+    defaultValue="code"
+    tabNames={['Code', 'Design']}
+    tabContents={[
+      <div>
+        <h2>Code</h2>
+        <p>
+          min tasks is a simple task manager that I built to help me keep track
+          of my tasks. It's a minimalistic task manager that allows you to add,
+          edit, and delete tasks. You can also mark tasks as completed and
+          filter tasks by their status.
+        </p>
+        <p>
+          min tasks is built with React and TypeScript. It uses local storage to
+          persist tasks between sessions.
+        </p>
+        <p>
+          You can check out the source code on <a href="#">GitHub</a>.
+        </p>
+      </div>,
+    ]}
+  /> -->
+</BlogPostLayout>
