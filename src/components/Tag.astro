@@ -1,0 +1,19 @@
+---
+import Link from './Link.astro';
+
+const { href, classes } = Astro.props;
+---
+
+{
+  href ? (
+    <li class={classes}>
+      <Link href={href}>
+        <slot />
+      </Link>
+    </li>
+  ) : (
+    <li class="bg-muted text-foreground-muted text-xs p-1 border rounded-sm">
+      <slot />
+    </li>
+  )
+}

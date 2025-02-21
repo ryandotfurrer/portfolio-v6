@@ -6,6 +6,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Link from '../components/Link.astro';
 import Navbar from '../components/Navbar.astro';
 import Newsletter from '../components/Newsletter.astro';
+import Tag from '~/components/Tag.astro';
 import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -113,26 +114,20 @@ const {
             </div>
             <slot />
           </header>
+          {
+            tags && tags.length > 0 && (
+              <div class="">
+                <ul class="flex flex-wrap gap-4 pl-0 list-none">
+                  {tags.map((tag) => (
+                    <Tag name={tag} key={tag}>
+                      #{tag}
+                    </Tag>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
         </article>
-        {
-          tags && tags.length > 0 && (
-            <div class="mt-8">
-              <ul class="flex flex-wrap gap-4">
-                {tags.map((tag) => (
-                  <li key={tag}>
-                    <Link
-                      disabled
-                      href={`/tags/${tag}`}
-                      class="bg-accent text-background px-2 py-1 rounded-sm"
-                    >
-                      {tag}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        }
       </main>
       <Newsletter />
       <Footer />
