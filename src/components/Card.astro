@@ -5,30 +5,38 @@ import Link from './Link.astro';
 export interface CardProps {
   class?: string;
   href?: string;
+  variant?: 'default' | 'transparent';
 }
 
-const { class: className, href } = Astro.props;
+const { class: className, href, variant = 'default' } = Astro.props;
+
+const defaultClasses =
+  'rounded-lg border border-border p-4 bg-card break-words space-y-4 hover:drop-shadow-md transition-all hover:-translate-y-1';
+const transparentClasses =
+  'rounded-lg border border-border break-words space-y-4 border-none';
+const cardClasses =
+  variant === 'transparent' ? transparentClasses : defaultClasses;
 ---
 
 {
-	href ? (
-		<div class="group hover:drop-shadow-md transition-all hover:-translate-y-1">
-			<Link href={href} class="block group/link">
-				<div class={cn("rounded-lg border border-border p-4 bg-card break-words space-y-4", className)}>
-					<slot />
-				</div>
-			</Link>
-		</div>
-	) : (
-		<div class={cn("rounded-lg border border-border p-4 bg-card break-words space-y-4 hover:drop-shadow-md transition-all hover:-translate-y-1", className)}>
-			<slot />
-		</div>
-	)
-} 
+  href ? (
+    <div class="group">
+      <Link href={href} class="block group/link">
+        <div class={cn(cardClasses, className)}>
+          <slot />
+        </div>
+      </Link>
+    </div>
+  ) : (
+    <div class={cn(cardClasses, className)}>
+      <slot />
+    </div>
+  )
+}
 
 <style>
-	a {
-		text-decoration: none;
-		color: inherit;
-	}
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 </style>

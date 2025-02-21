@@ -17,4 +17,37 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const projects: ReturnType<typeof defineCollection> = defineCollection({
+  loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date().optional(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    heroImageAltText: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    links: z
+      .object({
+        github: z.string().optional(),
+        site: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
+
+const speaking = defineCollection({
+  loader: glob({ base: './src/content/speaking', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date().optional(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    heroImageAltText: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
+export const collections = { blog, projects, speaking };

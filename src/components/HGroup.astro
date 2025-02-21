@@ -12,8 +12,12 @@ const { pageTitle, pageDescription, hasCTA = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
-<div class={currentPath === '/' ? 'pt-32 md:pt-44 lg:pt-56 xl:pt-64' : 'pt-16 md:pt-24 lg:pt-28 xl:pt-32'}>
-  <Heading level="h2" size="3xl" class=''>
+<div
+  class={currentPath === '/'
+    ? 'pt-32 md:pt-44 lg:pt-56 xl:pt-64'
+    : 'pt-16 md:pt-24 lg:pt-28 xl:pt-32'}
+>
+  <Heading level="h2" size="3xl" class="">
     {pageTitle}
   </Heading>
   <p class="font-sans text-xl text-balance">
@@ -26,8 +30,8 @@ const currentPath = Astro.url.pathname;
           Contact Me
         </Link>
 
-        <Link href="/work" variant="outline" size="button">
-          View work
+        <Link href="/projects" variant="outline" size="button">
+          View projects
         </Link>
       </div>
     )

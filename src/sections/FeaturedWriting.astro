@@ -1,82 +1,80 @@
 ---
-import Card from "../components/Card.astro";
-import Heading from "../components/Heading.astro";
-import Link from "../components/Link.astro";
+import Card from '../components/Card.astro';
+import Heading from '../components/Heading.astro';
+import Link from '../components/Link.astro';
 
 const currentPath = Astro.url.pathname;
 ---
 
 <section id="featured-writing">
-  <Heading level="h2" size="3xl">
-    featured writing
-  </Heading>
+  <Heading level="h2" size="3xl">featured writing</Heading>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <Card class="group">
-      <Heading level="h3" size="2xl" class='mb-0 group-hover:text-accent transition-color'>
+    <Card class="group" variant="transparent">
+      <Heading
+        level="h3"
+        size="2xl"
+        class="mb-0 group-hover:text-accent transition-color"
+      >
         Blog Post 1
       </Heading>
-      <p class="text-sm">
-        Feb 15, 2025
-      </p>
+      <p class="text-sm">Feb 15, 2025</p>
       <p class="line-clamp-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
       </p>
-      <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6" />
-      <div class="flex flex-col gap-4 md:gap-0 md:justify-between md:flex-row md:items-center">
-        <Link href="/projects/min-tasks" variant="primary" size='button'>
+      <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6">
+      </div>
+      <div
+        class="flex flex-col gap-4 md:gap-0 md:justify-between md:flex-row md:items-center"
+      >
+        <Link href="/projects/min-tasks" variant="primary" size="button">
           Read
         </Link>
         <div class="flex flex-row gap-2">
-          <p class="text-xs p-1 bg-secondary rounded-sm">
-            #webdev
-          </p>
-          <p class="text-xs p-1 bg-secondary rounded-sm">
-            #webdev
-          </p>
-          <p class="text-xs p-1 bg-secondary rounded-sm">
-            #webdev
-          </p>
-          <p class="text-xs p-1 bg-secondary rounded-sm">
-            #webdev
-          </p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">#webdev</p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">#webdev</p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">#webdev</p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">#webdev</p>
         </div>
       </div>
     </Card>
-    <Card class="group">
-      <Heading level="h3" size="2xl" class='mb-0 group-hover:text-accent transition-color'>
-        Blog Post 2 
+    <Card class="group" variant="transparent">
+      <Heading
+        level="h3"
+        size="2xl"
+        class="mb-0 group-hover:text-accent transition-color"
+      >
+        Blog Post 2
       </Heading>
-      <p class="text-sm">
-        Feb 15, 2025
-      </p>
+      <p class="text-sm">Feb 15, 2025</p>
       <p class="line-clamp-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. 
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
       </p>
-        <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6" />
-        <div class="flex flex-col gap-4 md:gap-0 md:justify-between md:flex-row md:items-center">
-        <Link href="/projects/min-tasks" variant="primary" size='button'>
+      <div class="w-full aspect-wide bg-secondary size-64 rounded-md mb-6">
+      </div>
+      <div
+        class="flex flex-col gap-4 md:gap-0 md:justify-between md:flex-row md:items-center"
+      >
+        <Link href="/projects/min-tasks" variant="primary" size="button">
           Read
         </Link>
         <div class="flex flex-row gap-2">
-          <p class="text-xs p-1 bg-secondary rounded-sm">
-            #webdev
-          </p>
-          <p class="text-xs p-1 bg-secondary rounded-sm">
-            #webdev
-          </p>
-          <p class="text-xs p-1 bg-secondary rounded-sm">
-            #webdev
-          </p>
-          <p class="text-xs p-1 bg-secondary rounded-sm">
-            #webdev
-          </p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">#webdev</p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">#webdev</p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">#webdev</p>
+          <p class="text-xs p-1 bg-secondary rounded-sm">#webdev</p>
         </div>
       </div>
     </Card>
   </div>
   {
     currentPath === '/' && (
-      <Link href="/writing" withIcon={true} class="text-primary-muted group-hover:text-foreground text-lg">
+      <Link
+        href="/writing"
+        withIcon={true}
+        class="group-hover:text-foreground text-lg"
+      >
         view all writing
       </Link>
     )
