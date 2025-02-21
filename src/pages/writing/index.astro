@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Heading from '../../components/Heading.astro';
 import FeaturedWriting from '../../sections/FeaturedWriting.astro';
@@ -20,14 +19,24 @@ const posts = (await getCollection('blog')).sort(
     <ul class="space-y-8">
       {
         posts.map((post) => (
-          <li>
-            <a href={`/writing/${post.id}/`}>
-              <Heading level="h3" size="xl">
+          <li class="max-w-screen-sm group">
+            <a
+              class="flex gap-4 p-4 items-center -translate-x-4 group-hover:-translate-x-0 group-hover:bg-card group-hover:border border-border transition-all rounded-lg duration-300"
+              href={`/writing/${post.id}/`}
+            >
+              <p class="text-sm">
+                {post.data.pubDate
+                  ? new Date(post.data.pubDate).getFullYear()
+                  : new Date().getFullYear()}
+              </p>
+              <Heading level="h3" class="font-sans font-normal">
                 {post.data.title}
               </Heading>
-              <p class="date">
-                <FormattedDate date={post.data.pubDate ?? new Date()} />
-              </p>
+              {post.data.tags && post.data.tags.length > 0 && (
+                <span class=" group-hover:opacity-100 transition-all ml-auto text-xs bg-muted rounded-sm p-1  group-hover:translate-y-0 duration-300 md:opacity-0 md:translate-y-4">
+                  {post.data.tags[0]}
+                </span>
+              )}
             </a>
           </li>
         ))

@@ -44,6 +44,7 @@ export interface Props
   href: string;
   externalLink?: boolean;
   withIcon?: boolean;
+  disabled?: boolean;
 }
 
 const {
@@ -53,6 +54,7 @@ const {
   href,
   externalLink = false,
   withIcon = false,
+  disabled = false,
   ...props
 } = Astro.props;
 
@@ -68,10 +70,12 @@ const externalProps = externalLink
   href={href}
   class={cn(
     linkVariants({ variant, size, className }),
-    (withIcon || externalLink) && 'hover:no-underline'
+    (withIcon || externalLink) && 'hover:no-underline',
+    disabled && 'opacity-50 cursor-not-allowed'
   )}
   {...externalProps}
   {...props}
+  aria-disabled={disabled}
 >
   <slot />
   {
