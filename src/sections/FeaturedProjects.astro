@@ -20,11 +20,11 @@ const currentPath = Astro.url.pathname;
           <Heading
             level="h3"
             size="2xl"
-            class="mb-0 group-hover:text-accent transition-color"
+            class="mb-0 group-hover:text-accent transition-all"
           >
             {project.data.title}
           </Heading>
-          <p>{project.data.description}</p>
+          <p class="line-clamp-2">{project.data.description}</p>
           <div class="w-full">
             <img
               src={project.data.heroImage}
@@ -38,7 +38,7 @@ const currentPath = Astro.url.pathname;
               variant="primary"
               size="button"
             >
-              Learn more
+              See more
             </Link>
             <Link
               href={project.data.github}
