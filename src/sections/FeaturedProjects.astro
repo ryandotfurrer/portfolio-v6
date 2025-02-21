@@ -16,10 +16,7 @@ const currentPath = Astro.url.pathname;
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     {
       featuredProjects.map((project) => (
-        <Card
-          class="group p-0 bg-transparent border-none hover:drop-shadow-none hover:translate-0"
-          key={project.id}
-        >
+        <Card class="group" key={project.id} variant="transparent">
           <Heading
             level="h3"
             size="2xl"
