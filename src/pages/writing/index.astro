@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Heading from '../../components/Heading.astro';
 import FeaturedWriting from '../../sections/FeaturedWriting.astro';
+import { ArrowRight } from 'lucide-react';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)
@@ -13,15 +14,18 @@ const posts = (await getCollection('blog')).sort(
   pageTitle="writing"
   pageDescription="a collection of my writing and articles"
 >
-  <FeaturedWriting />
+  <FeaturedWriting
+    title="Featured Writing"
+    description="Check out some of my featured articles"
+  />
   <section>
     <Heading level="h2" size="2xl">all writing</Heading>
-    <ul class="space-y-8">
+    <ul class="space-y-1">
       {
         posts.map((post) => (
-          <li class="max-w-screen-sm group">
+          <li class="max-w-screen-sm group -translate-x-4">
             <a
-              class="flex gap-4 p-4 items-center -translate-x-4 group-hover:-translate-x-0 group-hover:bg-card group-hover:border border-border transition-all rounded-lg duration-300"
+              class="flex gap-2 p-4 items-center"
               href={`/writing/${post.id}/`}
             >
               <p class="text-sm">
@@ -29,14 +33,27 @@ const posts = (await getCollection('blog')).sort(
                   ? new Date(post.data.pubDate).getFullYear()
                   : new Date().getFullYear()}
               </p>
-              <Heading level="h3" class="font-sans font-normal">
+              <Heading
+                level="h3"
+                class="text-foreground font-sans font-normal group-hover:text-accent transition-all"
+              >
                 {post.data.title}
               </Heading>
-              {post.data.tags && post.data.tags.length > 0 && (
-                <span class=" group-hover:opacity-100 transition-all ml-auto text-xs bg-muted rounded-sm p-1  group-hover:translate-y-0 duration-300 md:opacity-0 md:translate-y-4">
-                  {post.data.tags[0]}
-                </span>
-              )}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-2 md:group-hover/link:translate-x-0 mt-0.5 !size-5"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
             </a>
           </li>
         ))
