@@ -1,5 +1,5 @@
 ---
-// import '../styles/global.css';
+import '../styles/global.css';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
@@ -18,9 +18,7 @@ const { pageTitle, pageDescription, hasCTA = false } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   <body>
     <div class="container mx-auto max-w-screen-xl px-4 py-8">
       <header>
