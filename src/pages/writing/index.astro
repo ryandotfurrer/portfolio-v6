@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Heading from '../../components/Heading.astro';
 import FeaturedWriting from '../../sections/FeaturedWriting.astro';
-import { ArrowRight } from 'lucide-react';
+import AllItemsList from '~/components/AllItemsList.astro';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)
@@ -20,44 +20,6 @@ const posts = (await getCollection('blog')).sort(
   />
   <section>
     <Heading level="h2" size="2xl">all writing</Heading>
-    <ul class="space-y-1">
-      {
-        posts.map((post) => (
-          <li class="max-w-screen-sm group -translate-x-4">
-            <a
-              class="flex gap-2 p-4 items-center"
-              href={`/writing/${post.id}/`}
-            >
-              <p class="text-sm">
-                {post.data.pubDate
-                  ? new Date(post.data.pubDate).getFullYear()
-                  : new Date().getFullYear()}
-              </p>
-              <Heading
-                level="h3"
-                class="text-foreground font-sans font-normal group-hover:text-accent transition-all"
-              >
-                {post.data.title}
-              </Heading>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-arrow-right md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-2 md:group-hover/link:translate-x-0 mt-0.5 !size-5"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <AllItemsList collection={posts} />
   </section>
 </BaseLayout>

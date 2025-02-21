@@ -2,6 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FeaturedProjects from '../../sections/FeaturedProjects.astro';
 import Heading from '../../components/Heading.astro';
+import AllItemsList from '~/components/AllItemsList.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)
+);
 ---
 
 <BaseLayout
@@ -10,7 +16,7 @@ import Heading from '../../components/Heading.astro';
 >
   <FeaturedProjects />
   <section>
-    <Heading level="h2" size="2xl">everything else</Heading>
-    <p>Coming soon...</p>
+    <Heading level="h2" size="2xl">all projects</Heading>
+    <AllItemsList collection={projects} />
   </section>
 </BaseLayout>
