@@ -15,9 +15,9 @@ const currentPath = Astro.url.pathname;
 let backLink = '';
 let backLinkText = '';
 
-if (currentPath.includes('/work')) {
-  backLink = '/work';
-  backLinkText = 'view all work';
+if (currentPath.includes('/projects')) {
+  backLink = '/projects';
+  backLinkText = 'view all projects';
 } else if (currentPath.includes('/writing')) {
   backLink = '/writing';
   backLinkText = 'view all writing';
@@ -57,7 +57,7 @@ const {
               ) : (
                 <Link
                   href={backLink}
-                  class="flex justify-start !no-underline text-foreground-muted hover:text-foreground group transition-all duration-300"
+                  class="flex justify-start !no-underline group transition-all"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,8 @@ const {
                     )
                   }
                 </div>
-                <h1>{title}</h1>
+                <h1 class="mb-0">{title}</h1>
+                <p class="mt-0">{description}</p>
               </div>
             </div>
             <slot />
