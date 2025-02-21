@@ -17,4 +17,30 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const speaking = defineCollection({
+  loader: glob({ base: './src/content/speaking', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date().optional(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    heroImageAltText: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
+const work = defineCollection({
+  loader: glob({ base: './src/content/work', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date().optional(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    heroImageAltText: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
+export const collections = { blog, speaking, work };
