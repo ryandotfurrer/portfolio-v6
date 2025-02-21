@@ -1,39 +1,5 @@
 ---
-import { TabsCustom } from '../../components/react/TabsCustom';
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
-import React from 'react';
-import type { JSX } from 'react';
-
-interface TabsCustomDataType {
-  defaultValue: string;
-  tabsListData: {
-    tabsTriggerData: { value: string; label: string }[];
-  };
-  tabsContentData: { value: string; paragraphs: string[] }[];
-}
-
-const TabsCustomData: TabsCustomDataType = {
-  defaultValue: 'code',
-  tabsListData: {
-    tabsTriggerData: [
-      { value: 'code', label: 'Code' },
-      { value: 'design', label: 'Design' },
-    ],
-  },
-  tabsContentData: [
-    {
-      value: 'code',
-      paragraphs: [
-        'Min tasks is a minimal task manager that I built to help me keep track of my tasks.',
-        "It's a simple, no-frills task manager that allows you to add, edit, and delete tasks.",
-      ],
-    },
-    {
-      value: 'design',
-      paragraphs: ['Add tasks', 'Edit tasks', 'Delete tasks'],
-    },
-  ],
-};
 ---
 
 <BlogPostLayout
@@ -41,6 +7,4 @@ const TabsCustomData: TabsCustomDataType = {
   description="Lorem ipsum dolor sit amet"
   pubDate={new Date('August 08 2021')}
   heroImage="/blog-placeholder-about.jpg"
->
-  <TabsCustom tabsData={TabsCustomData} client:visible />
-</BlogPostLayout>
+/>
