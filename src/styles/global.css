@@ -87,6 +87,7 @@
 
   body {
     @apply text-foreground-muted bg-background font-sans text-pretty;
+    font-size: clamp(1em, 0.9em + 1vw, 1.125em);
   }
 
   h1,
