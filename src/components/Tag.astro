@@ -12,8 +12,8 @@ const { href, classes } = Astro.props;
       </Link>
     </li>
   ) : (
-    <li class="bg-muted text-foreground-muted text-xs p-1 border rounded-sm">
-      <slot />
+    <li class="text-sm text-foreground-muted">
+      #<slot />
     </li>
   )
 }
