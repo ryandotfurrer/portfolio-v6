@@ -34,10 +34,17 @@ const Heading = ({ level, children }: HeadingProps) => {
 
 export function TabsCustom({ tabsData }: Props) {
   return (
-    <Tabs defaultValue={tabsData.defaultValue} className={tabsData.className}>
+    <Tabs
+      defaultValue={tabsData.defaultValue}
+      className={`${tabsData.className}`}
+    >
       <TabsList>
         {tabsData.tabsListData.tabsTriggerData.map((tab) => (
-          <TabsTrigger key={tab.value} value={tab.value}>
+          <TabsTrigger
+            className="cursor-pointer"
+            key={tab.value}
+            value={tab.value}
+          >
             {tab.label}
           </TabsTrigger>
         ))}
