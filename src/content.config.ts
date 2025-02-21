@@ -7,7 +7,7 @@ const blog = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
-    slug: z.string(),
+    slug: z.string().optional(),
     description: z.string(),
     // Transform string to Date object
     pubDate: z.coerce.date().optional(),
@@ -22,7 +22,7 @@ const projects: ReturnType<typeof defineCollection> = defineCollection({
   loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
-    slug: z.string(),
+    slug: z.string().optional(),
     description: z.string(),
     pubDate: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
@@ -42,7 +42,7 @@ const speaking = defineCollection({
   loader: glob({ base: './src/content/speaking', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
-    slug: z.string(),
+    slug: z.string().optional(),
     description: z.string(),
     pubDate: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
