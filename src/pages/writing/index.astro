@@ -5,9 +5,8 @@ import Heading from '../../components/Heading.astro';
 import FeaturedWriting from '../../sections/FeaturedWriting.astro';
 import AllItemsList from '~/components/AllItemsList.astro';
 
-const newsletters = await getCollection('newsletters');
-
 const blogPosts = await getCollection('blog');
+const newsletters = await getCollection('newsletters');
 
 const allPosts = [...blogPosts, ...newsletters].sort(
   (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)

@@ -9,8 +9,12 @@ import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const blogCollection = await getCollection('blog');
-const featuredWriting = blogCollection.slice(-2).reverse();
+const blogPosts = await getCollection('blog');
+const newsletters = await getCollection('newsletters');
+const allWriting = [...blogPosts, ...newsletters].sort(
+  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)
+);
+const featuredWriting = allWriting.slice(0, 2);
 
 const currentPath = Astro.url.pathname;
 ---
