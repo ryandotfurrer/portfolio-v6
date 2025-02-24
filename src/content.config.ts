@@ -2,7 +2,7 @@ import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 import { getSecret } from 'astro:env/server';
 
-const beehiivAPIKey = getSecret('BEEHIIIVE_API_KEY');
+const beehiivAPIKey = getSecret('BEEHIIV_API_KEY');
 
 const blog = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
