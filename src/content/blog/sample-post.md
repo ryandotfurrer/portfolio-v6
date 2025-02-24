@@ -1,7 +1,7 @@
 ---
 title: 'Sample post'
 slug: 'sample-post'
-description: 'Lorem ipsum dolor sit amet'
+description: 'Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus'
 pubDate: 'Feb 24 2025'
 heroImage: '/blog-placeholder-2.jpg'
 ---

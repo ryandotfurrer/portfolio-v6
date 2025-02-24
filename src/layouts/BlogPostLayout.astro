@@ -38,6 +38,7 @@ const {
   heroImage,
   heroImageAltText,
   tags,
+  content,
 } = Astro.props;
 ---
 
@@ -79,11 +80,11 @@ const {
                 </Link>
               )
             }
-            <div>
+            <div class="w-full">
               {
                 heroImage && (
                   <img
-                    class="aspect-video rounded-lg object-cover"
+                    class="aspect-video rounded-lg border border-border"
                     src={heroImage}
                     alt={heroImageAltText}
                   />
@@ -124,6 +125,13 @@ const {
                     </Tag>
                   ))}
                 </ul>
+              </div>
+            )
+          }
+          {
+            content && (
+              <div class="content">
+                <div set:html={content} />
               </div>
             )
           }

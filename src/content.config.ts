@@ -16,39 +16,52 @@ const blog = defineCollection({
 
 const newsletters = defineCollection({
   loader: async () => {
-    const response = await fetch(
-      'https://api.beehiiv.com/v2/publications/pub_f7c08d84-11c7-4475-99c7-a10f84a965bd/posts',
-      {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.BEEHIIV_API_KEY}`,
-          'Content-Type': 'application/json',
+    try {
+      const response = await fetch(
+        `https://api.beehiiv.com/v2/publications/${import.meta.env.BEEHIIV_PUBLICATION_ID}/posts`,
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.BEEHIIV_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
         },
-      },
-    );
+      );
 
-    const data = await response.json();
+      if (!response.ok) {
+        console.error('Failed to fetch newsletters:', response.statusText);
+        return [];
+      }
 
-    return data.data.map((post: any) => ({
-      id: post.id,
-      slug: post.slug,
-      title: post.title,
-      subtitle: post.subtitle,
-      pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
-      thumbnailUrl: post.thumbnail_url,
-      contentTags: post.content_tags,
-      // content: post.content.free.web,
-      // Add other fields as needed
-    }));
+      const data = await response.json();
+      console.log('Fetched newsletters data:', data);
+
+      if (!data.data || data.data.length === 0) {
+        console.warn('No newsletters data found');
+        return [];
+      }
+
+      return data.data.map((post: any) => ({
+        id: post.id,
+        title: post.title,
+        description: post.subtitle,
+        pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
+        heroImage: post.thumbnail_url,
+        tags: post.content_tags,
+        webURL: post.web_url,
+      }));
+    } catch (error) {
+      console.error('Error fetching newsletters:', error);
+      return [];
+    }
   },
   schema: z.object({
     id: z.string(),
-    slug: z.string(),
     title: z.string(),
-    subtitle: z.string().optional(),
+    description: z.string(),
     pubDate: z.date(),
-    thumbnailUrl: z.string().optional(),
-    contentTags: z.array(z.string()).optional(),
-    // content: z.string(),
+    heroImage: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    webURL: z.string(),
   }),
 });
 
