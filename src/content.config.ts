@@ -1,13 +1,8 @@
 import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
-import { getSecret } from 'astro:env/server';
-
-const beehiivAPIKey = getSecret('BEEHIIV_API_KEY');
 
 const blog = defineCollection({
-  // Load Markdown and MDX files in the `src/content/blog/` directory.
   loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
-  // Type-check frontmatter using a schema
   schema: z.object({
     description: z.string(),
     heroImage: z.string().optional(),
@@ -21,24 +16,39 @@ const blog = defineCollection({
 
 const newsletters = defineCollection({
   loader: async () => {
-    if (!beehiivAPIKey) {
-      throw new Error('BEEHIIIVE_API_KEY is not defined');
-    }
-    const response = await fetch(beehiivAPIKey);
+    const response = await fetch(
+      'https://api.beehiiv.com/v2/publications/pub_f7c08d84-11c7-4475-99c7-a10f84a965bd/posts',
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.BEEHIIV_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+
     const data = await response.json();
-    // Transform the data to match the required format
-    return data.map((newsletter: any) => ({
-      id: newsletter.id, // Ensure each entry has a unique id
-      ...newsletter,
+
+    return data.data.map((post: any) => ({
+      id: post.id,
+      slug: post.slug,
+      title: post.title,
+      subtitle: post.subtitle,
+      pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
+      thumbnailUrl: post.thumbnail_url,
+      contentTags: post.content_tags,
+      // content: post.content.free.web,
+      // Add other fields as needed
     }));
   },
   schema: z.object({
-    description: z.string(),
-    heroImage: z.string().optional(),
-    heroImageAltText: z.string().optional(),
-    pubDate: z.coerce.date().optional(),
-    tags: z.array(z.string()).optional(),
+    id: z.string(),
+    slug: z.string(),
     title: z.string(),
+    subtitle: z.string().optional(),
+    pubDate: z.date(),
+    thumbnailUrl: z.string().optional(),
+    contentTags: z.array(z.string()).optional(),
+    // content: z.string(),
   }),
 });
 

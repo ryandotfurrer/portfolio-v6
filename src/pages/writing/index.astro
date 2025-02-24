@@ -5,7 +5,11 @@ import Heading from '../../components/Heading.astro';
 import FeaturedWriting from '../../sections/FeaturedWriting.astro';
 import AllItemsList from '~/components/AllItemsList.astro';
 
-const posts = (await getCollection('blog')).sort(
+const newsletters = await getCollection('newsletters');
+
+const blogPosts = await getCollection('blog');
+
+const allPosts = [...blogPosts, ...newsletters].sort(
   (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)
 );
 ---
@@ -20,6 +24,6 @@ const posts = (await getCollection('blog')).sort(
   />
   <section>
     <Heading level="h2" size="2xl">all writing</Heading>
-    <AllItemsList collection={posts} />
+    <AllItemsList collection={allPosts} />
   </section>
 </BaseLayout>

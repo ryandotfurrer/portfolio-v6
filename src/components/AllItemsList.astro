@@ -7,20 +7,26 @@ interface Item {
   data: {
     pubDate?: string;
     title: string;
+    collection: string;
   };
 }
 
 const currentPath = Astro.url.pathname;
 let itemPath = '';
 
-if (currentPath.includes('/projects')) {
-  itemPath = 'projects';
-} else if (currentPath.includes('/writing')) {
-  itemPath = 'writing';
-} else if (currentPath.includes('/speaking')) {
-  itemPath = 'speaking';
-} else if (currentPath.includes('/about')) {
-  itemPath = 'about';
+switch (true) {
+  case currentPath.includes('/projects'):
+    itemPath = 'projects';
+    break;
+  case currentPath.includes('/writing'):
+    itemPath = 'writing';
+    break;
+  case currentPath.includes('/speaking'):
+    itemPath = 'speaking';
+    break;
+  case currentPath.includes('/about'):
+    itemPath = 'about';
+    break;
 }
 
 const collection: Item[] = Astro.props.collection || [];
@@ -31,7 +37,7 @@ const collection: Item[] = Astro.props.collection || [];
     collection.map((item) => (
       <li class="max-w-screen-sm group -translate-x-4">
         <a
-          class="flex gap-2 p-4 items-center"
+          class="flex flex-wrap gap-x-2 p-4 items-center"
           href={`/${itemPath}/${item.id}/`}
         >
           <p class="text-sm">
@@ -59,6 +65,7 @@ const collection: Item[] = Astro.props.collection || [];
           >
             <path d="M5 12h14" />
             <path d="m12 5 7 7-7 7" />
+            <span class="w-full translate-x-11 text-sm">item type</span>
           </svg>
         </a>
       </li>
