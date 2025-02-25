@@ -33,7 +33,6 @@ const newsletters = defineCollection({
       }
 
       const data = await response.json();
-      console.log('Fetched newsletters data:', data);
 
       if (!data.data || data.data.length === 0) {
         console.warn('No newsletters data found');
@@ -65,7 +64,58 @@ const newsletters = defineCollection({
   }),
 });
 
-const projects: ReturnType<typeof defineCollection> = defineCollection({
+const archivedBlog = defineCollection({
+  loader: async () => {
+    try {
+      const response = await fetch(`https://api-us.storyblok.com/v2/cdn`, {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.BEEHIIV_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        console.error(
+          'Failed to fetch blog posts from storyblok:',
+          response.statusText,
+        );
+        return [];
+      }
+
+      const data = await response.json();
+      console.log('Fetched storybook blog posts data:', data);
+
+      if (!data.data || data.data.length === 0) {
+        console.warn('No newsletters data found');
+        return [];
+      }
+
+      return data.data.map((post: any) => ({
+        id: post.id,
+        title: post.title,
+        description: post.subtitle,
+        pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
+        heroImage: post.thumbnail_url,
+        tags: post.content_tags,
+        webURL: post.web_url,
+      }));
+    } catch (error) {
+      console.error('Error fetching newsletters:', error);
+      return [];
+    }
+  },
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    heroImage: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    webURL: z.string(),
+  }),
+});
+
+const projects = defineCollection({
   loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     description: z.string(),
