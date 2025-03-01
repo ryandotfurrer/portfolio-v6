@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname;
     <div id="sitemap" class="text-left">
       <p class="uppercase font-semibold mb-2">sitemap</p>
       <nav>
-        <ul class="gap-4">
+        <ul class="gap-2 flex flex-col">
           {
             NavLinks.map((link) => (
               <li>
@@ -34,10 +34,12 @@ const currentPath = Astro.url.pathname;
     </div>
     <div>
       <p class="uppercase font-semibold mb-2">socials</p>
-      <ul>
-        <Link externalLink withIcon href="#">Follow me on X</Link>
-        <Link externalLink withIcon href="#">Follow me on LinkedIn</Link>
-        <Link externalLink withIcon href="#">Find me everywhere</Link>
+      <ul class="gap-2 flex flex-col">
+        <li><Link externalLink withIcon href="#">Follow me on X</Link></li>
+        <li>
+          <Link externalLink withIcon href="#">Follow me on LinkedIn</Link>
+        </li>
+        <li><Link externalLink withIcon href="#">Find me everywhere</Link></li>
       </ul>
     </div>
     <div>
