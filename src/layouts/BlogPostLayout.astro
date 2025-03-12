@@ -93,22 +93,22 @@ const {
             </div>
             <div>
               <div>
-                <div>
-                  {
-                    pubDate ? (
-                      <>
-                        <FormattedDate date={pubDate} />
-                        {updatedDate && (
-                          <span>
-                            Last updated on <FormattedDate date={updatedDate} />
-                          </span>
-                        )}
-                      </>
-                    ) : (
-                      ''
-                    )
-                  }
-                </div>
+                {
+                  pubDate ? (
+                    <div class="flex flex-col *:not-last:m-0">
+                      <p>
+                        Published: <FormattedDate date={pubDate} />
+                      </p>
+                      {updatedDate && (
+                        <p class="bg-amber-200 text-foreground w-fit mt-0">
+                          Updated: <FormattedDate date={updatedDate} />
+                        </p>
+                      )}
+                    </div>
+                  ) : (
+                    ''
+                  )
+                }
                 <h1 class="mb-0">{title}</h1>
                 <p class="mt-0">{description}</p>
               </div>
