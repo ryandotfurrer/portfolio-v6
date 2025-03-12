@@ -2,12 +2,13 @@
 import Heading from './Heading.astro';
 
 interface Item {
+  collection: string;
   type: string;
   id: string;
   data: {
     pubDate?: string;
     title: string;
-    collection: string;
+    description: string;
   };
 }
 
@@ -65,7 +66,11 @@ const collection: Item[] = Astro.props.collection || [];
           >
             <path d="M5 12h14" />
             <path d="m12 5 7 7-7 7" />
-            <span class="w-full translate-x-11 text-sm">item type</span>
+            <span class="w-full translate-x-11 text-sm">
+              {currentPath.includes('/writing')
+                ? item.collection
+                : item.data.description}
+            </span>
           </svg>
         </a>
       </li>

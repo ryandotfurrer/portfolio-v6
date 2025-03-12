@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Heading from '../../components/Heading.astro';
+import FeaturedWriting from '../../sections/FeaturedWriting.astro';
+import AllItemsList from '~/components/AllItemsList.astro';
+
+const about = await getCollection('about');
+
+const aboutPosts = about.sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
+---
+
+<BaseLayout pageTitle="about" pageDescription="learn more about Ryan">
+  <section>
+    <AllItemsList collection={aboutPosts} />
+  </section>
+</BaseLayout>

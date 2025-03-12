@@ -1,6 +1,19 @@
 import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
 
+const about = defineCollection({
+  loader: glob({ base: './src/content/about', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    description: z.string(),
+    heroImage: z.string().optional(),
+    heroImageAltText: z.string().optional(),
+    pubDate: z.coerce.date().optional(),
+    tags: z.array(z.string()).optional(),
+    title: z.string(),
+    updatedDate: z.coerce.date().optional(),
+  }),
+});
+
 const blog = defineCollection({
   loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
@@ -40,12 +53,13 @@ const newsletters = defineCollection({
       }
 
       return data.data.map((post: any) => ({
-        id: post.id,
-        title: post.title,
+        content: z.string(),
         description: post.subtitle,
-        pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
         heroImage: post.thumbnail_url,
+        id: post.id,
+        pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
         tags: post.content_tags,
+        title: post.title,
         webURL: post.web_url,
       }));
     } catch (error) {
@@ -54,12 +68,13 @@ const newsletters = defineCollection({
     }
   },
   schema: z.object({
-    id: z.string(),
-    title: z.string(),
+    content: z.string(),
     description: z.string(),
-    pubDate: z.date(),
     heroImage: z.string().optional(),
+    id: z.string(),
+    pubDate: z.date(),
     tags: z.array(z.string()).optional(),
+    title: z.string(),
     webURL: z.string(),
   }),
 });
@@ -91,12 +106,13 @@ const archivedBlog = defineCollection({
       }
 
       return data.data.map((post: any) => ({
-        id: post.id,
-        title: post.title,
+        content: z.string(),
         description: post.subtitle,
-        pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
         heroImage: post.thumbnail_url,
+        id: post.id,
+        pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
         tags: post.content_tags,
+        title: post.title,
         webURL: post.web_url,
       }));
     } catch (error) {
@@ -105,12 +121,13 @@ const archivedBlog = defineCollection({
     }
   },
   schema: z.object({
-    id: z.string(),
-    title: z.string(),
+    content: z.string(),
     description: z.string(),
-    pubDate: z.date(),
     heroImage: z.string().optional(),
+    id: z.string(),
+    pubDate: z.date(),
     tags: z.array(z.string()).optional(),
+    title: z.string(),
     webURL: z.string(),
   }),
 });
@@ -148,4 +165,4 @@ const speaking = defineCollection({
   }),
 });
 
-export const collections = { blog, projects, newsletters, speaking };
+export const collections = { about, blog, projects, newsletters, speaking };
