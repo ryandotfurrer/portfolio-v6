@@ -17,7 +17,7 @@ export default function MobileMenu() {
       </button>
 
       <div
-        className={`top-21.2 border-border bg-card fixed right-4 z-40 w-[91.9%] origin-top transform rounded-b-lg border border-t-0 p-4 text-right transition-all duration-300 ${
+        className={`top-24 border-border bg-card fixed right-4 left-4 z-40 origin-top transform rounded-b-lg border border-t-0 p-4 text-right transition-all duration-300 ${
           isOpen ? 'scale-y-100' : 'scale-y-0'
         }`}
       >
