@@ -3,6 +3,8 @@ title: 'About Me'
 description: 'My journey into tech was not straightforward...'
 pubDate: '2025-03-12T00:00:00.000Z'
 heroImage: '/blog-placeholder-3.jpg'
+tags:
+    - about
 ---
 
 My journey into tech was not straightforward. I started my career in a completely different field, but I always had a passion for technology. I remember spending hours tinkering with computers as a kid, and I was always fascinated by the possibilities that technology offered.

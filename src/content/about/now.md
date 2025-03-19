@@ -5,6 +5,9 @@ description: 'What am I currently up to?'
 pubDate: '2025-03-11T00:00:00.000Z'
 updatedDate: '2025-03-12T00:00:00.000Z'
 heroImage: '/blog-placeholder-3.jpg'
+tags:
+    - about
+    - now
 ---
 
 ## Learning

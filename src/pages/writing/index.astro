@@ -21,8 +21,5 @@ const allPosts = [...blogPosts, ...newsletters].sort(
     title="Featured Writing"
     description="Check out some of my featured articles"
   />
-  <section>
-    <Heading level="h2" size="2xl">all writing</Heading>
-    <AllItemsList collection={allPosts} />
-  </section>
+  <AllItemsList collection={allPosts} />
 </BaseLayout>

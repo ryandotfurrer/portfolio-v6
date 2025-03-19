@@ -17,8 +17,5 @@ const speakingPosts = speaking.sort((a, b) =>
   pageDescription="a collection of my talks and presentations"
 >
   <FeaturedSpeaking />
-  <section>
-    <Heading level="h2" size="2xl">everything else</Heading>
-    <AllItemsList collection={speakingPosts} />
-  </section>
+  <AllItemsList collection={speakingPosts} />
 </BaseLayout>

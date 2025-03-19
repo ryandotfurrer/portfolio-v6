@@ -15,8 +15,5 @@ const projects = (await getCollection('projects')).sort(
   pageDescription="a collection of my work, projects, and experiments"
 >
   <FeaturedProjects />
-  <section>
-    <Heading level="h2" size="2xl">all projects</Heading>
     <AllItemsList collection={projects} />
-  </section>
 </BaseLayout>
