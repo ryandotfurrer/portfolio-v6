@@ -11,4 +11,5 @@ export const NavLinks = [
   { href: '/writing', label: 'writing' },
   { href: '/speaking', label: 'speaking' },
   { href: '/about', label: 'about' },
+  { href: '/contact', label: 'contact' },
 ];
