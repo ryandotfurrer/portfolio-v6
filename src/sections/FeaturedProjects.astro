@@ -1,8 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
 import Card from '../components/Card.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
-import { getCollection } from 'astro:content';
 
 const projectCollection = await getCollection('projects');
 const featuredProjects = projectCollection.slice(-2).reverse();
@@ -16,27 +16,28 @@ const currentPath = Astro.url.pathname;
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     {
       featuredProjects.map((project) => (
-        <Card class="group" key={project.id} variant="transparent">
+        <Card class="group" key={project.id} variant="transparent" hasLink={true} href={`/projects/${project.id}`}>
           <Heading
             level="h3"
             size="2xl"
-            class="mb-0 group-hover:text-accent transition-all"
+            class="group-hover:text-accent transition-all"
           >
             {project.data.title}
           </Heading>
           <p class="line-clamp-2">{project.data.description}</p>
-          <div class="w-full">
+          <div class="w-full mt-2">
             <img
               src={project.data.heroImage}
               alt={project.data.title}
-              class="rounded-md"
+              class="rounded-md border border-border aspect-video"
             />
           </div>
-          <div class="flex flex-col gap-4 md:flex-row">
+          <div class="flex flex-col md:flex-row md:justify-start">
             <Link
               href={`/projects/${project.id}`}
               variant="primary"
               size="button"
+              class="w-full md:w-auto mb-4 md:mb-0 md:mr-4"
             >
               See more
             </Link>
@@ -45,6 +46,7 @@ const currentPath = Astro.url.pathname;
               externalLink={true}
               variant="outline"
               size="button"
+              class="w-full md:w-auto"
             >
               View GitHub
             </Link>

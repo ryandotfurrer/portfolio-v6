@@ -25,12 +25,12 @@ const currentPath = Astro.url.pathname;
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     {
       featuredWriting.map((post) => (
-        <Card class="group" key={post.id} variant="transparent">
+        <Card class="group" key={post.id} variant="transparent" hasLink={true} href={`/writing/${post.id}`}>
           <header>
             <Heading
               level="h3"
               size="2xl"
-              class="mb-0 group-hover:text-accent transition-all"
+              class="group-hover:text-accent transition-all"
             >
               {post.data.title}
             </Heading>
@@ -39,7 +39,7 @@ const currentPath = Astro.url.pathname;
               date={post.data.pubDate ?? new Date()}
             />
           </header>
-          <div class="w-full">
+          <div class="w-full my-2">
             <img
               src={post.data.heroImage}
               alt={post.data.title}
@@ -48,7 +48,7 @@ const currentPath = Astro.url.pathname;
           </div>
           <p class="line-clamp-2">{post.data.description}</p>
           {post.data.tags && post.data.tags.length > 0 && (
-            <div>
+            <div class="mt-2">
               <ul class="flex flex-wrap gap-2">
                 {post.data.tags.map((tag) => (
                   <Tag key={tag} name={tag}>
@@ -58,7 +58,7 @@ const currentPath = Astro.url.pathname;
               </ul>
             </div>
           )}
-          <div class="flex flex-col gap-4 md:flex-row">
+          <div>
             {post.collection === 'blog' ? (
               <>
                 <Link
