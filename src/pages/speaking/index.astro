@@ -2,6 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FeaturedSpeaking from '../../sections/FeaturedSpeaking.astro';
 import Heading from '../../components/Heading.astro';
+import { getCollection } from 'astro:content';
+import AllItemsList from '~/components/AllItemsList.astro';
+
+const speaking = await getCollection('speaking');
+
+const speakingPosts = speaking.sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
 ---
 
 <BaseLayout
@@ -11,6 +19,6 @@ import Heading from '../../components/Heading.astro';
   <FeaturedSpeaking />
   <section>
     <Heading level="h2" size="2xl">everything else</Heading>
-    <p>Coming soon...</p>
+    <AllItemsList collection={speakingPosts} />
   </section>
 </BaseLayout>
