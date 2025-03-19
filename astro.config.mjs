@@ -10,6 +10,9 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+  contentIntellisense: true,
+},
   site: 'https://ryanfurrer.com',
   integrations: [mdx(), sitemap(), react()],
   vite: {
