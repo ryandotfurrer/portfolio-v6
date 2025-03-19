@@ -3,7 +3,8 @@ import { getCollection } from 'astro:content';
 import Card from '../components/Card.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
-
+import FormattedDate from '~/components/FormattedDate.astro';
+import Tag from '~/components/Tag.astro';
 const projectCollection = await getCollection('projects');
 const featuredProjects = projectCollection.slice(-2).reverse();
 
@@ -17,21 +18,38 @@ const currentPath = Astro.url.pathname;
     {
       featuredProjects.map((project) => (
         <Card class="group" key={project.id} variant="transparent" hasLink={true} href={`/projects/${project.id}`}>
-          <Heading
-            level="h3"
-            size="2xl"
-            class="group-hover:text-accent transition-all"
+          <header>
+            <Heading
+              level="h3"
+              size="2xl"
+              class="group-hover:text-accent transition-all"
           >
-            {project.data.title}
-          </Heading>
-          <p class="line-clamp-2">{project.data.description}</p>
-          <div class="w-full mt-2">
+              {project.data.title}
+            </Heading>
+            <FormattedDate
+              classes="text-sm"
+              date={project.data.pubDate ?? new Date()}
+            />
+          </header>
+          <div class="w-full my-2">
             <img
               src={project.data.heroImage}
               alt={project.data.title}
               class="rounded-md border border-border aspect-video"
             />
           </div>
+          <p class="line-clamp-2">{project.data.description}</p>
+          {project.data.tags && project.data.tags.length > 0 && (
+            <div class="mt-2">
+              <ul class="flex flex-wrap gap-2">
+                {project.data.tags.map((tag) => (
+                  <Tag key={tag} name={tag}>
+                    {tag}
+                  </Tag>
+                ))}
+              </ul>
+            </div>
+          )}
           <div class="flex flex-col md:flex-row md:justify-start">
             <Link
               href={`/projects/${project.id}`}
