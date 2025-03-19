@@ -2,8 +2,8 @@
 title: 'Now'
 slug: 'now'
 description: 'What am I currently up to?'
-pubDate: 'Mar 11 2025'
-updatedDate: 'Mar 12 2025'
+pubDate: '2025-03-11T00:00:00.000Z'
+updatedDate: '2025-03-12T00:00:00.000Z'
 heroImage: '/blog-placeholder-3.jpg'
 ---
 

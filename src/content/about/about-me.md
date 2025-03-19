@@ -1,8 +1,7 @@
 ---
 title: 'About Me'
-slug: 'about-me'
 description: 'My journey into tech was not straightforward...'
-pubDate: 'Mar 12 2025'
+pubDate: '2025-03-12T00:00:00.000Z'
 heroImage: '/blog-placeholder-3.jpg'
 ---
 

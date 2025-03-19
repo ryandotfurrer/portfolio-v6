@@ -8,8 +8,15 @@ import Navbar from '../components/Navbar.astro';
 import Newsletter from '../components/Newsletter.astro';
 import Tag from '~/components/Tag.astro';
 import type { CollectionEntry } from 'astro:content';
+import ProjectPageLinks from '~/components/ProjectPageLinks.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+  links?: {
+    site?: string;
+    github?: string;
+  };
+  content?: string;
+};
 
 const currentPath = Astro.url.pathname;
 
@@ -38,7 +45,7 @@ const {
   heroImage,
   heroImageAltText,
   tags,
-  content,
+  links,
 } = Astro.props;
 ---
 
@@ -111,6 +118,11 @@ const {
                 }
                 <h1 class="mb-0">{title}</h1>
                 <p class="mt-0">{description}</p>
+                {
+                  currentPath.includes('projects') && links && (
+                    <ProjectPageLinks links={links} />
+                  )
+                }
               </div>
             </div>
             <slot />
@@ -128,10 +140,12 @@ const {
               </div>
             )
           }
+          {/* @ts-ignore */}
           {
-            content && (
+            Astro.props.content && (
               <div class="content">
-                <div set:html={content} />
+                {/* @ts-ignore */}
+                <div set:html={Astro.props.content} />
               </div>
             )
           }

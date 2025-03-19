@@ -2,7 +2,7 @@
 title: 'Third post'
 slug: 'third-post'
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 22 2022'
+pubDate: '2022-07-22T00:00:00.000Z'
 heroImage: '/blog-placeholder-2.jpg'
 tags: ['sample']
 ---

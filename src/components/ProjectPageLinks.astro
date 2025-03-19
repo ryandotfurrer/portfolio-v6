@@ -1,0 +1,29 @@
+---
+import Link from './Link.astro';
+
+interface Props {
+  links: {
+    site?: string;
+    github?: string;
+  };
+}
+
+const { links } = Astro.props;
+---
+
+<div class="flex flex-col gap-4 md:flex-row mb-12">
+  {links?.site && (
+    <Link href={links.site} externalLink={true} variant="primary" size="button" class="no-underline">
+      View Project
+    </Link>
+  )}
+  {links?.github && (
+    <Link href={links.github} externalLink={true} variant="outline" size="button" class="no-underline">
+      View GitHub
+    </Link>
+  )}
+</div>
+
+<script>
+  // Any client-side JavaScript would go here if needed
+</script>b

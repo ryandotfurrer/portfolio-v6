@@ -41,7 +41,7 @@ const currentPath = Astro.url.pathname;
               See more
             </Link>
             <Link
-              href={project.data.github}
+              href={project.data.links?.github || ''}
               externalLink={true}
               variant="outline"
               size="button"

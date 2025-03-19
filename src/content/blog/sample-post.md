@@ -2,7 +2,7 @@
 title: 'Sample post'
 slug: 'sample-post'
 description: 'Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus'
-pubDate: 'Feb 24 2025'
+pubDate: '2025-02-24T00:00:00.000Z'
 heroImage: '/blog-placeholder-2.jpg'
 ---
 
