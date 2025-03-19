@@ -5,8 +5,8 @@ description: 'What hardware and software help me daily?'
 pubDate: '2025-03-12T00:00:00Z'
 heroImage: '/blog-placeholder-3.jpg'
 tags:
-    - about
-    - uses
+  - about
+  - uses
 ---
 
 ## Hardware
