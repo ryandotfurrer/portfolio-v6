@@ -8,6 +8,7 @@ const projectCollection = await getCollection('projects');
 const featuredProjects = projectCollection.slice(-2).reverse();
 
 const currentPath = Astro.url.pathname;
+const { title, description, onHomePage = false } = Astro.props;
 ---
 
 <section id="featured-projects">
