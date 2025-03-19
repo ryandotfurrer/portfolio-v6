@@ -4,6 +4,7 @@ import MobileMenu from './react/MobileMenu.tsx';
 import { NavLinks } from '../utils/utils';
 
 const currentPath = Astro.url.pathname;
+const isActive = (path: string) => currentPath === path;
 ---
 
 <nav
@@ -25,7 +26,7 @@ const currentPath = Astro.url.pathname;
               <Link
                 href={link.href}
                 class={
-                  currentPath === link.href
+                  isActive(link.href)
                     ? 'underline decoration-accent'
                     : 'hover:no-underline'
                 }
