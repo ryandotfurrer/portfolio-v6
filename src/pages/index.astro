@@ -1,17 +1,39 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatIDo from '../sections/WhatIDo.astro';
+import WhatIDoEdit from '../sections/WhatIDoEdit.astro';
 import FeaturedProjects from '../sections/FeaturedProjects.astro';
 import FeaturedWriting from '../sections/FeaturedWriting.astro';
 import FeaturedSpeaking from '../sections/FeaturedSpeaking.astro';
+import Heading from '~/components/Heading.astro';
+import Link from '~/components/Link.astro';
 ---
 
 <BaseLayout
-  pageTitle="Ryan Furrer"
-  pageDescription="frontend engineer. designer. blogger. podcaster. streamer."
+  pageTitle="Let's create something awesome together"
+  pageDescription="Come learn how I can help you build a better web"
   hasCTA={true}
 >
+<header>
+  <hgroup class="text-center w-fit mx-auto">
+    <Heading level="h1" size="4xl" align='center' class="lg:text-5xl">
+      Let's create something <span class="bg-gradient-to-r from-accent via-accent to-amber-500 text-transparent bg-clip-text">awesome</span> together
+    </Heading>
+    <p class="font-sans md:text-lg text-balance mt-2 lg:text-2xl">
+      Come learn how I can help you build a better web
+    </p>
+    <div class="flex gap-4 justify-center pt-8">
+      <Link href="/contact" variant="primary" size="button">
+        Contact Me
+      </Link>
+      <Link href="/projects" variant="outline" size="button">
+        View projects
+      </Link>
+    </div>
+  </hgroup>
+</header>
   <WhatIDo />
+  <!-- <WhatIDoEdit /> -->
   <FeaturedProjects title="Featured Projects" description="Featured Projects" />
   <FeaturedWriting title="Featured Writing" description="Featured Writing" />
   <FeaturedSpeaking title="Featured Speaking" description="Featured Speaking" />

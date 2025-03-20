@@ -8,8 +8,10 @@ import Link from '../components/Link.astro';
   <Heading level="h2" size="3xl"> what I do </Heading>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <Card href="/projects">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
+      <header class="flex items-center justify-between mb-4">
+        <Heading level="h3" size="2xl"> Building a better web </Heading>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -18,13 +20,13 @@ import Link from '../components/Link.astro';
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="lucide lucide-code-xml size-8 mb-2 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
+        class="lucide lucide-code-xml size-8 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
       >
         <path d="m18 16 4-4-4-4"></path>
         <path d="m6 8-4 4 4 4"></path>
-        <path d="m14.5 4-5 16"></path>
-      </svg>
-      <Heading level="h3" size="2xl" class="mb-2"> Building a better web </Heading>
+          <path d="m14.5 4-5 16"></path>
+        </svg>
+      </header>
       <p>
         I build accessible, performant web applications with modern tools like React, TypeScript, and Next.js. Check out my latest projects.
       </p>
@@ -37,8 +39,10 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href="https://webdevdialogues.com">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
+      <header class="flex items-center justify-between mb-4">
+        <Heading level="h3" size="2xl"> Web Dev Dialogues Podcast </Heading>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -47,14 +51,14 @@ import Link from '../components/Link.astro';
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="lucide lucide-podcast size-8 mb-2 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
+        class="lucide lucide-podcast size-8 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
       >
         <path d="M16.85 18.58a9 9 0 1 0-9.7 0"></path>
         <path d="M8 14a5 5 0 1 1 8 0"></path>
         <circle cx="12" cy="11" r="1"></circle>
-        <path d="M13 17a1 1 0 1 0-2 0l.5 4.5a.5.5 0 1 0 1 0Z"></path>
-      </svg>
-      <Heading level="h3" size="2xl" class="mb-2"> Web Dev Dialogues Podcast </Heading>
+          <path d="M13 17a1 1 0 1 0-2 0l.5 4.5a.5.5 0 1 0 1 0Z"></path>
+        </svg>
+      </header>
       <p>
         Join me for in-depth conversations with web developers about their journeys, tech stacks, and lessons learned along the way.
       </p>
@@ -68,8 +72,10 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href="/writing">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
+      <header class="flex items-center justify-between mb-4">
+        <Heading level="h3" size="2xl"> Learn by reading </Heading>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -78,7 +84,7 @@ import Link from '../components/Link.astro';
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="lucide lucide-notebook-pen size-8 mb-2 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
+        class="lucide lucide-notebook-pen size-8 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
       >
         <path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
         ></path>
@@ -90,7 +96,7 @@ import Link from '../components/Link.astro';
           d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
         ></path>
       </svg>
-      <Heading level="h3" size="2xl" class="mb-2"> Learn by reading </Heading>
+      </header>
       <p>
         I share detailed technical guides, career advice, and insights from my experience as a web developer through my blog posts.
       </p>
@@ -103,8 +109,10 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href="/speaking">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
+      <header class="flex items-center justify-between mb-4">
+        <Heading level="h3" size="2xl"> Learn by watching </Heading>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -113,13 +121,13 @@ import Link from '../components/Link.astro';
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="lucide lucide-presentation size-8 mb-2 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
+        class="lucide lucide-presentation size-8 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
       >
         <path d="M2 3h20"></path>
         <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
         <path d="m7 21 5-5 5 5"></path>
       </svg>
-      <Heading level="h3" size="2xl" class="mb-2"> Learn by watching </Heading>
+      </header>
       <p>
         From conference talks to live coding sessions, I break down complex web development concepts into clear, actionable lessons.
       </p>
@@ -132,8 +140,10 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href="https://cal.com/ryandotfurrer/coffee-chat">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
+      <header class="flex items-center justify-between mb-4">
+        <Heading level="h3" size="2xl"> Book a Coffee Chat </Heading>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -142,15 +152,15 @@ import Link from '../components/Link.astro';
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="lucide lucide-mic size-8 mb-2 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
+        class="lucide lucide-mic size-8 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
       >
         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
         <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
         <line x1="12" x2="12" y1="19" y2="22"></line>
       </svg>
-      <Heading level="h3" size="2xl" class="mb-2"> Book a Coffee Chat </Heading>
+      </header>
       <p>
-        Let's chat about web development, career growth, or your next project. Schedule a free 15 or 25-minute video call with me.
+        Let's chat about web development, career growth, or your next project. Schedule a free 30-minute video call with me.
       </p>
       <Link
         href="https://cal.com/ryandotfurrer/coffee-chat"
@@ -162,8 +172,10 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href="https://twitch.tv/ryandotfurrer">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
+      <header class="flex items-center justify-between mb-4">
+        <Heading level="h3" size="2xl"> Hang out live </Heading>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -172,11 +184,11 @@ import Link from '../components/Link.astro';
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="lucide lucide-twitch size-8 mb-2 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
+        class="lucide lucide-twitch size-8 md:group-hover:stroke-accent md:stroke-foreground-muted stroke-accent"
       >
         <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"></path>
       </svg>
-      <Heading level="h3" size="2xl" class="mb-2"> Hang out live </Heading>
+      </header>
       <p>
         Watch me code, debug, and build projects in real-time. Join the chat to ask questions and learn together.
       </p>
@@ -191,3 +203,32 @@ import Link from '../components/Link.astro';
     </Card>
   </div>
 </section>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '-50px',
+    threshold: 0.15,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-4');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-scroll-animation]').forEach((element) => {
+      observer.observe(element);
+    });
+  });
+</script>
+
+<style>
+  svg {
+    transition-duration: 0ms;
+  }
+</style>
