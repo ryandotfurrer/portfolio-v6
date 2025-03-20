@@ -7,19 +7,43 @@ import FeaturedWriting from '../sections/FeaturedWriting.astro';
 import FeaturedSpeaking from '../sections/FeaturedSpeaking.astro';
 import Heading from '~/components/Heading.astro';
 import Link from '~/components/Link.astro';
+
+const headerSpan = [
+  'awesome',
+  'special',
+  'rad',
+  'inspiring',
+  'fun',
+  'memorable',
+  'unique',
+  'creative',
+  'delightful',
+  'remarkable',
+  'fantastic',
+  'wonderful',
+  'amazing',
+  'incredible',
+]
+
+let lastUsedSpan = '';
+const getRandomSpan = () => {
+  const available = headerSpan.filter(span => span !== lastUsedSpan);
+  lastUsedSpan = available[Math.floor(Math.random() * available.length)];
+  return lastUsedSpan;
+};
 ---
 
 <BaseLayout
-  pageTitle="Let's create something awesome together"
+  pageTitle="Let's create something special together"
   pageDescription="Come learn how I can help you build a better web"
   hasCTA={true}
 >
   <header>
-    <hgroup class="text-center w-fit mx-auto pt-16 md:pt-24 lg:pt-28 xl:pt-32">
+    <hgroup class="text-center w-fit mx-auto pt-16 md:pt-24 lg:pt-28 xl:pt-32 perspective-[1000px] [transform-style:preserve-3d]">
       <Heading level="h1" size="4xl" align="center" class="lg:text-5xl">
-        Let's create something <span
-          class="bg-gradient-to-r from-accent via-accent to-amber-500 text-transparent bg-clip-text"
-          >awesome</span
+        Let's create something <span id="header-span"
+          class="bg-gradient-to-r from-accent via-accent to-amber-500 text-transparent bg-clip-text animate-[blur_.5s_ease-in_forwards]"
+          >{headerSpan[Math.floor(Math.random() * headerSpan.length)]}</span
         > together
       </Heading>
       <p class="font-sans text-lg text-balance mt-2 md:mt-4 lg:text-2xl">
@@ -39,3 +63,18 @@ import Link from '~/components/Link.astro';
   <FeaturedWriting title="Featured Writing" description="Featured Writing" />
   <FeaturedSpeaking title="Featured Speaking" description="Featured Speaking" />
 </BaseLayout>
+
+<style>
+@keyframes blur {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+</style>
