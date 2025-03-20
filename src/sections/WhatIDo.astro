@@ -13,7 +13,9 @@ import Link from '../components/Link.astro';
   </Heading>
   <div class='grid grid-cols-1 gap-8 md:grid-cols-2'>
     <Card href='/projects'>
-      <div class='bg-secondary mb-4 w-fit rounded-lg p-2'>
+      <div
+        class='bg-card border-accent md:bg-secondary group-hover:bg-card md:group-hover:border-accent mb-4 w-fit rounded-lg border p-2 transition-colors md:border-transparent'
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='24'
@@ -24,7 +26,7 @@ import Link from '../components/Link.astro';
           stroke-width='2'
           stroke-linecap='round'
           stroke-linejoin='round'
-          class='lucide lucide-code-xml stroke-foreground size-5'
+          class='lucide lucide-code-xml stroke-accent md:stroke-foreground group-hover:stroke-accent size-5 transition-colors'
         >
           <path d='m18 16 4-4-4-4'></path>
           <path d='m6 8-4 4 4 4'></path>
@@ -34,7 +36,6 @@ import Link from '../components/Link.astro';
       <Heading
         level='h3'
         size='2xl'
-        class='mb-2'
       >
         Building a better web
       </Heading>
@@ -51,7 +52,9 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href='https://webdevdialogues.com'>
-      <div class='bg-secondary mb-4 w-fit rounded-lg p-2'>
+      <div
+        class='bg-card border-accent md:bg-secondary group-hover:bg-card md:group-hover:border-accent mb-4 w-fit rounded-lg border p-2 transition-colors md:border-transparent'
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='24'
@@ -62,7 +65,7 @@ import Link from '../components/Link.astro';
           stroke-width='2'
           stroke-linecap='round'
           stroke-linejoin='round'
-          class='lucide lucide-headphones stroke-foreground size-5'
+          class='lucide lucide-headphones stroke-accent md:stroke-foreground group-hover:stroke-accent size-5 transition-colors'
           ><path
             d='M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3'
           ></path></svg
@@ -71,7 +74,6 @@ import Link from '../components/Link.astro';
       <Heading
         level='h3'
         size='2xl'
-        class='mb-2'
       >
         Web Dev Dialogues Podcast
       </Heading>
@@ -89,7 +91,9 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href='/writing'>
-      <div class='bg-secondary mb-4 w-fit rounded-lg p-2'>
+      <div
+        class='bg-card border-accent md:bg-secondary group-hover:bg-card md:group-hover:border-accent mb-4 w-fit rounded-lg border p-2 transition-colors md:border-transparent'
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='24'
@@ -100,7 +104,7 @@ import Link from '../components/Link.astro';
           stroke-width='2'
           stroke-linecap='round'
           stroke-linejoin='round'
-          class='lucide lucide-notebook-pen stroke-foreground size-5'
+          class='lucide lucide-notebook-pen stroke-accent md:stroke-foreground group-hover:stroke-accent size-5 transition-colors'
         >
           <path
             d='M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4'
@@ -117,7 +121,6 @@ import Link from '../components/Link.astro';
       <Heading
         level='h3'
         size='2xl'
-        class='mb-2'
       >
         Learn by reading
       </Heading>
@@ -135,7 +138,9 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href='/speaking'>
-      <div class='bg-secondary mb-4 w-fit rounded-lg p-2'>
+      <div
+        class='bg-card border-accent md:bg-secondary group-hover:bg-card md:group-hover:border-accent mb-4 w-fit rounded-lg border p-2 transition-colors md:border-transparent'
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='24'
@@ -146,7 +151,7 @@ import Link from '../components/Link.astro';
           stroke-width='2'
           stroke-linecap='round'
           stroke-linejoin='round'
-          class='lucide lucide-presentation stroke-foreground size-5'
+          class='lucide lucide-presentation stroke-accent md:stroke-foreground group-hover:stroke-accent size-5 transition-colors'
         >
           <path d='M2 3h20'></path>
           <path d='M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3'></path>
@@ -156,7 +161,6 @@ import Link from '../components/Link.astro';
       <Heading
         level='h3'
         size='2xl'
-        class='mb-2'
       >
         Learn by watching
       </Heading>
@@ -173,7 +177,9 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href='https://cal.com/ryandotfurrer/coffee-chat'>
-      <div class='bg-secondary mb-4 w-fit rounded-lg p-2'>
+      <div
+        class='bg-card border-accent md:bg-secondary group-hover:bg-card md:group-hover:border-accent mb-4 w-fit rounded-lg border p-2 transition-colors md:border-transparent'
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='24'
@@ -184,7 +190,7 @@ import Link from '../components/Link.astro';
           stroke-width='2'
           stroke-linecap='round'
           stroke-linejoin='round'
-          class='lucide lucide-mic stroke-foreground size-5'
+          class='lucide lucide-mic stroke-accent md:stroke-foreground group-hover:stroke-accent size-5 transition-colors'
         >
           <path d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'></path>
           <path d='M19 10v2a7 7 0 0 1-14 0v-2'></path>
@@ -199,7 +205,6 @@ import Link from '../components/Link.astro';
       <Heading
         level='h3'
         size='2xl'
-        class='mb-2'
       >
         Book a Coffee Chat
       </Heading>
@@ -217,7 +222,9 @@ import Link from '../components/Link.astro';
       </Link>
     </Card>
     <Card href='https://twitch.tv/ryandotfurrer'>
-      <div class='bg-secondary mb-4 w-fit rounded-lg p-2'>
+      <div
+        class='bg-card border-accent md:bg-secondary group-hover:bg-card md:group-hover:border-accent mb-4 w-fit rounded-lg border p-2 transition-colors md:border-transparent'
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='24'
@@ -228,7 +235,7 @@ import Link from '../components/Link.astro';
           stroke-width='2'
           stroke-linecap='round'
           stroke-linejoin='round'
-          class='lucide lucide-twitch stroke-foreground size-5'
+          class='lucide lucide-twitch stroke-accent md:stroke-foreground group-hover:stroke-accent size-5 transition-colors'
         >
           <path d='M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7'></path>
         </svg>
@@ -236,7 +243,6 @@ import Link from '../components/Link.astro';
       <Heading
         level='h3'
         size='2xl'
-        class='mb-2'
       >
         Hang out live
       </Heading>
