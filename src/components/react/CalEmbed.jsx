@@ -58,7 +58,7 @@ export default function CalEmbed() {
 
   return (
     <section
-      style={{ width: '100%', height: '100%', overflow: 'scroll' }}
+      className="w-full h-full overflow-scroll mt-12"
       id="my-cal-inline"
     />
   );

@@ -14,27 +14,27 @@ import Link from '~/components/Link.astro';
   pageDescription="Come learn how I can help you build a better web"
   hasCTA={true}
 >
-<header>
-  <hgroup class="text-center w-fit mx-auto">
-    <Heading level="h1" size="4xl" align='center' class="lg:text-5xl">
-      Let's create something <span class="bg-gradient-to-r from-accent via-accent to-amber-500 text-transparent bg-clip-text">awesome</span> together
-    </Heading>
-    <p class="font-sans md:text-lg text-balance mt-2 lg:text-2xl">
-      Come learn how I can help you build a better web
-    </p>
-    <div class="flex gap-4 justify-center pt-8">
-      <Link href="/contact" variant="primary" size="button">
-        Contact Me
-      </Link>
-      <Link href="/projects" variant="outline" size="button">
-        View projects
-      </Link>
-    </div>
-  </hgroup>
-</header>
-  <WhatIDo />
-  <!-- <WhatIDoEdit /> -->
-  <FeaturedProjects title="Featured Projects" description="Featured Projects" />
-  <FeaturedWriting title="Featured Writing" description="Featured Writing" />
-  <FeaturedSpeaking title="Featured Speaking" description="Featured Speaking" />
+  <header>
+    <hgroup class="text-center w-fit mx-auto pt-16 md:pt-24 lg:pt-28 xl:pt-32">
+      <Heading level="h1" size="4xl" align='center' class="lg:text-5xl">
+        Let's create something <span class="bg-gradient-to-r from-accent via-accent to-amber-500 text-transparent bg-clip-text">awesome</span> together
+      </Heading>
+      <p class="font-sans text-lg text-balance mt-2 md:mt-4 lg:text-2xl">
+        Come learn how I can help you build a better web
+      </p>
+    </hgroup>
+      <div class="flex gap-4 justify-center pt-8">
+        <Link href="/contact" variant="primary" size="button">
+          contact me
+        </Link>
+        <Link href="/projects" variant="outline" size="button">
+          view projects
+        </Link>
+      </div>
+  </header>
+    <WhatIDo />
+    <!-- <WhatIDoEdit /> -->
+    <FeaturedProjects title="Featured Projects" description="Featured Projects" />
+    <FeaturedWriting title="Featured Writing" description="Featured Writing" />
+    <FeaturedSpeaking title="Featured Speaking" description="Featured Speaking" />
 </BaseLayout>

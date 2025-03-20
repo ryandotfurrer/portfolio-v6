@@ -99,8 +99,13 @@
     @apply text-foreground font-serif font-semibold tracking-tight text-balance;
   }
 
-  section {
-    @apply space-y-8 py-24;
+  section > h1:first-of-type,
+  section > h2:first-of-type,
+  section > h3:first-of-type,
+  section > h4:first-of-type,
+  section > h5:first-of-type,
+  section > h6:first-of-type {
+    @apply mb-[1em];
   }
 }
 
