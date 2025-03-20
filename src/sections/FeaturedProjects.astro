@@ -5,6 +5,7 @@ import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
 import FormattedDate from '~/components/FormattedDate.astro';
 import Tag from '~/components/Tag.astro';
+import Image from 'astro/components/Image.astro';
 const projectCollection = await getCollection('projects');
 const featuredProjects = projectCollection.slice(-2).reverse();
 
@@ -32,10 +33,12 @@ const currentPath = Astro.url.pathname;
             />
           </header>
           <div class="w-full my-2">
-            <img
-              src={project.data.heroImage}
+            <Image
+              width={1000}
+              height={1000}
+              src={project.data.heroImage ?? ''}
               alt={project.data.title}
-              class="rounded-md border border-border aspect-video"
+              class="rounded-md border border-border aspect-video brightness-90 group-hover:brightness-125 transition-all"
             />
           </div>
           <p class="line-clamp-2">{project.data.description}</p>

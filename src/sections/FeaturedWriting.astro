@@ -6,6 +6,7 @@ import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
 import Tag from '~/components/Tag.astro';
 import type { CollectionEntry } from 'astro:content';
+import Image from 'astro/components/Image.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -40,10 +41,12 @@ const currentPath = Astro.url.pathname;
             />
           </header>
           <div class="w-full my-2">
-            <img
-              src={post.data.heroImage}
+            <Image
+              width={1000}
+              height={1000}
+              src={post.data.heroImage ?? ''}
               alt={post.data.title}
-              class="rounded-md border border-border aspect-video"
+              class="rounded-md border border-border aspect-video brightness-90 group-hover:brightness-125 transition-all"
             />
           </div>
           <p class="line-clamp-2">{post.data.description}</p>

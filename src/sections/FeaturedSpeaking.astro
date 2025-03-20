@@ -5,6 +5,7 @@ import FormattedDate from '~/components/FormattedDate.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
 import Tag from '~/components/Tag.astro';
+import Image from 'astro/components/Image.astro';
 
 const speakingCollection = await getCollection('speaking');
 const featuredSpeaking = speakingCollection.slice(0, 2);
@@ -33,11 +34,15 @@ const currentPath = Astro.url.pathname;
             />
           </header>
           <div class="w-full my-2">
-            <img
-              src={speakingPost.data.heroImage}
-              alt={speakingPost.data.title}
-              class="rounded-md border border-border aspect-video"
-            />
+            {speakingPost.data.heroImage && (
+              <Image
+                width={1000}
+                height={1000}
+                src={speakingPost.data.heroImage ?? ''}
+                alt={speakingPost.data.title}
+                class="rounded-md border border-border aspect-video brightness-90 group-hover:brightness-125 transition-all"
+              />
+            )}
           </div>
           <p class="line-clamp-2">{speakingPost.data.description}</p>
           {speakingPost.data.tags && speakingPost.data.tags.length > 0 && (
