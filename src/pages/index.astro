@@ -23,11 +23,11 @@ const headerSpan = [
   'wonderful',
   'amazing',
   'incredible',
-]
+];
 
 let lastUsedSpan = '';
 const getRandomSpan = () => {
-  const available = headerSpan.filter(span => span !== lastUsedSpan);
+  const available = headerSpan.filter((span) => span !== lastUsedSpan);
   lastUsedSpan = available[Math.floor(Math.random() * available.length)];
   return lastUsedSpan;
 };
@@ -35,46 +35,73 @@ const getRandomSpan = () => {
 
 <BaseLayout
   pageTitle="Let's create something special together"
-  pageDescription="Come learn how I can help you build a better web"
+  pageDescription='Come learn how I can help you build a better web'
   hasCTA={true}
 >
   <header>
-    <hgroup class="text-center w-fit mx-auto pt-16 md:pt-24 lg:pt-28 xl:pt-32 perspective-[1000px] [transform-style:preserve-3d]">
-      <Heading level="h1" size="4xl" align="center" class="lg:text-5xl">
-        Let's create something <span id="header-span"
-          class="bg-gradient-to-r from-accent via-accent to-amber-500 text-transparent bg-clip-text animate-[blur_.5s_ease-in_forwards]"
+    <hgroup
+      class='mx-auto w-fit pt-16 text-center [transform-style:preserve-3d] perspective-[1000px] md:pt-24 lg:pt-28 xl:pt-32'
+    >
+      <Heading
+        level='h1'
+        size='4xl'
+        align='center'
+        class='lg:text-5xl'
+      >
+        Let's create something <span
+          id='header-span'
+          class='from-accent via-accent animate-[blur_.5s_ease-in_forwards] bg-gradient-to-r to-amber-500 bg-clip-text text-transparent'
           >{headerSpan[Math.floor(Math.random() * headerSpan.length)]}</span
         > together
       </Heading>
-      <p class="font-sans text-lg text-balance mt-2 md:mt-4 lg:text-2xl">
+      <p class='mt-2 font-sans text-lg text-balance md:mt-4 lg:text-2xl'>
         Come learn how I can help you build a better web
       </p>
     </hgroup>
-    <div class="flex gap-4 justify-center pt-8">
-      <Link href="/contact" variant="primary" size="button"> contact me </Link>
-      <Link href="/projects" variant="outline" size="button">
+    <div class='flex justify-center gap-4 pt-8'>
+      <Link
+        href='/contact'
+        variant='primary'
+        size='button'
+      >
+        contact me
+      </Link>
+      <Link
+        href='/projects'
+        variant='outline'
+        size='button'
+      >
         view projects
       </Link>
     </div>
   </header>
   <WhatIDo />
   <!-- <WhatIDoEdit /> -->
-  <FeaturedProjects title="Featured Projects" description="Featured Projects" />
-  <FeaturedWriting title="Featured Writing" description="Featured Writing" />
-  <FeaturedSpeaking title="Featured Speaking" description="Featured Speaking" />
+  <FeaturedProjects
+    title='Featured Projects'
+    description='Featured Projects'
+  />
+  <FeaturedWriting
+    title='Featured Writing'
+    description='Featured Writing'
+  />
+  <FeaturedSpeaking
+    title='Featured Speaking'
+    description='Featured Speaking'
+  />
 </BaseLayout>
 
 <style>
-@keyframes blur {
-  0% {
-    opacity: 0;
-    filter: blur(4px);
-    transform: scale(0.8);
+  @keyframes blur {
+    0% {
+      opacity: 0;
+      filter: blur(4px);
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1);
+    }
   }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-  }
-}
 </style>

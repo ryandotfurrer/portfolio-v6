@@ -62,8 +62,9 @@ const {
   ...props
 } = Astro.props;
 
-const externalProps = externalLink
-  ? {
+const externalProps =
+  externalLink ?
+    {
       target: '_blank',
       rel: 'noopener noreferrer',
     }
@@ -85,19 +86,19 @@ const externalProps = externalLink
   {
     withIcon && !externalLink && (
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-arrow-right md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-0 md:group-hover/link:translate-x-0 mt-0.5 !size-5"
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        stroke-width='2'
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        class='lucide lucide-arrow-right mt-0.5 !size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
       >
-        <path d="M5 12h14" />
-        <path d="m12 5 7 7-7 7" />
+        <path d='M5 12h14' />
+        <path d='m12 5 7 7-7 7' />
       </svg>
     )
   }
@@ -106,20 +107,20 @@ const externalProps = externalLink
     externalLink && withIcon && (
       <svg
         data-icon
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-external-link md:opacity-0 md:group-hover/link:opacity-100 md:group-hover:opacity-100 transition-all md:-translate-x-2 md:group-hover:translate-x-0 md:group-hover/link:translate-x-0"
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        stroke-width='2'
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        class='lucide lucide-external-link transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
       >
-        <path d="M15 3h6v6" />
-        <path d="M10 14 21 3" />
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <path d='M15 3h6v6' />
+        <path d='M10 14 21 3' />
+        <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
       </svg>
     )
   }

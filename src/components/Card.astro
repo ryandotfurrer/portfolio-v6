@@ -11,27 +11,28 @@ export interface CardProps {
 const { class: className, href, variant = 'default' } = Astro.props;
 
 const defaultClasses =
-  'rounded-lg border border-border p-4 bg-card break-words space-y-4 hover:drop-shadow-md transition-all hover:-translate-y-1';
+  'rounded-lg border border-border p-4 bg-card break-words space-y-4 transition-all group';
 const transparentClasses =
-  'rounded-lg border border-none break-words space-y-4';
+  'rounded-lg border border-none break-words group space-y-4';
 const cardClasses =
   variant === 'transparent' ? transparentClasses : defaultClasses;
 ---
 
 {
-  href ? (
-    <div class="group">
-      <Link href={href} class="block group/link">
+  href ?
+    <div>
+      <Link
+        href={href}
+        class='group/link block'
+      >
         <div class={cn(cardClasses, className)}>
           <slot />
         </div>
       </Link>
     </div>
-  ) : (
-    <div class={cn(cardClasses, className)}>
+  : <div class={cn(cardClasses, className)}>
       <slot />
     </div>
-  )
 }
 
 <style>
