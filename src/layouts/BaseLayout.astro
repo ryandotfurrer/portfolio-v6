@@ -27,12 +27,11 @@ const currentPage = Astro.url.pathname;
     <div class="container mx-auto max-w-screen-xl px-4 py-8">
       <header>
         <Navbar />
-        {currentPage != '/' ? (
-          <HGroup
-            pageTitle={pageTitle}
-            pageDescription={pageDescription}
-          />
-        ) : ( null )}
+        {
+          currentPage != '/' ? (
+            <HGroup pageTitle={pageTitle} pageDescription={pageDescription} />
+          ) : null
+        }
       </header>
       <main class="py-12 space-y-24 lg:space-y-64">
         <slot />

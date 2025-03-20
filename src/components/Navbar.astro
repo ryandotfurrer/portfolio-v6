@@ -20,20 +20,18 @@ const currentPath = Astro.url.pathname;
     {
       NavLinks.map((link) => (
         <li>
-          {
-            link.label !== 'contact' && (
-              <Link
-                href={link.href}
-                class={
-                  currentPath === link.href
-                    ? 'underline decoration-accent'
-                    : 'hover:no-underline'
-                }
-              >
-                {link.label}
-              </Link>
-            )
-          }
+          {link.label !== 'contact' && (
+            <Link
+              href={link.href}
+              class={
+                currentPath === link.href
+                  ? 'underline decoration-accent'
+                  : 'hover:no-underline'
+              }
+            >
+              {link.label}
+            </Link>
+          )}
         </li>
       ))
     }

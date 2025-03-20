@@ -6,7 +6,7 @@ import AllItemsList from '~/components/AllItemsList.astro';
 import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects')).sort(
-  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)
+  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
 );
 ---
 
@@ -15,5 +15,5 @@ const projects = (await getCollection('projects')).sort(
   pageDescription="a collection of my work, projects, and experiments"
 >
   <FeaturedProjects />
-    <AllItemsList collection={projects} />
+  <AllItemsList collection={projects} />
 </BaseLayout>

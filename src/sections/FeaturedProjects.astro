@@ -1,11 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Card from '../components/Card.astro';
+import FormattedDate from '~/components/FormattedDate.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
-import FormattedDate from '~/components/FormattedDate.astro';
 import Tag from '~/components/Tag.astro';
-import Image from 'astro/components/Image.astro';
+
 const projectCollection = await getCollection('projects');
 const featuredProjects = projectCollection.slice(-2).reverse();
 
@@ -18,13 +19,19 @@ const currentPath = Astro.url.pathname;
   <div class="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-0 md:gap-x-8">
     {
       featuredProjects.map((project) => (
-        <Card class="group" key={project.id} variant="transparent" hasLink={true} href={`/projects/${project.id}`}>
+        <Card
+          class="group"
+          key={project.id}
+          variant="transparent"
+          hasLink={true}
+          href={`/projects/${project.id}`}
+        >
           <header>
             <Heading
               level="h3"
               size="2xl"
               class="group-hover:text-accent transition-all"
-          >
+            >
               {project.data.title}
             </Heading>
             <FormattedDate

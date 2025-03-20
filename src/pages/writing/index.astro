@@ -9,7 +9,7 @@ const blogPosts = await getCollection('blog');
 const newsletters = await getCollection('newsletters');
 
 const allPosts = [...blogPosts, ...newsletters].sort(
-  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0)
+  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
 );
 ---
 

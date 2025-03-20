@@ -6,10 +6,10 @@ import AllItemsList from '~/components/AllItemsList.astro';
 const about = await getCollection('about');
 
 const aboutPosts = about.sort((a, b) =>
-  a.data.title.localeCompare(b.data.title)
+  a.data.title.localeCompare(b.data.title),
 );
 ---
 
 <BaseLayout pageTitle="about" pageDescription="learn more about Ryan">
-    <AllItemsList collection={aboutPosts} />
+  <AllItemsList collection={aboutPosts} />
 </BaseLayout>

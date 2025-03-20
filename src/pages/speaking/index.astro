@@ -8,7 +8,7 @@ import AllItemsList from '~/components/AllItemsList.astro';
 const speaking = await getCollection('speaking');
 
 const speakingPosts = speaking.sort((a, b) =>
-  a.data.title.localeCompare(b.data.title)
+  a.data.title.localeCompare(b.data.title),
 );
 ---
 

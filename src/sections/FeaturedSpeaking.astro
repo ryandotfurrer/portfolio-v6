@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Card from '../components/Card.astro';
 import FormattedDate from '~/components/FormattedDate.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
 import Tag from '~/components/Tag.astro';
-import Image from 'astro/components/Image.astro';
 
 const speakingCollection = await getCollection('speaking');
 const featuredSpeaking = speakingCollection.slice(0, 2);
@@ -19,7 +19,13 @@ const currentPath = Astro.url.pathname;
   <div class="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-0 md:gap-x-8">
     {
       featuredSpeaking.map((speakingPost) => (
-        <Card class="group" key={speakingPost.id} variant="transparent" hasLink={true} href={`/speaking/${speakingPost.id}`}>
+        <Card
+          class="group"
+          key={speakingPost.id}
+          variant="transparent"
+          hasLink={true}
+          href={`/speaking/${speakingPost.id}`}
+        >
           <header>
             <Heading
               level="h3"

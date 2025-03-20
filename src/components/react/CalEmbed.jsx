@@ -58,7 +58,7 @@ export default function CalEmbed() {
 
   return (
     <section
-      className="w-full h-full overflow-scroll mt-12"
+      className="mt-12 h-full w-full overflow-scroll"
       id="my-cal-inline"
     />
   );
