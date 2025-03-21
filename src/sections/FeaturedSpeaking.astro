@@ -13,49 +13,59 @@ const featuredSpeaking = speakingCollection.slice(0, 2);
 const currentPath = Astro.url.pathname;
 ---
 
-<section id="featured-speaking" class="space-y-8">
-  <Heading level="h2" size="3xl">featured speaking</Heading>
+<section
+  id='featured-speaking'
+  class='space-y-8'
+>
+  <Heading
+    level='h2'
+    size='3xl'
+    >featured speaking</Heading
+  >
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-0 md:gap-x-8">
+  <div class='grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-0'>
     {
       featuredSpeaking.map((speakingPost) => (
         <Card
-          class="group"
+          class='group'
           key={speakingPost.id}
-          variant="transparent"
+          variant='transparent'
           hasLink={true}
           href={`/speaking/${speakingPost.id}`}
         >
           <header>
             <Heading
-              level="h3"
-              size="2xl"
-              class="group-hover:text-accent transition-all"
+              level='h3'
+              size='2xl'
+              class='after:bg-primary relative inline-block after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-300 group-hover:after:w-full'
             >
               {speakingPost.data.title}
             </Heading>
             <FormattedDate
-              classes="text-sm"
+              classes='text-sm block'
               date={speakingPost.data.pubDate ?? new Date()}
             />
           </header>
-          <div class="w-full my-2">
+          <div class='my-2 w-full'>
             {speakingPost.data.heroImage && (
               <Image
                 width={1000}
                 height={1000}
                 src={speakingPost.data.heroImage ?? ''}
                 alt={speakingPost.data.title}
-                class="rounded-md border border-border aspect-video brightness-90 group-hover:brightness-125 transition-all"
+                class='border-border aspect-video rounded-md border brightness-90 transition-all group-hover:brightness-125'
               />
             )}
           </div>
-          <p class="line-clamp-2">{speakingPost.data.description}</p>
+          <p class='line-clamp-2'>{speakingPost.data.description}</p>
           {speakingPost.data.tags && speakingPost.data.tags.length > 0 && (
-            <div class="mt-2">
-              <ul class="flex flex-wrap gap-2">
+            <div class='mt-2'>
+              <ul class='flex flex-wrap gap-2'>
                 {speakingPost.data.tags.map((tag) => (
-                  <Tag key={tag} name={tag}>
+                  <Tag
+                    key={tag}
+                    name={tag}
+                  >
                     {tag}
                   </Tag>
                 ))}
@@ -63,27 +73,26 @@ const currentPath = Astro.url.pathname;
             </div>
           )}
           <div>
-            {speakingPost.collection === 'speaking' ? (
+            {speakingPost.collection === 'speaking' ?
               <>
                 <Link
                   href={`/speaking/${speakingPost.id}`}
-                  variant="primary"
-                  size="button"
+                  variant='primary'
+                  size='button'
                 >
                   Watch now
                 </Link>
               </>
-            ) : (
-              <>
+            : <>
                 <Link
                   href={`/speaking/${speakingPost.id}`}
-                  variant="primary"
-                  size="button"
+                  variant='primary'
+                  size='button'
                 >
                   Watch now
                 </Link>
               </>
-            )}
+            }
           </div>
         </Card>
       ))
@@ -92,9 +101,9 @@ const currentPath = Astro.url.pathname;
   {
     currentPath === '/' && (
       <Link
-        href="/speaking"
+        href='/speaking'
         withIcon={true}
-        class="text-foreground-muted group-hover:text-foreground text-lg"
+        class='text-foreground-muted group-hover:text-foreground text-lg'
       >
         view all speaking
       </Link>
