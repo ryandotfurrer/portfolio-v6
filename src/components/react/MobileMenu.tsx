@@ -22,21 +22,24 @@ export default function MobileMenu() {
         }`}
       >
         <ul className="flex flex-col gap-8 pt-12">
-          {NavLinks.map((link, index) => (
-            <li
-              key={link.href}
-              className={`transform opacity-0 blur-[8px] transition-all duration-300 ${
-                isOpen ? 'opacity-100 blur-none' : ''
-              }`}
-              style={{
-                transitionDelay: isOpen ? `${index * 100}ms` : '0ms',
-              }}
-            >
-              <a href={link.href} className="block">
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {NavLinks.map(
+            (link, index) =>
+              link.label !== 'contact' && (
+                <li
+                  key={link.href}
+                  className={`transform opacity-0 blur-[8px] transition-all duration-300 ${
+                    isOpen ? 'opacity-100 blur-none' : ''
+                  }`}
+                  style={{
+                    transitionDelay: isOpen ? `${index * 100}ms` : '0ms',
+                  }}
+                >
+                  <a href={link.href} className="block">
+                    {link.label}
+                  </a>
+                </li>
+              ),
+          )}
           <li
             className={`transform opacity-0 blur-[8px] transition-all duration-300 ${
               isOpen ? 'opacity-100 blur-none' : ''
