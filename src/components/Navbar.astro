@@ -54,10 +54,17 @@ import MobileMenu from './react/MobileMenu.tsx';
     links.forEach((link) => {
       if (link instanceof HTMLElement) {
         // Remove existing active classes first
-        link.classList.remove('underline', 'decoration-accent');
+        link.classList.remove(
+          'underline',
+          'decoration-accent',
+          'hover:no-underline',
+        );
 
-        if (link.dataset.href === window.location.pathname) {
+        const isActive = link.dataset.href === window.location.pathname;
+        if (isActive) {
           link.classList.add('underline', 'decoration-accent');
+        } else {
+          link.classList.add('hover:no-underline');
         }
       }
     });
