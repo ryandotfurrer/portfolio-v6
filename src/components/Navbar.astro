@@ -7,27 +7,28 @@ const currentPath = Astro.url.pathname;
 ---
 
 <nav
-  class="flex items-center justify-between p-4 bg-card border border-border rounded-lg w-full"
+  class='bg-card border-border flex w-full items-center justify-between rounded-lg border p-4'
 >
   <Link
-    href="/"
-    class="font-handwritten text-2xl text-foreground hover:text-accent hover:no-underline flex items-center gap-2"
+    href='/'
+    class='font-handwritten text-foreground hover:text-accent flex items-center gap-2 text-2xl hover:no-underline'
   >
-    <img src="/logo.svg" alt="Logo" class="size-10" />
+    <img
+      src='/logo.svg'
+      alt='Logo'
+      class='size-10'
+    />
   </Link>
 
-  <ul class="gap-4 hidden md:flex">
+  <ul class='hidden gap-4 md:flex'>
     {
       NavLinks.map((link) => (
         <li>
           {link.label !== 'contact' && (
             <Link
               href={link.href}
-              class={
-                currentPath === link.href
-                  ? 'underline decoration-accent'
-                  : 'hover:no-underline'
-              }
+              class:list={['nav-link', { 'hover:no-underline': true }]}
+              data-href={link.href}
             >
               {link.label}
             </Link>
@@ -38,13 +39,35 @@ const currentPath = Astro.url.pathname;
   </ul>
 
   <Link
-    href="/contact"
-    variant="primary"
-    size="sm"
-    class="lowercase hidden md:flex"
+    href='/contact'
+    variant='primary'
+    size='sm'
+    class='hidden lowercase md:flex'
   >
     Contact
   </Link>
 
   <MobileMenu client:load />
 </nav>
+
+<script>
+  function updateActiveLinks() {
+    const links = document.querySelectorAll('.nav-link');
+    links.forEach((link) => {
+      if (link instanceof HTMLElement) {
+        // Remove existing active classes first
+        link.classList.remove('underline', 'decoration-accent');
+
+        if (link.dataset.href === window.location.pathname) {
+          link.classList.add('underline', 'decoration-accent');
+        }
+      }
+    });
+  }
+
+  // Run on page load
+  updateActiveLinks();
+
+  // Run on navigation changes
+  document.addEventListener('astro:page-load', updateActiveLinks);
+</script>
