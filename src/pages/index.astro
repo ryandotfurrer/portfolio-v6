@@ -51,7 +51,8 @@ const getRandomSpan = () => {
         Let's create something <span
           id='header-span'
           class='from-accent via-accent animate-[blur_.5s_ease-in_forwards] bg-gradient-to-r to-amber-500 bg-clip-text text-transparent'
-          >{headerSpan[Math.floor(Math.random() * headerSpan.length)]}</span
+          data-words={JSON.stringify(headerSpan)}
+          >awesome</span
         > together
       </Heading>
       <p class='mt-2 font-sans text-lg text-balance md:mt-4 lg:text-2xl'>
@@ -105,3 +106,18 @@ const getRandomSpan = () => {
     }
   }
 </style>
+
+<script>
+  const spanElement = document.getElementById('header-span');
+  const words = JSON.parse(spanElement?.dataset.words || '[]');
+  let lastUsed = '';
+
+  function updateWord() {
+    const available = words.filter((word: string) => word !== lastUsed);
+    lastUsed = available[Math.floor(Math.random() * available.length)];
+    if (spanElement) spanElement.textContent = lastUsed;
+  }
+
+  updateWord();
+  setInterval(updateWord, 3000); // Changes every 3 seconds
+</script>
