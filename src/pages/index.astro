@@ -1,36 +1,12 @@
 ---
+import AnimatedWord from '~/components/react/AnimatedWord.tsx';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import WhatIDo from '../sections/WhatIDo.astro';
-import WhatIDoEdit from '../sections/WhatIDoEdit.astro';
 import FeaturedProjects from '../sections/FeaturedProjects.astro';
-import FeaturedWriting from '../sections/FeaturedWriting.astro';
 import FeaturedSpeaking from '../sections/FeaturedSpeaking.astro';
+import FeaturedWriting from '../sections/FeaturedWriting.astro';
 import Heading from '~/components/Heading.astro';
 import Link from '~/components/Link.astro';
-
-const headerSpan = [
-  'awesome',
-  'special',
-  'rad',
-  'inspiring',
-  'fun',
-  'memorable',
-  'unique',
-  'creative',
-  'delightful',
-  'remarkable',
-  'fantastic',
-  'wonderful',
-  'amazing',
-  'incredible',
-];
-
-let lastUsedSpan = '';
-const getRandomSpan = () => {
-  const available = headerSpan.filter((span) => span !== lastUsedSpan);
-  lastUsedSpan = available[Math.floor(Math.random() * available.length)];
-  return lastUsedSpan;
-};
+import WhatIDo from '../sections/WhatIDo.astro';
 ---
 
 <BaseLayout
@@ -48,12 +24,7 @@ const getRandomSpan = () => {
         align='center'
         class='lg:text-5xl'
       >
-        Let's create something <span
-          id='header-span'
-          class='from-accent via-accent animate-[blur_.5s_ease-in_forwards] bg-gradient-to-r to-amber-500 bg-clip-text text-transparent'
-          data-words={JSON.stringify(headerSpan)}
-          >awesome</span
-        > together
+        Let's create something <AnimatedWord client:load /> together
       </Heading>
       <p class='mt-2 font-sans text-lg text-balance md:mt-4 lg:text-2xl'>
         Come learn how I can help you build a better web
@@ -77,7 +48,6 @@ const getRandomSpan = () => {
     </div>
   </header>
   <WhatIDo />
-  <!-- <WhatIDoEdit /> -->
   <FeaturedProjects
     title='Featured Projects'
     description='Featured Projects'
@@ -91,33 +61,3 @@ const getRandomSpan = () => {
     description='Featured Speaking'
   />
 </BaseLayout>
-
-<style>
-  @keyframes blur {
-    0% {
-      opacity: 0;
-      filter: blur(4px);
-      transform: scale(0.8);
-    }
-    100% {
-      opacity: 1;
-      filter: blur(0);
-      transform: scale(1);
-    }
-  }
-</style>
-
-<script>
-  const spanElement = document.getElementById('header-span');
-  const words = JSON.parse(spanElement?.dataset.words || '[]');
-  let lastUsed = '';
-
-  function updateWord() {
-    const available = words.filter((word: string) => word !== lastUsed);
-    lastUsed = available[Math.floor(Math.random() * available.length)];
-    if (spanElement) spanElement.textContent = lastUsed;
-  }
-
-  updateWord();
-  setInterval(updateWord, 3000); // Changes every 3 seconds
-</script>
