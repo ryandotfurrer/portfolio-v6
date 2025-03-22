@@ -1,7 +1,7 @@
 # Tasks
 
 - [ ] pull in blog posts from Storyblok
-- [ ] pull in newsletters from beehiiv
+- [x] pull in newsletters from beehiiv
 - [ ] change newsletter form to beehiiv
 - [ ] make tags button to filter content with that tag
 - [ ] add dark theme

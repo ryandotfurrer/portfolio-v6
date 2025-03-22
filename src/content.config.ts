@@ -104,8 +104,9 @@ const newsletter = defineCollection({
 
       return data.data.map((post: any) => ({
         description: post.subtitle || '',
+        heroImage: post.thumbnail_url,
         id: post.id,
-        pubDate: new Date(post.publish_date),
+        pubDate: new Date(post.publish_date * 1000), // Convert Unix timestamp to milliseconds
         slug: post.slug || post.id,
         tags: post.content_tags || [],
         title: post.title,
@@ -118,6 +119,7 @@ const newsletter = defineCollection({
   },
   schema: z.object({
     description: z.string(),
+    heroImage: z.string().optional(),
     pubDate: z.date(),
     tags: z.array(z.string()).optional(),
     title: z.string(),

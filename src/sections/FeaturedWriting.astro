@@ -11,7 +11,7 @@ import type { CollectionEntry } from 'astro:content';
 type Props = CollectionEntry<'blog'>['data'];
 
 const blogPosts = await getCollection('blog');
-const newsletters = await getCollection('newsletters');
+const newsletters = await getCollection('newsletter');
 const allWriting = [...blogPosts, ...newsletters].sort(
   (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
 );
@@ -38,18 +38,41 @@ const currentPath = Astro.url.pathname;
           key={post.id}
           variant='transparent'
           hasLink={true}
-          href={`/writing/${post.id}`}
+          href={
+            post.collection === 'newsletter' ?
+              post.data.webURL
+            : `/writing/${post.id}`
+          }
         >
           <header>
             <Heading
               level='h3'
               size='2xl'
-              class='after:bg-primary relative inline-block after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-300 group-hover:after:w-full'
+              class='mb-0 flex items-center gap-x-4'
             >
               {post.data.title}
+              {post.collection === 'newsletter' && (
+                <svg
+                  data-icon
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  stroke-width='2'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  class='lucide lucide-external-link size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+                >
+                  <path d='M15 3h6v6' />
+                  <path d='M10 14 21 3' />
+                  <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
+                </svg>
+              )}
             </Heading>
             <FormattedDate
-              classes='text-sm block'
+              classes='text-sm'
               date={post.data.pubDate ?? new Date()}
             />
           </header>
@@ -59,7 +82,7 @@ const currentPath = Astro.url.pathname;
               height={1000}
               src={post.data.heroImage ?? ''}
               alt={post.data.title}
-              class='border-border aspect-video rounded-md border brightness-90 transition-all group-hover:brightness-125'
+              class='border-border aspect-video rounded-md border brightness-90 transition-all group-hover:brightness-100'
             />
           </div>
           <p class='line-clamp-2'>{post.data.description}</p>
@@ -78,25 +101,21 @@ const currentPath = Astro.url.pathname;
             </div>
           )}
           <div>
-            {post.collection === 'blog' ?
-              <>
-                <Link
-                  href={`/writing/${post.id}`}
-                  variant='primary'
-                  size='button'
-                >
-                  Read more
-                </Link>
-              </>
-            : <>
-                <Link
-                  href={post.data.webURL}
-                  variant='primary'
-                  size='button'
-                >
-                  Read more
-                </Link>
-              </>
+            {post.collection === 'newsletter' ?
+              <Link
+                href={post.data.webURL}
+                variant='primary'
+                size='button'
+              >
+                Read more
+              </Link>
+            : <Link
+                href={`/writing/${post.id}`}
+                variant='primary'
+                size='button'
+              >
+                Read more
+              </Link>
             }
           </div>
         </Card>
