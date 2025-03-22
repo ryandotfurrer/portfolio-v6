@@ -82,7 +82,7 @@ const archivedBlog = defineCollection({
   }),
 });
 
-const newsletters = defineCollection({
+const newsletter = defineCollection({
   loader: async () => {
     try {
       const response = await fetch(
@@ -159,4 +159,4 @@ const speaking = defineCollection({
   }),
 });
 
-export const collections = { about, blog, projects, newsletters, speaking };
+export const collections = { about, blog, newsletter, projects, speaking };

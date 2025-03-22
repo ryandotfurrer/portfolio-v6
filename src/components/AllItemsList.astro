@@ -1,5 +1,6 @@
 ---
 import Card from './Card.astro';
+import FormattedDate from './FormattedDate.astro';
 import Heading from './Heading.astro';
 
 interface Item {
@@ -69,7 +70,7 @@ console.log(
     {
       collection.map((item) => {
         const itemHref =
-          item.collection === 'newsletters' ?
+          item.collection === 'newsletter' ?
             item.data.webURL
           : `/${itemPath}/${item.slug || item.id}/`;
 
@@ -83,14 +84,41 @@ console.log(
             <Heading
               level='h3'
               size='2xl'
-              class='mb-0'
+              class='mb-0 flex items-center gap-x-4'
             >
               {item.data.title}
+              {item.collection === 'newsletter' && (
+                <svg
+                  data-icon
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  stroke-width='2'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  class='lucide lucide-external-link size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+                >
+                  <path d='M15 3h6v6' />
+                  <path d='M10 14 21 3' />
+                  <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
+                </svg>
+              )}
             </Heading>
+            <div class='flex'>
+              <span class='text-muted-foreground text-sm'>
+                {item.data.pubDate && (
+                  <FormattedDate date={new Date(item.data.pubDate)} />
+                )}{' '}
+                | {item.collection}
+              </span>
+            </div>
             <p class='line-clamp-2'>{item.data.description}</p>
-            <div class='flex gap-x-4'>
+            <div class='flex flex-wrap gap-x-2'>
               {item.data.tags?.map((tag) => (
-                <span class="text-sm before:content-['#']">{tag}</span>
+                <span class='text-sm before:content-["#"]'>{tag}</span>
               ))}
             </div>
           </Card>

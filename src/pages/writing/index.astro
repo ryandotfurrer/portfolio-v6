@@ -6,7 +6,7 @@ import FeaturedWriting from '../../sections/FeaturedWriting.astro';
 import AllItemsList from '~/components/AllItemsList.astro';
 
 const blogPosts = await getCollection('blog');
-const newsletters = await getCollection('newsletters');
+const newsletters = await getCollection('newsletter');
 
 const allPosts = [...blogPosts, ...newsletters].sort(
   (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
@@ -14,12 +14,12 @@ const allPosts = [...blogPosts, ...newsletters].sort(
 ---
 
 <BaseLayout
-  pageTitle="writing"
-  pageDescription="a collection of my writing and articles"
+  pageTitle='writing'
+  pageDescription='a collection of my writing and articles'
 >
   <FeaturedWriting
-    title="Featured Writing"
-    description="Check out some of my featured articles"
+    title='Featured Writing'
+    description='Check out some of my featured articles'
   />
   <AllItemsList collection={allPosts} />
 </BaseLayout>
