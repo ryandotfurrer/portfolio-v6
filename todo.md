@@ -6,3 +6,9 @@
 - [ ] make tags button to filter content with that tag
 - [ ] add dark theme
 - [ ] add theme toggle
+
+## Future
+
+- [ ] Spruce up /contact
+- [ ] Make beehiiv newsletters render onsite
+- [ ] Add motion.dev
