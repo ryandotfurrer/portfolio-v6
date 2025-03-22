@@ -4,13 +4,15 @@ import Heading from './Heading.astro';
 
 interface Item {
   collection: string;
-  type: string;
+  slug?: string;
   id: string;
   data: {
     pubDate?: string;
     title: string;
     description: string;
     tags: string[];
+    webURL?: string;
+    slug?: string;
   };
 }
 
@@ -33,36 +35,67 @@ switch (true) {
 }
 
 const collection: Item[] = Astro.props.collection || [];
+console.log(
+  'Collection items:',
+  collection.map((item) => ({
+    collection: item.collection,
+    slug: item.slug,
+    id: item.id,
+    dataSlug: item.data.slug,
+    href:
+      item.collection === 'newsletters' ?
+        item.data.webURL
+      : `/${itemPath}/${item.data.slug || item.slug || item.id}/`,
+  })),
+);
 ---
 
-<section id="all-items-list" class="">
+<section
+  id='all-items-list'
+  class=''
+>
   {
     itemPath !== 'about' && (
-      <Heading level="h2" size="3xl" class="md:pl-4">
+      <Heading
+        level='h2'
+        size='3xl'
+        class='md:pl-4'
+      >
         all {itemPath}
       </Heading>
     )
   }
-  <ul class="space-y-8 max-w-screen-sm">
+  <ul class='max-w-screen-sm space-y-8'>
     {
-      collection.map((item) => (
-        <Card
-          href={`/${itemPath}/${item.id}/`}
-          hasLink={true}
-          variant="transparent"
-          class=" transition-all hover:border-border hover:bg-secondary/60 md:p-4"
-        >
-          <Heading level="h3" size="2xl" class="mb-0">
-            {item.data.title}
-          </Heading>
-          <p class="line-clamp-2">{item.data.description}</p>
-          <div class="flex gap-x-4">
-            {item.data.tags.map((tag) => (
-              <span class="text-sm before:content-['#']">{tag}</span>
-            ))}
-          </div>
-        </Card>
-      ))
+      collection.map((item) => {
+        const itemHref =
+          item.collection === 'newsletters' ?
+            item.data.webURL
+          : `/${itemPath}/${item.slug || item.id}/`;
+
+        return (
+          <Card
+            href={itemHref}
+            hasLink={true}
+            variant='transparent'
+            class='hover:border-border hover:bg-secondary/60 transition-all md:p-4'
+          >
+            <Heading
+              level='h3'
+              size='2xl'
+              class='mb-0'
+            >
+              {item.data.title}
+            </Heading>
+            <p class='line-clamp-2'>{item.data.description}</p>
+            <div class='flex gap-x-4'>
+              {item.data.tags?.map((tag) => (
+                <span class="text-sm before:content-['#']">{tag}</span>
+              ))}
+            </div>
+          </Card>
+        );
+      })
     }
   </ul>
 </section>

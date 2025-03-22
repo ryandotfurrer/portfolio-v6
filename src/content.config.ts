@@ -29,64 +29,12 @@ const blog = defineCollection({
   }),
 });
 
-const newsletters = defineCollection({
-  loader: async () => {
-    try {
-      const response = await fetch(
-        `https://api.beehiiv.com/v2/publications/${import.meta.env.BEEHIIV_PUBLICATION_ID}/posts`,
-        {
-          headers: {
-            Authorization: `Bearer ${import.meta.env.BEEHIIV_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-
-      if (!response.ok) {
-        console.error('Failed to fetch newsletters:', response.statusText);
-        return [];
-      }
-
-      const data = await response.json();
-
-      if (!data.data || data.data.length === 0) {
-        console.warn('No newsletters data found');
-        return [];
-      }
-
-      return data.data.map((post: any) => ({
-        content: z.string(),
-        description: post.subtitle,
-        heroImage: post.thumbnail_url,
-        id: post.id,
-        pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
-        tags: post.content_tags,
-        title: post.title,
-        webURL: post.web_url,
-      }));
-    } catch (error) {
-      console.error('Error fetching newsletters:', error);
-      return [];
-    }
-  },
-  schema: z.object({
-    content: z.string(),
-    description: z.string(),
-    heroImage: z.string().optional(),
-    id: z.string(),
-    pubDate: z.date(),
-    tags: z.array(z.string()).optional(),
-    title: z.string(),
-    webURL: z.string(),
-  }),
-});
-
 const archivedBlog = defineCollection({
   loader: async () => {
     try {
       const response = await fetch(`https://api-us.storyblok.com/v2/cdn`, {
         headers: {
-          Authorization: `Bearer ${import.meta.env.BEEHIIV_API_KEY}`,
+          Authorization: `Bearer ${import.meta.env.STORYBLOK_TOKEN}`,
           'Content-Type': 'application/json',
         },
       });
@@ -127,6 +75,49 @@ const archivedBlog = defineCollection({
     description: z.string(),
     heroImage: z.string().optional(),
     id: z.string(),
+    pubDate: z.date(),
+    tags: z.array(z.string()).optional(),
+    title: z.string(),
+    webURL: z.string(),
+  }),
+});
+
+const newsletters = defineCollection({
+  loader: async () => {
+    try {
+      const response = await fetch(
+        `https://api.beehiiv.com/v2/publications/${import.meta.env.BEEHIIV_PUBLICATION_ID}/posts`,
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.BEEHIIV_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+
+      if (!response.ok) {
+        console.error('Failed to fetch newsletters:', response.statusText);
+        return [];
+      }
+
+      const data = await response.json();
+
+      return data.data.map((post: any) => ({
+        description: post.subtitle || '',
+        id: post.id,
+        pubDate: new Date(post.publish_date),
+        slug: post.slug || post.id,
+        tags: post.content_tags || [],
+        title: post.title,
+        webURL: post.web_url,
+      }));
+    } catch (error) {
+      console.error('Error fetching newsletters:', error);
+      return [];
+    }
+  },
+  schema: z.object({
+    description: z.string(),
     pubDate: z.date(),
     tags: z.array(z.string()).optional(),
     title: z.string(),
