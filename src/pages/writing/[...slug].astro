@@ -6,7 +6,6 @@ import { render } from 'astro:content';
 export async function getStaticPaths() {
   const blogPosts = await getCollection('blog');
 
-  // Only handle blog posts, newsletters are handled via direct links
   return blogPosts.map((post) => ({
     params: { slug: post.data.slug },
     props: { entry: post },

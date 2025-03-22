@@ -1,6 +1,7 @@
 # Tasks
 
 - [ ] pull in blog posts from Storyblok
+- [ ] add in pagination for writing
 - [x] pull in newsletters from beehiiv
 - [ ] change newsletter form to beehiiv
 - [ ] make tags button to filter content with that tag

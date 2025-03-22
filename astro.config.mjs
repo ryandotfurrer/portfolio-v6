@@ -1,12 +1,10 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
-
 import vercel from '@astrojs/vercel';
-
-import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,17 +12,9 @@ export default defineConfig({
     contentIntellisense: true,
   },
   site: 'https://ryanfurrer.com',
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [mdx(), react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },
   adapter: vercel(),
-  // env: {
-  //   schema: {
-  //     BEEHIIV_API_KEY_SECRET: envField.string({
-  //       context: 'server',
-  //       access: 'secret',
-  //     }),
-  //   },
-  // },
 });

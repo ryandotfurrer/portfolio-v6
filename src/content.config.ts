@@ -1,5 +1,6 @@
 import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
+import https from 'node:https';
 
 const about = defineCollection({
   loader: glob({ base: './src/content/about', pattern: '**/*.{md,mdx}' }),
@@ -29,58 +30,23 @@ const blog = defineCollection({
   }),
 });
 
-const archivedBlog = defineCollection({
-  loader: async () => {
-    try {
-      const response = await fetch(`https://api-us.storyblok.com/v2/cdn`, {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.STORYBLOK_TOKEN}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        console.error(
-          'Failed to fetch blog posts from storyblok:',
-          response.statusText,
-        );
-        return [];
-      }
-
-      const data = await response.json();
-      console.log('Fetched storybook blog posts data:', data);
-
-      if (!data.data || data.data.length === 0) {
-        console.warn('No newsletters data found');
-        return [];
-      }
-
-      return data.data.map((post: any) => ({
-        content: z.string(),
-        description: post.subtitle,
-        heroImage: post.thumbnail_url,
-        id: post.id,
-        pubDate: new Date(post.publish_date * 1000), // Convert timestamp to Date
-        tags: post.content_tags,
-        title: post.title,
-        webURL: post.web_url,
-      }));
-    } catch (error) {
-      console.error('Error fetching newsletters:', error);
-      return [];
-    }
-  },
-  schema: z.object({
-    content: z.string(),
-    description: z.string(),
-    heroImage: z.string().optional(),
-    id: z.string(),
-    pubDate: z.date(),
-    tags: z.array(z.string()).optional(),
-    title: z.string(),
-    webURL: z.string(),
-  }),
-});
+const makeRequest = (url: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => {
+          try {
+            resolve(JSON.parse(data));
+          } catch (e) {
+            reject(e);
+          }
+        });
+      })
+      .on('error', reject);
+  });
+};
 
 const newsletter = defineCollection({
   loader: async () => {
@@ -161,4 +127,10 @@ const speaking = defineCollection({
   }),
 });
 
-export const collections = { about, blog, newsletter, projects, speaking };
+export const collections = {
+  about,
+  blog,
+  newsletter,
+  projects,
+  speaking,
+};

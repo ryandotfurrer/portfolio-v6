@@ -44,7 +44,7 @@ console.log(
     id: item.id,
     dataSlug: item.data.slug,
     href:
-      item.collection === 'newsletters' ?
+      item.collection === 'newsletter' ?
         item.data.webURL
       : `/${itemPath}/${item.data.slug || item.slug || item.id}/`,
   })),
