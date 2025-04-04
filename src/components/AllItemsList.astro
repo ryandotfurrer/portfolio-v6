@@ -17,6 +17,10 @@ interface Item {
   };
 }
 
+interface Props {
+  collection: Item[] | { data: Item[] };
+}
+
 const currentPath = Astro.url.pathname;
 let itemPath = '';
 
@@ -35,10 +39,15 @@ switch (true) {
     break;
 }
 
-const collection: Item[] = Astro.props.collection || [];
+// Handle both direct array and paginated data structure
+const collectionData =
+  Array.isArray(Astro.props.collection) ?
+    Astro.props.collection
+  : Astro.props.collection?.data || [];
+
 console.log(
   'Collection items:',
-  collection.map((item) => ({
+  collectionData.map((item) => ({
     collection: item.collection,
     slug: item.slug,
     id: item.id,
@@ -68,12 +77,11 @@ console.log(
   }
   <ul class='max-w-screen-sm space-y-8 md:space-y-0'>
     {
-      collection.map((item) => {
+      collectionData.map((item) => {
         const itemHref =
           item.collection === 'newsletter' ?
             item.data.webURL
-          : `/${itemPath}/${item.slug || item.id}/`;
-
+          : `/${itemPath}/${item.data.slug || item.slug || item.id}/`;
         return (
           <Card
             href={itemHref}

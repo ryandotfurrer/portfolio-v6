@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FeaturedWriting from '../../sections/FeaturedWriting.astro';
+import AllItemsList from '~/components/AllItemsList.astro';
+import type { CollectionEntry } from 'astro:content';
+import type { GetStaticPaths, Page } from 'astro';
+
+// Define the type of your content entries
+type WritingEntry = CollectionEntry<'blog'> | CollectionEntry<'newsletter'>;
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const blogPosts = await getCollection('blog');
+  const newsletters = await getCollection('newsletter');
+
+  const allWriting = [...blogPosts, ...newsletters].sort(
+    (a, b) =>
+      (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
+  );
+
+  // Return paginated paths
+  return paginate(allWriting, { pageSize: 10 });
+};
+
+// Type the page prop
+interface Props {
+  page: Page<WritingEntry>;
+}
+
+// The page prop contains your paginated data
+const { page } = Astro.props;
+---
+
+<BaseLayout
+  pageTitle='writing'
+  pageDescription='a collection of my writing and articles'
+>
+  <FeaturedWriting
+    title='Featured Writing'
+    description='Check out some of my featured articles'
+  />
+  <AllItemsList
+    collection={page.data.map((item) => ({
+      collection: item.collection,
+      id: item.id,
+      data: {
+        pubDate: item.data.pubDate?.toISOString(),
+        title: item.data.title,
+        description: item.data.description,
+        tags: item.data.tags ?? [],
+        webURL: 'webURL' in item.data ? item.data.webURL : undefined,
+        slug: 'slug' in item.data ? item.data.slug : undefined,
+      },
+    }))}
+  />
+
+  <!-- Pagination Navigation -->
+  <nav>
+    {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
+    {page.url.next ? <a href={page.url.next}>Next</a> : null}
+  </nav>
+</BaseLayout>
