@@ -4,41 +4,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import FeaturedWriting from '../../sections/FeaturedWriting.astro';
 import AllItemsList from '~/components/AllItemsList.astro';
 import type { CollectionEntry } from 'astro:content';
-import type { GetStaticPaths, Page } from 'astro';
 
 // Define the type of your content entries
 type WritingEntry = CollectionEntry<'blog'> | CollectionEntry<'newsletter'>;
 
-export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-  const blogPosts = await getCollection('blog');
-  const newsletters = await getCollection('newsletter');
+const blogPosts = await getCollection('blog');
+const newsletters = await getCollection('newsletter');
 
-  const allWriting = [...blogPosts, ...newsletters].sort(
-    (a, b) =>
-      (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
-  );
+const allWriting = [...blogPosts, ...newsletters].sort(
+  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
+);
 
-  console.log('Total items for pagination:', allWriting.length);
-  const paginatedPaths = paginate(allWriting, { pageSize: 10 });
-  console.log('Generated paginated paths:', paginatedPaths);
+console.log('Total writing items:', allWriting.length);
 
-  // Return paginated paths
-  return paginatedPaths;
-};
-
-// Type the page prop
-interface Props {
-  page: Page<WritingEntry>;
-}
-
-// The page prop contains your paginated data
-const { page } = Astro.props;
-console.log('Current page data:', {
-  currentPage: page.currentPage,
-  lastPage: page.lastPage,
-  url: page.url,
-  data: page.data.length,
-});
+// Get the first 10 items for the index page
+const firstPageItems = allWriting.slice(0, 10);
+console.log('First page items:', firstPageItems.length);
 ---
 
 <BaseLayout
@@ -50,7 +31,7 @@ console.log('Current page data:', {
     description='Check out some of my featured articles'
   />
   <AllItemsList
-    collection={page.data.map((item) => ({
+    collection={firstPageItems.map((item) => ({
       collection: item.collection,
       id: item.id,
       data: {
@@ -67,19 +48,9 @@ console.log('Current page data:', {
   <!-- Pagination Navigation -->
   <nav class='mt-8 flex justify-center gap-4'>
     {
-      page.url.prev && (
+      allWriting.length > 10 && (
         <a
-          href={page.url.prev}
-          class='text-foreground hover:text-accent font-medium'
-        >
-          ← Previous Page
-        </a>
-      )
-    }
-    {
-      page.url.next && (
-        <a
-          href={page.url.next}
+          href='/writing/2'
           class='text-foreground hover:text-accent font-medium'
         >
           Next Page →
