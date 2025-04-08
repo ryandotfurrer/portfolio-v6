@@ -50,48 +50,52 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
-  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+<html lang='en'>
+  <BaseHead
+    title={SITE_TITLE}
+    description={SITE_DESCRIPTION}
+  />
   <body>
-    <div class="container max-w-screen-xl mx-auto px-4 py-8">
+    <div class='container mx-auto max-w-screen-xl px-4 py-8'>
       <header>
         <Navbar />
       </header>
-      <main class="pb-12">
-        <article class="prose prose-zinc mx-auto max-w-screen-lg">
-          <header id="article-header" class="pt-16 md:pt-24 lg:pt-28 xl:pt-32">
+      <main class='pb-12'>
+        <article class='prose prose-zinc mx-auto max-w-screen-lg'>
+          <header
+            id='article-header'
+            class='pt-16 md:pt-24 lg:pt-28 xl:pt-32'
+          >
             {
-              currentPath.includes('about') ? (
-                void 0
-              ) : (
+              currentPath.includes('about') ? void 0 : (
                 <Link
                   href={backLink}
-                  class="flex justify-start !no-underline group transition-all"
+                  class='group flex justify-start !no-underline transition-all'
                 >
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-arrow-left size-5 group-hover:opacity-100 md:opacity-0 transition-all duration-300 md:-translate-x-7 group-hover:translate-x-0"
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    stroke-width='2'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    class='lucide lucide-arrow-left size-5 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 md:-translate-x-7 md:opacity-0'
                   >
-                    <path d="m12 19-7-7 7-7" />
-                    <path d="M19 12H5" />
+                    <path d='m12 19-7-7 7-7' />
+                    <path d='M19 12H5' />
                   </svg>
-                  <span class="md:-translate-x-7 group-hover:translate-x-0 transition-all duration-300">
+                  <span class='transition-all duration-300 group-hover:translate-x-0 md:-translate-x-7'>
                     {backLinkText}
                   </span>
                 </Link>
               )
             }
-            <div class="w-full">
+            <div class='w-full'>
               {
                 heroImage && (
                   <img
-                    class="aspect-video rounded-lg border border-border w-full"
+                    class='border-border aspect-video w-full rounded-lg border'
                     src={heroImage}
                     alt={heroImageAltText}
                   />
@@ -101,23 +105,21 @@ const {
             <div>
               <div>
                 {
-                  pubDate ? (
-                    <div class="flex flex-col *:not-last:m-0">
+                  pubDate ?
+                    <div class='flex flex-col *:not-last:m-0'>
                       <p>
                         Published: <FormattedDate date={pubDate} />
                       </p>
                       {updatedDate && (
-                        <p class="bg-amber-200 text-foreground w-fit mt-0">
+                        <p class='text-foreground mt-0 w-fit bg-amber-200'>
                           Updated: <FormattedDate date={updatedDate} />
                         </p>
                       )}
                     </div>
-                  ) : (
-                    ''
-                  )
+                  : ''
                 }
-                <h1 class="mb-0">{title}</h1>
-                <p class="mt-0">{description}</p>
+                <h1 class='mb-[.25em]'>{title}</h1>
+                <p class='mt-0'>{description}</p>
                 {
                   currentPath.includes('projects') && links && (
                     <ProjectPageLinks links={links} />
@@ -129,10 +131,13 @@ const {
           </header>
           {
             tags && tags.length > 0 && (
-              <div class="">
-                <ul class="flex flex-wrap gap-4 pl-0 list-none">
+              <div class=''>
+                <ul class='flex list-none flex-wrap gap-4 pl-0'>
                   {tags.map((tag) => (
-                    <Tag name={tag} key={tag}>
+                    <Tag
+                      name={tag}
+                      key={tag}
+                    >
                       {tag}
                     </Tag>
                   ))}
@@ -143,7 +148,7 @@ const {
           {/* @ts-ignore */}
           {
             Astro.props.content && (
-              <div class="content">
+              <div class='content'>
                 {/* @ts-ignore */}
                 <div set:html={Astro.props.content} />
               </div>

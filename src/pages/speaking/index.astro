@@ -7,14 +7,22 @@ import AllItemsList from '~/components/AllItemsList.astro';
 
 const speaking = await getCollection('speaking');
 
-const speakingPosts = speaking.sort((a, b) =>
-  a.data.title.localeCompare(b.data.title),
-);
+const speakingPosts = speaking.map((post) => ({
+  collection: post.collection,
+  id: post.id,
+  data: {
+    title: post.data.title,
+    description: post.data.description,
+    pubDate: post.data.pubDate?.toISOString(),
+    tags: post.data.tags || [],
+    slug: post.data.slug || post.id,
+  },
+}));
 ---
 
 <BaseLayout
-  pageTitle="speaking"
-  pageDescription="a collection of my talks and presentations"
+  pageTitle='speaking'
+  pageDescription='a collection of my talks, presentations, and guest appearances'
 >
   <FeaturedSpeaking />
   <AllItemsList collection={speakingPosts} />

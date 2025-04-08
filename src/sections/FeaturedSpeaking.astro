@@ -8,7 +8,12 @@ import Link from '../components/Link.astro';
 import Tag from '~/components/Tag.astro';
 
 const speakingCollection = await getCollection('speaking');
-const featuredSpeaking = speakingCollection.slice(0, 2);
+const featuredSpeaking = speakingCollection
+  .sort(
+    (a, b) =>
+      (b.data.pubDate?.getTime() ?? 0) - (a.data.pubDate?.getTime() ?? 0),
+  )
+  .slice(0, 2);
 
 const currentPath = Astro.url.pathname;
 ---

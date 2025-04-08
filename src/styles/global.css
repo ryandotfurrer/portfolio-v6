@@ -95,7 +95,7 @@
   h4,
   h5,
   h6 {
-    @apply text-foreground font-serif font-semibold tracking-tight text-balance;
+    @apply text-foreground mb-[.25em] font-serif font-semibold tracking-tight text-balance;
   }
 
   section > h1:first-of-type,
