@@ -1,0 +1,357 @@
+---
+title: 'How to use multiple JSX frameworks in Astro'
+slug: 'how-to-use-multiple-jsx-frameworks-in-astro'
+pubDate: '2025-02-03T05:00:00.000Z'
+description: 'A guide to using multiple JSX frameworks in Astro'
+heroImage: 'https://a-us.storyblok.com/f/1016568/1200x630/ff91c733d4/how-to-use-multiple-jsx-frameworks-in-astro_featured-image.png'
+tags:
+  - astro
+  - react
+  - solidjs
+  - tutorial
+---
+
+Did you know Astro is _the "framework agnostic framework"_ - meaning it lets you use multiple frontend frameworks together?
+
+While Astro itself is a framework, you can use _other_ frameworks in it for interactive elements or parts of the web page that aren’t static. This makes it an incredibly powerful tool for rapid development, content-heavy sites, or teams of devs with different specialties need to ship quickly.
+
+Astro supports the following frameworks:
+
+- Alpine
+- Preact
+- React
+- Svelte
+- SolidJS
+- Vue
+
+While most of these work out of the box without a problem, you _will_ run into an issue if using multiple JSX frameworks such as React, Preact, and Solid in the same project.
+
+Let’s talk about that and how you can ensure you don’t run into the same issues I did when learning this.
+
+## Project Structure
+
+While Astro’s documentation states that using separate directories per framework is optional, I personally prefer to do so; we’ll talk more about that later.
+
+Let’s say we are using React and Solid inside the same Astro project. You would create directories inside your components folder; one for React and one for Solid.
+
+```bash
+src
+|__components
+|____Nav.astro
+|____react
+|______CounterReact.jsx
+|____solid
+|______LoginSolid.jsx
+|__layouts
+|____BaseLayout.astro
+|__pages
+|____index.astro
+```
+
+While the file names are up to you, I like appending the framework name to them so I know what framework they are using and where they are coming from no matter where in the code they are being called.
+
+## Installing your frameworks
+
+I’m not going to repeat everything in Astro’s docs as they’re so good I implore you to use them for 99% of your issues; [check the docs](https://docs.astro.build/).
+
+_However_, let’s go over how to install your frameworks.
+
+### React
+
+```bash
+# npm
+npx astro add react
+# pnpm
+pnpm astro add react
+# yarn
+yarn astro add react
+```
+
+### SolidJS
+
+```bash
+# npm
+npx astro add solid
+# pnpm
+pnpm astro add solid
+# yarn
+yarn astro add solid
+```
+
+If the CLI doesn’t it for you automatically, we’ll have to add these integrations into our Astro config file as described in the next section.
+
+## Astro config file
+
+While this file is not required for every project, most will have _something_ you need to configure in it, which we definitely do here. If you are using frameworks in your Astro project, you’ll need this file.
+
+If you don’t have one already, create a file at the root of your project called `astro.config.mjs` and input the following snippet into it:
+
+```jsx
+import { defineConfig } from ‘astro/config’
+
+export default defineConfig({
+  // your configuration options here…
+})
+```
+
+Next, we need to add our integrations; this is for any Astro integration you are using.
+
+```jsx
+import { defineConfig } from 'astro/config';
+import preact from '@astrojs/preact';
+import react from '@astrojs/react';
+import solidJs from '@astrojs/solid-js';
+
+export default defineConfig({
+  integrations: [preact(), solidJs()],
+});
+```
+
+Lastly, we need to tell Astro which files belong to which framework. We can achieve this using the `include: []` syntax. This is _required_ when using multiple JSX frameworks.
+
+Optionally, you can also use the `exclude: []` syntax, however, I did not find that necessary in my project.
+
+```jsx
+import { defineConfig } from 'astro/config';
+import preact from '@astrojs/preact';
+import react from '@astrojs/react';
+import solidJs from '@astrojs/solid-js';
+
+export default defineConfig({
+  integrations: [
+    react({
+      experimentalReactChildren: true,
+      include: ['**/react/*'],
+    }),
+    solidJs({
+      include: ['**/solid/*'],
+    }),
+  ],
+});
+```
+
+_This_ is why I highly encourage you to store all components for different frameworks in their own directory.
+
+<aside>
+  💡
+  <strong>experimentalReactChildren</strong>
+  This flag is only necessary if you are using a library that expects more than
+  one child element to be passed. This is a result of Astro's parsing of React
+  components; they are parsed as plain strings, not React nodes.{' '}
+  <a href="https://docs.astro.build/en/guides/integrations-guide/react/#children-parsing">
+    Read more on this
+  </a>
+</aside>
+
+## TypeScript config file
+
+Astro comes with support for Typescript out of the box and I highly advise you use it. Not only do you need a TypeScript config file for your Astro project, but Astro’s Content Collection API is incredibly powerful when paired with TypeScript.
+
+Inside the root of your project, create a file named `tsconfig.json` and place the code below in it.
+
+```json
+{
+  "extends": "astro/tsconfigs/base",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
+}
+```
+
+Now then, for each JSX framework we add, we’ll need to add more to our `tsconfig` . We add overrides as by default the `"jsxImportSource"` is set to `react`.
+
+```json
+{
+  // Other tsconfig options...
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "allowJs": true,
+    "jsx": "preserve"
+  },
+  "overrides": [
+    {
+      "files": ["src/components/react/**/*"],
+      "compilerOptions": {
+        "jsx": "preserve",
+        "jsxImportSource": "react"
+    },
+    {
+      "files": ["src/components/solid/**/*"],
+      "compilerOptions": {
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js"
+    }
+  ]
+}
+```
+
+This tells your project to override the base settings based on your file locations as well as overrides the `compilerOptions` for those individual frameworks. You can see now why I prefer storing my framework components inside their own directory.
+
+## Rendering these components
+
+This is the easy and fun part! Now you get to build out those features, components, and more that you did all the prep work for.
+
+Take this `CounterReact.jsx` component I built:
+
+```jsx
+import { useState } from 'react';
+import MinusIconReact from './MinusIconReact.jsx';
+import PlusIconReact from './PlusIconReact.jsx';
+
+export default function CounterReact() {
+  const [count, setCount] = useState(0);
+
+  const incrementReact = () => {
+    setCount(count + 1);
+  };
+
+  const decrementReact = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <p className="text-lg text-cyan-50">Counter: {count}</p>
+      <div className="flex gap-2">
+        <button
+          onClick={incrementReact}
+          className="bg-success text-success-foreground rounded-sm px-4 py-2"
+        >
+          <PlusIconReact>
+            <span className="sr-only">Increase count</span>
+          </PlusIconReact>
+        </button>
+        <button
+          onClick={decrementReact}
+          className="bg-destructive text-destructive-foreground rounded-sm px-4 py-2"
+        >
+          <MinusIconReact>
+            <span className="sr-only">Decrease count</span>
+          </MinusIconReact>
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+And here is the SolidJS one:
+
+```jsx
+import { createSignal } from 'solid-js';
+import MinusIconSolid from './MinusIconSolid.jsx';
+import PlusIconSolid from './PlusIconSolid.jsx';
+
+export default function CounterSolid() {
+  const [count, setCount] = createSignal(0);
+
+  const incrementSolid = () => {
+    setCount(count() + 1);
+  };
+
+  const decrementSolid = () => {
+    setCount(count() - 1);
+  };
+
+  return (
+    <div>
+      <p className="text-lg text-blue-50">Counter: {count()}</p>
+      <div className="flex gap-2">
+        <button
+          onClick={incrementSolid}
+          className="bg-success text-success-foreground rounded-sm px-4 py-2"
+        >
+          <PlusIconSolid>
+            <span className="sr-only">Increase count</span>
+          </PlusIconSolid>
+        </button>
+        <button
+          onClick={decrementSolid}
+          className="bg-destructive text-destructive-foreground rounded-sm px-4 py-2"
+        >
+          <MinusIconSolid>
+            <span className="sr-only">Decrease count</span>
+          </MinusIconSolid>
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+We are importing `useState` in the React file and `createSignal` in the Solid file like you normally would, and then importing a couple of icons which are just SVGs. Typical React stuff, right?
+
+Then we’re creating our components which starts with a Functional Component. It is important to note that with Preact, React, and Solid, Astro insists you use Functional Components and export them in the same line.
+
+Moving on, our Functional components start with setting our state, creating a couple of functions to increase the count and decrease it, then building out the UI of the component itself. Since we already exported it in line 5, all we have to do now is go to our Astro file where we’d like to render the component, import it, and call it.
+
+Here is an example of my Astro component, `CounterSection.astro`
+
+```jsx
+---
+import CounterReact from "../react/CounterReact.jsx";
+import CounterSolid from "../solid/CounterSolid.jsx";
+import Heading from "../Heading.astro";
+---
+
+<section class="flex gap-4 w-fit">
+  <div
+    id="react"
+    class="border w-fit border-cyan-700 rounded-md p-4 bg-cyan-900 scroll-mt-12">
+    <div class="col-span-1">
+      <Heading
+        level="h2"
+        size="2xl"
+        class="text-cyan-50"
+        >React</Heading
+      >
+      <CounterReact client:visible />
+    </div>
+  </div>
+  <div
+    id="solid"
+    class="border w-fit border-blue-700 rounded-md p-4 bg-blue-900 scroll-mt-12">
+    <div class="col-span-1">
+      <Heading
+        level="h2"
+        size="2xl"
+        class="text-blue-50"
+        >Solid</Heading
+      >
+      <CounterSolid client:visible />
+    </div>
+  </div>
+</section>
+```
+
+The components will end up looking like this:
+
+![Counters rendered in both React and SolidJS allowing the user to click and increase or decrease the count.](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h15m15487ygoi6e87ek3.png)
+
+### Client Directives
+
+The keen eye among you may have spotted something in our code I didn’t mention above. When calling our components, there is a `client:visible` property:
+
+```jsx
+<CounterReact client:visible />
+<CounterSolid client:visible />
+```
+
+These client directives control how framework components are hydrated on a page. In our example, they are hydrated as soon as the component is visible. If you do not specify which directive to use, the component will be shipped as static HTML and you will have no interactivity!
+
+Astro offers several different options and I encourage you to [read the docs](https://docs.astro.build/en/reference/directives-reference/#client-directives) and see which is best for your application. However, the three I feel will be most commonly used are:
+
+- `client:load` - hydrates the component on page load
+- `client:idle` - hydrates the component when the page’s initial load is complete
+- `client:visible` / `client:visible={{rootMargin}}` - hydrates the component when it comes into view / hydrates the component when a margin around the component enters the viewport.
+
+## Summary
+
+Wrapping up, using multiple JSX frameworks in Astro is quite simple, however, it _does_ require some setup before you jump right in.
+
+If you’d like to see my talk on Astro, you can find all relevant links below. And if you have any questions I am more than happy to talk shop! You can find me everywhere on line via my [bento](https://bento.me/ryandotfurrer).
+
+[Watch my Astro talk with This Dot](https://www.youtube.com/live/VsNtGr8RjLo?si=acz2N_MswHNCX5Ou)
+
+[View my demo site](https://whynotastro.vercel.app/)
+
+[Get the slides](https://gamma.app/docs/Astro-The-Web-Framework-for-Modern-Development-p8irm7aio29rfpw)
