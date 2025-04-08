@@ -2,30 +2,75 @@
 title: 'Uses'
 slug: 'uses'
 description: 'What hardware and software help me daily?'
-pubDate: '2025-03-12T00:00:00Z'
+pubDate: '2025-03-12T05:00:00Z'
 heroImage: '/blog-placeholder-3.jpg'
 tags:
   - about
   - uses
 ---
 
-## Hardware
+I have two desks to help separate my coding and other work from gaming — think separation of concerns. When I am at one desk with a different setup, operating system, and peripherals it helps my mind enter work mode. When I'm at the other, I know it's time to play 🎮
 
-- **Laptop**: 16-inch MacBook Pro (M1 Max, 64GB RAM)
-- **Monitor**: 32-inch LG UltraFine 4K
-- **Keyboard**: Keychron Q1
-- **Mouse**: Logitech MX Master 3S
-- **Headphones**: Sony WH-1000XM5
-- **Phone**: iPhone 14 Pro
+## Software Engineering Setup
 
-## Software
+### Hardware
 
-- **IDE**: VS Code
-- **Terminal**: iTerm2
-- **Editor**: Neovim
+- **Laptop**: 14-inch MacBook Pro
+  - M4 Pro
+  - 16GB RAM
+  - 512GB SSD
+- **Monitor**: Apple Studio Display
+- **Keyboard**: Apple Magic Keyboard
+- **Mice**:
+  - Logitech MX Master 3S
+  - Apple Magic Trackpad
+- **Headphones**:
+  - Apple Airpods Max
+  - Apple Airpods Pro
+- **Audio Interface**: Elgato Wave XLR
+- **Microphone**: Shure SM7B
+- **Phones**:
+  - iPhone 15 Pro
+  - Google Pixel 9 Pro
+- **Webcam**: iPhone 15 Pro
+
+### Software
+
+- **IDE**: Cursor
+- **Terminal**: Warp
 - **Browser**: Arc
 - **Password Manager**: 1Password
-- **Notes**: Obsidian
+- **Notes**:
+  - Apple Notes
+  - Notion
+  - Obsidian
 - **Design**: Figma
+- **Screen Captures**:
+  - CleanShotX
+  - Screen Studio
+- **Music**: Spotify
+- **Streaming**: Meld
+- **Productivity Tools**:
+  - Brain.fm
+  - Raycast
+  - Superlist
+
+## Gaming Setup
+
+While I don't play as often as I used to, video games are still my go-to leisure activity. I'm a big fan of RPGs such as Final Fantasy, Sea of Stars, and Chrono Trigger. However, I also play roguelikes, racing simulators, and MMORPGs.
+
+### Hardware
+
+- **Desktop**: Custom-built PC
+  - **CPU**:
+  - **GPU**:
+  - **RAM**:
+  - **Harddrive**:
+  - **Power Supply**:
+  - **Case**:
+- **Monitor**: Corsair Xenon 27" 2K OLED
+- **Keyboard**: Keychron x OnePlus 81 Pro
+- **Mouse**: Steelseries Aerox 9 Wireless
+- **Headset**: Corsair HS65
 
 <small>Disclaimer: Some of the links above are affiliate links, meaning I may earn a small commission if you click on them and make a purchase. This helps support my work at no additional cost to you.</small>

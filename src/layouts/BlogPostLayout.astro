@@ -6,9 +6,9 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Link from '../components/Link.astro';
 import Navbar from '../components/Navbar.astro';
 import Newsletter from '../components/Newsletter.astro';
+import ProjectPageLinks from '~/components/ProjectPageLinks.astro';
 import Tag from '~/components/Tag.astro';
 import type { CollectionEntry } from 'astro:content';
-import ProjectPageLinks from '~/components/ProjectPageLinks.astro';
 
 type Props = CollectionEntry<'blog'>['data'] & {
   links?: {
@@ -66,31 +66,29 @@ const {
             id='article-header'
             class='pt-16 md:pt-24 lg:pt-28 xl:pt-32'
           >
-            {
-              currentPath.includes('about') ? void 0 : (
-                <Link
-                  href={backLink}
-                  class='group flex justify-start !no-underline transition-all'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                    stroke='currentColor'
-                    stroke-width='2'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    class='lucide lucide-arrow-left size-5 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 md:-translate-x-7 md:opacity-0'
-                  >
-                    <path d='m12 19-7-7 7-7' />
-                    <path d='M19 12H5' />
-                  </svg>
-                  <span class='transition-all duration-300 group-hover:translate-x-0 md:-translate-x-7'>
-                    {backLinkText}
-                  </span>
-                </Link>
-              )
-            }
+            <Link
+              href={backLink}
+              class='group flex justify-start !no-underline transition-all'
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='2'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                class='lucide lucide-arrow-left size-5 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 md:-translate-x-7 md:opacity-0'
+              >
+                <path d='m12 19-7-7 7-7'></path>
+                <path d='M19 12H5'></path>
+              </svg>
+              <span
+                class='transition-all duration-300 group-hover:translate-x-0 md:-translate-x-7'
+              >
+                {backLinkText}
+              </span>
+            </Link>
             <div class='w-full'>
               {
                 heroImage && (

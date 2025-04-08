@@ -63,7 +63,10 @@ import MobileMenu from './react/MobileMenu.tsx';
         const linkPath = link.dataset.href;
         const isActive =
           linkPath === currentPath ||
-          (linkPath === '/writing' && currentPath.startsWith('/writing/'));
+          (linkPath === '/writing' && currentPath.startsWith('/writing/')) ||
+          (linkPath === '/speaking' && currentPath.startsWith('/speaking/')) ||
+          (linkPath === '/about' && currentPath.startsWith('/about/')) ||
+          (linkPath === '/projects' && currentPath.startsWith('/projects/'));
 
         if (isActive) {
           link.classList.add('underline', 'decoration-accent');
