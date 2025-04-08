@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FeaturedWriting from '../../sections/FeaturedWriting.astro';
+import AllItemsList from '~/components/AllItemsList.astro';
+import type { CollectionEntry } from 'astro:content';
+import type { PaginateFunction } from 'astro';
+import Pagination from '~/components/Pagination.astro';
+
+type WritingEntry = CollectionEntry<'blog'> | CollectionEntry<'newsletter'>;
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction;
+}) {
+  const blogPosts = await getCollection('blog');
+  const newsletters = await getCollection('newsletter');
+  const allWriting = [...blogPosts, ...newsletters].sort(
+    (a, b) =>
+      (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
+  );
+
+  return paginate(allWriting, { pageSize: 5 });
+}
+
+const { page } = Astro.props as {
+  page: {
+    data: WritingEntry[];
+    url: { prev?: string; next?: string };
+    currentPage: number;
+    lastPage: number;
+  };
+};
+---
+
+<BaseLayout
+  pageTitle='writing'
+  pageDescription='a collection of my writing and articles'
+>
+  {
+    page.currentPage === 1 && (
+      <FeaturedWriting
+        title='Featured Writing'
+        description='Check out some of my featured articles'
+      />
+    )
+  }
+  <div id='writing-list'>
+    <AllItemsList
+      collection={page.data.map((item: WritingEntry) => ({
+        collection: item.collection,
+        id: item.id,
+        data: {
+          pubDate: item.data.pubDate?.toISOString(),
+          title: item.data.title,
+          // description: item.data.description,
+          tags: item.data.tags ?? [],
+          webURL: 'webURL' in item.data ? item.data.webURL : undefined,
+          slug: 'slug' in item.data ? item.data.slug : undefined,
+        },
+      }))}
+    />
+  </div>
+  <Pagination
+    prevURL={page.url.prev}
+    nextURL={page.url.next}
+    pageNumber={page.currentPage}
+    totalPages={page.lastPage}
+  />
+</BaseLayout>

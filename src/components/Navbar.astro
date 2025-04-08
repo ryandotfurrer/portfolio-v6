@@ -53,14 +53,18 @@ import MobileMenu from './react/MobileMenu.tsx';
     const links = document.querySelectorAll('.nav-link');
     links.forEach((link) => {
       if (link instanceof HTMLElement) {
-        // Remove existing active classes first
         link.classList.remove(
           'underline',
           'decoration-accent',
           'hover:no-underline',
         );
 
-        const isActive = link.dataset.href === window.location.pathname;
+        const currentPath = window.location.pathname;
+        const linkPath = link.dataset.href;
+        const isActive =
+          linkPath === currentPath ||
+          (linkPath === '/writing' && currentPath.startsWith('/writing/'));
+
         if (isActive) {
           link.classList.add('underline', 'decoration-accent');
         } else {
@@ -70,9 +74,7 @@ import MobileMenu from './react/MobileMenu.tsx';
     });
   }
 
-  // Run on page load
   updateActiveLinks();
 
-  // Run on navigation changes
   document.addEventListener('astro:page-load', updateActiveLinks);
 </script>

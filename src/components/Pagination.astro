@@ -1,0 +1,56 @@
+---
+import Link from './Link.astro';
+
+const { prevURL, nextURL, pageNumber, totalPages } = Astro.props;
+---
+
+<nav
+  aria-label='Writing pages'
+  class='flex items-center justify-around'
+>
+  <Link
+    href={prevURL || '#'}
+    variant='default'
+    withIcon={true}
+    iconPosition='left'
+    disabled={!prevURL}
+    data-prev
+  >
+    Previous
+  </Link>
+  <div class='flex gap-2'>
+    {
+      Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+        <Link
+          href={`/writing/${page === 1 ? '' : page}`}
+          variant={page === pageNumber ? 'secondary' : 'default'}
+          size='button'
+          data-page
+        >
+          {page}
+        </Link>
+      ))
+    }
+  </div>
+  <Link
+    href={nextURL || '#'}
+    variant='default'
+    withIcon={true}
+    disabled={!nextURL}
+    data-next
+  >
+    Next
+  </Link>
+</nav>
+
+<script>
+  document
+    .querySelectorAll('[data-prev], [data-next], [data-page]')
+    .forEach((link) => {
+      link.addEventListener('click', (e) => {
+        if (link.hasAttribute('disabled')) {
+          e.preventDefault();
+        }
+      });
+    });
+</script>
