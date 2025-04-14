@@ -5,11 +5,24 @@ import AllItemsList from '~/components/AllItemsList.astro';
 
 const about = await getCollection('about');
 
-const aboutPosts = about.sort((a, b) =>
-  a.data.title.localeCompare(b.data.title),
-);
+const aboutPosts = about
+  .map((post) => ({
+    collection: post.collection,
+    id: post.id,
+    data: {
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate?.toISOString(),
+      tags: post.data.tags || [],
+      slug: post.data.slug || post.id,
+    },
+  }))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
-<BaseLayout pageTitle="about" pageDescription="learn more about Ryan">
+<BaseLayout
+  pageTitle='about'
+  pageDescription='learn more about Ryan'
+>
   <AllItemsList collection={aboutPosts} />
 </BaseLayout>
