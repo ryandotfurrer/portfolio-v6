@@ -1,7 +1,7 @@
 ---
 import { cn } from '../utils/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 const linkVariants = cva(
   'cursor-pointer inline-flex items-center justify-center gap-2 rounded-md text-base ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&>[data-icon]]:pointer-events-none [&>[data-icon]]:size-4 [&>[data-icon]]:shrink-0 group',
   {
@@ -89,62 +89,18 @@ const externalProps =
 >
   {
     iconPosition === 'left' && withIcon && !externalLink && (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='24'
-        height='24'
-        viewBox='0 0 24 24'
-        fill='none'
-        stroke='currentColor'
-        stroke-width='2'
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        class='lucide lucide-arrow-left-icon lucide-arrow-left mt-0.5 !size-5 transition-all md:translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
-      >
-        <path d='m12 19-7-7 7-7' />
-        <path d='M19 12H5' />
-      </svg>
+      <ArrowLeft className='transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100 size-5' />
     )
   }
   <slot />
   {
     iconPosition === 'right' && withIcon && !externalLink && (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='24'
-        height='24'
-        viewBox='0 0 24 24'
-        fill='none'
-        stroke='currentColor'
-        stroke-width='2'
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        class='lucide lucide-arrow-right mt-0.5 !size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
-      >
-        <path d='M5 12h14' />
-        <path d='m12 5 7 7-7 7' />
-      </svg>
+      <ArrowRight className='transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100 size-5' />
     )
   }
   {
     externalLink && withIcon && (
-      <svg
-        data-icon
-        xmlns='http://www.w3.org/2000/svg'
-        width='24'
-        height='24'
-        viewBox='0 0 24 24'
-        fill='none'
-        stroke='currentColor'
-        stroke-width='2'
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        class='lucide lucide-external-link transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
-      >
-        <path d='M15 3h6v6' />
-        <path d='M10 14 21 3' />
-        <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
-      </svg>
+      <ExternalLink className='transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100 size-4' />
     )
   }
 </a>
