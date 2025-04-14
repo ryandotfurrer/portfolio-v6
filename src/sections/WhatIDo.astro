@@ -3,6 +3,8 @@ import { SocialLinks } from '~/utils/utils';
 import Card from '../components/Card.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
+import ArrowRight from '../components/icons/ArrowRight.astro';
+import ExternalLink from '~/components/icons/ExternalLink.astro';
 ---
 
 <section id='what-i-do'>
@@ -47,13 +49,11 @@ import Link from '../components/Link.astro';
         I build accessible, performant web applications with modern tools like
         React, TypeScript, and Next.js. Check out my latest projects.
       </p>
-      <Link
-        href='/projects'
-        withIcon={true}
-        class='text-foreground'
-      >
-        view my projects
-      </Link>
+      <span class='text-foreground flex items-center gap-x-2'>
+        view my projects <ArrowRight
+          class='size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+        />
+      </span>
     </Card>
     <Card
       href='https://webdevdialogues.com'
@@ -89,14 +89,11 @@ import Link from '../components/Link.astro';
         Join me for in-depth conversations with web developers about their
         journeys, tech stacks, and lessons learned along the way.
       </p>
-      <Link
-        href='https://webdevdialogues.com'
-        externalLink
-        withIcon
-        class='text-foreground'
-      >
-        listen to the podcast
-      </Link>
+      <span class='text-foreground flex items-center gap-x-2'>
+        listen to the podcast <ExternalLink
+          class='size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+        />
+      </span>
     </Card>
     <Card
       href='/writing'
@@ -139,13 +136,11 @@ import Link from '../components/Link.astro';
         I share detailed technical guides, career advice, and insights from my
         experience as a web developer through my blog posts.
       </p>
-      <Link
-        href='/writing'
-        withIcon={true}
-        class='text-foreground'
-      >
-        read what I've written
-      </Link>
+      <span class='text-foreground flex items-center gap-x-2'>
+        read what I've written <ArrowRight
+          class='size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+        />
+      </span>
     </Card>
     <Card
       href='/speaking'
@@ -181,13 +176,11 @@ import Link from '../components/Link.astro';
         From conference talks to live coding sessions, I break down complex web
         development concepts into clear, actionable lessons.
       </p>
-      <Link
-        href='/speaking'
-        withIcon={true}
-        class='text-foreground'
-      >
-        watch my talks
-      </Link>
+      <span class='text-foreground flex items-center gap-x-2'>
+        watch my talks <ArrowRight
+          class='size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+        />
+      </span>
     </Card>
     <Card
       href='https://cal.com/ryandotfurrer/coffee-chat'
@@ -229,14 +222,11 @@ import Link from '../components/Link.astro';
         Let's chat about web development, career growth, or your next project.
         Schedule a free 15 or 25-minute video call with me.
       </p>
-      <Link
-        href='https://cal.com/ryandotfurrer/coffee-chat'
-        externalLink
-        withIcon
-        class='text-foreground'
-      >
-        book a call
-      </Link>
+      <span class='text-foreground flex items-center gap-x-2'>
+        book a call <ExternalLink
+          class='size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+        />
+      </span>
     </Card>
     <Card
       href={SocialLinks.twitch.href}
@@ -271,14 +261,11 @@ import Link from '../components/Link.astro';
         Watch me code, debug, and build projects in real-time. Join the chat to
         ask questions and learn together.
       </p>
-      <Link
-        href={SocialLinks.twitch.href}
-        externalLink
-        withIcon
-        class='text-foreground'
-      >
-        watch my streams
-      </Link>
+      <span class='text-foreground flex items-center gap-x-2'>
+        watch my streams <ExternalLink
+          class='size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+        />
+      </span>
     </Card>
   </div>
 </section>
