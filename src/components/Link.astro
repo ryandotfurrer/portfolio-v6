@@ -81,7 +81,8 @@ const externalProps =
     (withIcon || externalLink) && 'hover:no-underline',
     disabled && 'opacity-50 cursor-not-allowed',
   )}
-  {...externalProps}
+  rel={externalLink ? 'noopener noreferrer' : undefined}
+  target={externalLink ? '_blank' : undefined}
   {...props}
   aria-disabled={disabled}
   {...onclick ? { 'on:click': onclick } : {}}
