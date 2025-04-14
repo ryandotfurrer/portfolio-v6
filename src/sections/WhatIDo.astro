@@ -2,6 +2,7 @@
 import Card from '../components/Card.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
+import { SocialLinks } from '~/utils/utils';
 ---
 
 <section id='what-i-do'>
@@ -57,6 +58,7 @@ import Link from '../components/Link.astro';
     <Card
       href='https://webdevdialogues.com'
       class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      externalLink
     >
       <div
         class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-colors'
@@ -89,8 +91,8 @@ import Link from '../components/Link.astro';
       </p>
       <Link
         href='https://webdevdialogues.com'
-        externalLink={true}
-        withIcon={true}
+        externalLink
+        withIcon
         class='text-foreground'
       >
         listen to the podcast
@@ -190,6 +192,7 @@ import Link from '../components/Link.astro';
     <Card
       href='https://cal.com/ryandotfurrer/coffee-chat'
       class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      externalLink
     >
       <div
         class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-colors'
@@ -228,16 +231,17 @@ import Link from '../components/Link.astro';
       </p>
       <Link
         href='https://cal.com/ryandotfurrer/coffee-chat'
-        externalLink={true}
-        withIcon={true}
+        externalLink
+        withIcon
         class='text-foreground'
       >
         book a call
       </Link>
     </Card>
     <Card
-      href='https://twitch.tv/ryandotfurrer'
+      href={SocialLinks.twitch.href}
       class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      externalLink
     >
       <div
         class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-colors'
@@ -268,9 +272,9 @@ import Link from '../components/Link.astro';
         ask questions and learn together.
       </p>
       <Link
-        href='https://twitch.tv/ryandotfurrer'
-        externalLink={true}
-        withIcon={true}
+        href={SocialLinks.twitch.href}
+        externalLink
+        withIcon
         class='text-foreground'
       >
         watch my streams

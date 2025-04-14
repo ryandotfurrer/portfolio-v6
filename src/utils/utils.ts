@@ -13,3 +13,12 @@ export const NavLinks = [
   { href: '/about', label: 'about' },
   { href: '/contact', label: 'contact' },
 ];
+
+export const SocialLinks = {
+  bento: { href: 'https://bento.me/ryandotfurrer' },
+  github: { href: 'https://github.com/ryandotfurrer' },
+  linkedin: { href: 'https://www.linkedin.com/in/ryanfurrer/' },
+  twitch: { href: 'https://www.twitch.tv/ryandotfurrer' },
+  x: { href: 'https://x.com/ryandotfurrer' },
+  youtube: { href: 'https://www.youtube.com/@ryandotfurrer' },
+};

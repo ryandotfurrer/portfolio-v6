@@ -1,5 +1,6 @@
 ---
-import { NavLinks } from '~/utils/utils';
+import { NavLinks, SocialLinks } from '~/utils/utils';
+
 import Link from './Link.astro';
 import NewsletterBeehiivForm from './NewsletterBeehiivForm.astro';
 
@@ -42,14 +43,15 @@ const currentPath = Astro.url.pathname;
           <Link
             externalLink
             withIcon
-            href='#'
-            >Follow me on X</Link>
+            href={SocialLinks.x.href}
+            >Follow me on X</Link
+          >
         </li>
         <li>
           <Link
             externalLink
             withIcon
-            href='#'
+            href={SocialLinks.linkedin.href}
             >Follow me on LinkedIn</Link
           >
         </li>
@@ -57,8 +59,9 @@ const currentPath = Astro.url.pathname;
           <Link
             externalLink
             withIcon
-            href='#'
-            >Find me everywhere</Link>
+            href={SocialLinks.bento.href}
+            >Find me everywhere</Link
+          >
         </li>
       </ul>
     </div>

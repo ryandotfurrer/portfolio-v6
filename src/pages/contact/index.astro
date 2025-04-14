@@ -1,4 +1,5 @@
 ---
+import { SocialLinks } from '~/utils/utils';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CalEmbed from '../../components/react/CalEmbed.jsx';
 import Link from '~/components/Link.astro';
@@ -18,15 +19,15 @@ import Signature from '~/components/Signature.astro';
       <p>
         I'm most active on <Link
           externalLink
-          href='https://x.com/ryandotfurrer'
+          href={SocialLinks.x.href}
           >X/Twitter</Link
         > and <Link
           externalLink
-          href='https://www.linkedin.com/in/ryandotfurrer/'
+          href={SocialLinks.linkedin.href}
           >LinkedIn</Link
         > these days, but you can reach find me everywhere via <Link
           externalLink
-          href='https://bento.me/ryandotfurrer'
+          href={SocialLinks.bento.href}
           >Bento</Link
         >. Or you can email me at <Link href='mailto:ryan@ryandotfurrer.com'
           >ryan@ryandotfurrer.com</Link
@@ -41,7 +42,7 @@ import Signature from '~/components/Signature.astro';
           <Link
             externalLink
             withIcon
-            href='https://x.com/ryandotfurrer'
+            href={SocialLinks.x.href}
             >Follow me on X</Link
           >
         </li>
@@ -49,7 +50,7 @@ import Signature from '~/components/Signature.astro';
           <Link
             externalLink
             withIcon
-            href='https://www.linkedin.com/in/ryandotfurrer/'
+            href={SocialLinks.linkedin.href}
             >Follow me on LinkedIn</Link
           >
         </li>
@@ -57,7 +58,7 @@ import Signature from '~/components/Signature.astro';
           <Link
             externalLink
             withIcon
-            href='#'
+            href={SocialLinks.bento.href}
             >Find me everywhere else</Link
           >
         </li>

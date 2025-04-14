@@ -5,10 +5,16 @@ import Link from './Link.astro';
 export interface CardProps {
   class?: string;
   href?: string;
+  externalLink?: boolean;
   variant?: 'default' | 'transparent';
 }
 
-const { class: className, href, variant = 'default' } = Astro.props;
+const {
+  class: className,
+  href,
+  variant = 'default',
+  externalLink = false,
+} = Astro.props;
 
 const defaultClasses =
   'rounded-lg border border-border p-4 bg-card break-words space-y-4 transition-all group';
@@ -23,6 +29,9 @@ const cardClasses =
     <div>
       <Link
         href={href}
+        externalLink={externalLink}
+        target={externalLink ? '_blank' : undefined}
+        rel={externalLink ? 'noopener noreferrer' : undefined}
         class='group/link block'
       >
         <div class={cn(cardClasses, className)}>

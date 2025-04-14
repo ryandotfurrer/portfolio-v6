@@ -80,7 +80,7 @@ const currentPath = Astro.url.pathname;
             </Link>
             <Link
               href={project.data.links?.github || ''}
-              externalLink={true}
+              externalLink
               variant='outline'
               size='button'
               class='w-full md:w-auto'
@@ -96,7 +96,7 @@ const currentPath = Astro.url.pathname;
     currentPath === '/' && (
       <Link
         href='/projects'
-        withIcon={true}
+        withIcon
         class='text-foreground-muted group-hover:text-foreground text-lg'
       >
         view all projects
