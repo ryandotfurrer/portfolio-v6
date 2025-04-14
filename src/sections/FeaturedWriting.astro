@@ -37,7 +37,6 @@ const currentPath = Astro.url.pathname;
         <Card
           class='group'
           key={post.id}
-          variant='transparent'
           hasLink={true}
           href={
             post.collection === 'newsletter' ?
@@ -45,6 +44,15 @@ const currentPath = Astro.url.pathname;
             : `/writing/${post.id}`
           }
         >
+          <div class='w-full'>
+            <Image
+              width={1000}
+              height={1000}
+              src={post.data.heroImage ?? ''}
+              alt={post.data.title}
+              class='border-border aspect-video rounded-md border transition-all md:brightness-90 md:group-hover:brightness-100'
+            />
+          </div>
           <header>
             <Heading
               level='h3'
@@ -64,7 +72,7 @@ const currentPath = Astro.url.pathname;
                   stroke-width='2'
                   stroke-linecap='round'
                   stroke-linejoin='round'
-                  class='lucide lucide-external-link size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+                  class='lucide lucide-external-link text-foreground-muted md:text-foreground size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
                 >
                   <path d='M15 3h6v6' />
                   <path d='M10 14 21 3' />
@@ -77,15 +85,6 @@ const currentPath = Astro.url.pathname;
               date={post.data.pubDate ?? new Date()}
             />
           </header>
-          <div class='my-2 w-full'>
-            <Image
-              width={1000}
-              height={1000}
-              src={post.data.heroImage ?? ''}
-              alt={post.data.title}
-              class='border-border aspect-video rounded-md border brightness-90 transition-all group-hover:brightness-100'
-            />
-          </div>
           <p class='line-clamp-2'>{post.data.description}</p>
           {post.data.tags && post.data.tags.length > 0 && (
             <div class='mt-2'>
@@ -101,24 +100,6 @@ const currentPath = Astro.url.pathname;
               </ul>
             </div>
           )}
-          <div>
-            {post.collection === 'newsletter' ?
-              <Link
-                href={post.data.webURL}
-                variant='primary'
-                size='button'
-              >
-                Read more
-              </Link>
-            : <Link
-                href={`/writing/${post.id}`}
-                variant='primary'
-                size='button'
-              >
-                Read more
-              </Link>
-            }
-          </div>
         </Card>
       ))
     }

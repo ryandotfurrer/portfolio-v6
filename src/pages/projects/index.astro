@@ -5,14 +5,27 @@ import Heading from '../../components/Heading.astro';
 import AllItemsList from '~/components/AllItemsList.astro';
 import { getCollection } from 'astro:content';
 
-const projects = (await getCollection('projects')).sort(
-  (a, b) => (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
-);
+const projects = (await getCollection('projects'))
+  .sort(
+    (a, b) =>
+      (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
+  )
+  .map((project) => ({
+    collection: project.collection,
+    id: project.id,
+    data: {
+      title: project.data.title,
+      description: project.data.description,
+      pubDate: project.data.pubDate?.toISOString(),
+      tags: project.data.tags || [],
+      slug: project.data.slug || project.id,
+    },
+  }));
 ---
 
 <BaseLayout
-  pageTitle="projects"
-  pageDescription="a collection of my work, projects, and experiments"
+  pageTitle='projects'
+  pageDescription='a collection of my work, projects, and experiments'
 >
   <FeaturedProjects />
   <AllItemsList collection={projects} />
