@@ -79,6 +79,7 @@
   --color-rounded-md: calc(var(--color-radius) / 1.5);
   --color-rounded-sm: calc(var(--color-radius) / 2);
   --spring: cubic-bezier(0.25, 0.1, 0, 8);
+  --spring-small: cubic-bezier(0.25, 0.1, 0, 2);
 }
 
 @layer base {
