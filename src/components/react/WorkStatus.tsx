@@ -34,7 +34,7 @@ export default function WorkStatus({ status = 'available' }: WorkStatusProps) {
 
   return (
     <a
-      className="group bg-card hover:from-card hover:to-secondary hover:via-secondary/50 hover:border-accent/50 hover:text-accent relative flex h-10 items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 hover:bg-gradient-to-b"
+      className="group bg-card hover:from-card hover:to-secondary hover:via-card/50 relative flex h-10 w-fit items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 hover:bg-gradient-to-b"
       href={resumeUrl}
       target="_blank"
       rel="noopener noreferrer"
@@ -66,8 +66,10 @@ export default function WorkStatus({ status = 'available' }: WorkStatusProps) {
             status === 'unavailable' && 'pointer-events-none',
           )}
         >
-          <span>view resume</span>
-          <ExternalLink className="size-3" />
+          <span className="mx-auto flex items-center gap-2">
+            view resume
+            <ExternalLink className="size-3" />
+          </span>
         </div>
       </div>
     </a>

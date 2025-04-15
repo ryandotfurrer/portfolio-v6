@@ -2,7 +2,6 @@
 import { NavLinks } from '../utils/utils';
 import Link from './Link.astro';
 import MobileMenu from './react/MobileMenu.tsx';
-import WorkStatus from './react/WorkStatus';
 ---
 
 <nav
@@ -38,10 +37,6 @@ import WorkStatus from './react/WorkStatus';
   </ul>
 
   <div class='flex items-center gap-4'>
-    <WorkStatus
-      client:load
-      status='available'
-    />
     <Link
       href='/contact'
       variant='primary'
