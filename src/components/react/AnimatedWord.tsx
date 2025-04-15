@@ -39,7 +39,7 @@ export default function AnimatedWord() {
   return (
     <span
       key={key}
-      className="from-accent via-accent animate-[blur_.5s_ease-in_forwards] bg-gradient-to-r to-amber-500 bg-clip-text text-transparent"
+      className="from-accent via-accent animate-[blur_.5s_ease-in_forwards] bg-gradient-to-r to-amber-500 bg-clip-text pr-1 text-transparent"
     >
       {word}
     </span>

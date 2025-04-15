@@ -25,16 +25,23 @@ const workStatusConfig = {
 } as const;
 
 interface WorkStatusProps {
+  className?: string;
   status?: WorkStatusType;
 }
 
-export default function WorkStatus({ status = 'available' }: WorkStatusProps) {
+export default function WorkStatus({
+  status = 'available',
+  className,
+}: WorkStatusProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { text, dotClasses, resumeUrl } = workStatusConfig[status];
 
   return (
     <a
-      className="group bg-card hover:from-card hover:to-secondary hover:via-card/50 relative flex h-10 w-fit items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 hover:bg-gradient-to-b"
+      className={cn(
+        'group bg-card hover:from-card hover:to-secondary hover:via-card/50 relative flex h-10 w-fit items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 hover:bg-gradient-to-b',
+        className,
+      )}
       href={resumeUrl}
       target="_blank"
       rel="noopener noreferrer"
