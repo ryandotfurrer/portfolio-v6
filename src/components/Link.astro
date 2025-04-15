@@ -41,14 +41,14 @@ const linkVariants = cva(
 );
 
 export interface Props extends VariantProps<typeof linkVariants> {
-  class?: string;
-  href: string;
-  externalLink?: boolean;
-  withIcon?: boolean;
-  disabled?: boolean;
-  iconPosition?: 'left' | 'right';
   'on:click'?: (e: Event) => void;
   [key: string]: any;
+  class?: string;
+  disabled?: boolean;
+  externalLink?: boolean;
+  href: string;
+  iconPosition?: 'left' | 'right';
+  withIcon?: boolean;
 }
 
 // @ts-ignore - Astro's type system limitation

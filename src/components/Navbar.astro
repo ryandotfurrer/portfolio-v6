@@ -2,6 +2,7 @@
 import { NavLinks } from '../utils/utils';
 import Link from './Link.astro';
 import MobileMenu from './react/MobileMenu.tsx';
+import WorkStatus from './react/WorkStatus';
 ---
 
 <nav
@@ -36,14 +37,20 @@ import MobileMenu from './react/MobileMenu.tsx';
     }
   </ul>
 
-  <Link
-    href='/contact'
-    variant='primary'
-    size='sm'
-    class='hidden lowercase md:flex'
-  >
-    Contact
-  </Link>
+  <div class='flex items-center gap-4'>
+    <WorkStatus
+      client:load
+      status='available'
+    />
+    <Link
+      href='/contact'
+      variant='primary'
+      size='sm'
+      class='hidden lowercase md:flex'
+    >
+      Contact
+    </Link>
+  </div>
 
   <MobileMenu client:load />
 </nav>

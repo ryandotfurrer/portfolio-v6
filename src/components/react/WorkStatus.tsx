@@ -1,0 +1,75 @@
+import { cn } from '../../utils/utils';
+import { ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+
+type WorkStatusType = 'available' | 'open' | 'unavailable';
+
+const workStatusConfig = {
+  available: {
+    text: 'available for work',
+    dotClasses: 'bg-emerald-400 border-emerald-500',
+    resumeUrl:
+      'https://drive.google.com/file/d/1TKx0759oiqfimdtL55UCbd1pXuZl7eIy/view?usp=sharing',
+  },
+  open: {
+    text: 'open to opportunities',
+    dotClasses: 'bg-amber-400 border-amber-600',
+    resumeUrl:
+      'https://drive.google.com/file/d/1TKx0759oiqfimdtL55UCbd1pXuZl7eIy/view?usp=sharing',
+  },
+  unavailable: {
+    text: 'not available',
+    dotClasses: 'bg-rose-400 border-rose-600',
+    resumeUrl: '#', // You might want to disable the link entirely for unavailable status
+  },
+} as const;
+
+interface WorkStatusProps {
+  status?: WorkStatusType;
+}
+
+export default function WorkStatus({ status = 'available' }: WorkStatusProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const { text, dotClasses, resumeUrl } = workStatusConfig[status];
+
+  return (
+    <a
+      className="group bg-card hover:from-card hover:to-secondary hover:via-secondary/50 hover:border-accent/50 hover:text-accent relative flex h-10 items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 hover:bg-gradient-to-b"
+      href={resumeUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="relative">
+        <div
+          className={cn(
+            'flex items-center gap-2 transition-all duration-300',
+            isHovered
+              ? '-translate-y-2 opacity-0'
+              : 'translate-y-0 opacity-100',
+          )}
+        >
+          <div
+            id="work-status-dot"
+            className={cn(
+              'size-3 animate-pulse rounded-full border-2',
+              dotClasses,
+            )}
+          />
+          <span id="work-status-text">{text}</span>
+        </div>
+        <div
+          className={cn(
+            'absolute inset-0 flex items-center gap-2 transition-all duration-300',
+            isHovered ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0',
+            status === 'unavailable' && 'pointer-events-none',
+          )}
+        >
+          <span>view resume</span>
+          <ExternalLink className="size-3" />
+        </div>
+      </div>
+    </a>
+  );
+}
