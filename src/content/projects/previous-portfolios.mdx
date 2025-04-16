@@ -1,0 +1,69 @@
+---
+title: 'Previous Portfolios'
+description: 'I have a habit of making new portfolios every few years as they tend to be my playground for learning new things. Here is a growing collection of all my previous ones.'
+pubDate: '2019-08-19T05:00:00.000Z'
+updatedDate: '2025-04-16T05:00:00.000Z'
+heroImage: '/public/images/previous-portfolios-cover.svg'
+slug: 'previous-portfolios'
+tags:
+  - portfolio
+---
+
+import { PreviousPortfolios } from '~/utils/utils';
+
+## A growing collection of my previous portfolios
+
+For better and for worse, I have a habit of making new portfolios every few years (or less) as they tend to be my playground for learning new things. While the first few were just me building for the sake of building, the last couple have been been me looking to take things a step further.
+
+I was building these sites before I had actual projects to show off, so they are a bit sparse. However, I really enjoyed building them and learning a lot while doing so.
+
+Here is a list of links for each one (other than v1) if you want to see each of them, but I've also included screenshots below.
+
+**Portfolio Links**
+
+<ul class="list-none pl-0">
+  {Object.values(PreviousPortfolios).map((portfolio) => (
+    <li key={portfolio.title} class="pl-0">
+      <span class="font-semibold">
+        {portfolio.title} ({portfolio.releaseYear})
+      </span>
+      <div class="*:text-foreground-muted *:hover:text-foreground flex gap-2 *:transition-all">
+        <a
+          href={portfolio.liveSiteURL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          live site
+        </a>
+        <a href={portfolio.githubURL} target="_blank" rel="noopener noreferrer">
+          gitHub
+        </a>
+      </div>
+    </li>
+  ))}
+</ul>
+
+## Screenshots
+
+<div class="not-prose grid gap-4 lg:grid-cols-2">
+  {Object.values(PreviousPortfolios).map((portfolio) => (
+    <a
+      href={portfolio.liveSiteURL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group relative block"
+    >
+      <img
+        key={portfolio.title}
+        src={portfolio.image}
+        alt={`Screenshot of ${portfolio.title}`}
+        class="transition-all duration-300"
+      />
+      <div class="bg-primary absolute inset-0 flex items-center justify-center rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <span class="text-primary-foreground text-xl font-semibold">
+          {portfolio.title}
+        </span>
+      </div>
+    </a>
+  ))}
+</div>
