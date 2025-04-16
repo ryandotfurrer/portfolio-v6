@@ -1,6 +1,5 @@
 ---
 import { NavLinks, SocialLinks } from '~/utils/utils';
-
 import Link from './Link.astro';
 import NewsletterBeehiivForm from './NewsletterBeehiivForm.astro';
 import WorkStatus from './react/WorkStatus';
@@ -11,7 +10,7 @@ const currentPath = Astro.url.pathname;
 
 <footer class='border-border mx-auto mt-12 border-t-1 py-8'>
   <div class='grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-5'>
-    <div class='space-y-4 lg:col-span-2'>
+    <div class='flex flex-col space-y-4 lg:col-span-2'>
       <img
         src='/logo.svg'
         alt='Logo'
@@ -19,13 +18,13 @@ const currentPath = Astro.url.pathname;
       />
       <p>
         I'm Ryan, a frontend engineer that loves to make sh*t look good. I am
-        also a blogger, streamer, and speaker.
+        also a blogger, streamer, and public speaker.
       </p>
       <WorkStatus
         client:load
         status='available'
       />
-      <p class='pt-4 text-sm'>
+      <p class='mt-auto text-sm'>
         &copy; {today.getFullYear()} Ryan Furrer. All rights reserved.
       </p>
     </div>

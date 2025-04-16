@@ -16,37 +16,37 @@ import WhatIDo from '../sections/WhatIDo.astro';
 >
   <header>
     <hgroup
-      class='w-fit pt-16 [transform-style:preserve-3d] perspective-[1000px] md:w-4/5 xl:w-4/5'
+      class='pt-16 [transform-style:preserve-3d] perspective-[1000px] lg:w-4/5'
     >
       <Heading
         level='h1'
+        size='sm'
+        class='text-foreground-muted pb-1 font-sans font-light tracking-wide uppercase md:text-base'
+      >
+        Ryan Furrer — Frontend Engineer
+      </Heading>
+      <Heading
+        level='h2'
         size='4xl'
-        align='center'
-        class='leading-tighter text-left text-pretty md:text-7xl md:text-balance lg:text-8xl xl:text-9xl'
+        class='mb-0 pb-0 md:text-7xl lg:text-8xl xl:text-9xl'
       >
         Let's create something <AnimatedWord client:load /> together
       </Heading>
-      <p
-        class='font-sans font-light md:text-2xl md:tracking-wide md:text-balance lg:text-3xl xl:text-4xl'
-      >
-        This is my home on the internet where I get to share my thoughts,
-        projects, and ideas with you.
-      </p>
     </hgroup>
-    <div class='flex justify-start gap-4 pt-8'>
+    <div class='grid grid-cols-2 justify-start gap-4 pt-6 md:flex md:pt-8'>
       <Link
         href='/contact'
         variant='primary'
         size='lg'
       >
-        contact me
+        say hello
       </Link>
       <Link
         href='/projects'
         variant='outline'
         size='lg'
       >
-        view projects
+        see my work
       </Link>
     </div>
   </header>
