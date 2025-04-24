@@ -34,11 +34,11 @@ const currentPath = Astro.url.pathname;
         >
           <div class='w-full'>
             <Image
-              width={1000}
-              height={1000}
+              width={1920}
+              height={1080}
               src={project.data.heroImage ?? ''}
               alt={project.data.title}
-              class='border-border aspect-video rounded-md border transition-all md:brightness-90 md:group-hover:brightness-100'
+              class='border-border aspect-video rounded-md border object-cover transition-all md:brightness-90 md:group-hover:brightness-100'
             />
           </div>
           <header>
