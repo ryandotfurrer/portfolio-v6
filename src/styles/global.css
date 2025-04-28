@@ -43,7 +43,7 @@
   --color-foreground: var(--color-zinc-900);
 
   --color-muted: var(--color-zinc-300);
-  --color-foreground-muted: var(--color-zinc-500);
+  --color-foreground-muted: var(--color-zinc-600);
 
   --color-card: var(--color-zinc-50);
   --color-card-foreground: var(--color-foreground-muted);
