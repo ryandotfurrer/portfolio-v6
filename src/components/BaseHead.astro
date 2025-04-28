@@ -1,6 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 import { SITE_TITLE } from '../consts';
 import { ClientRouter } from 'astro:transitions';
@@ -13,11 +11,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {
-  title = 'Ryan Furrer',
-  description = 'Frontend engineer that loves to make sh*t look good. I am also a blogger, streamer, and public speaker.',
-  image = '/og-image.png',
-} = Astro.props;
+const { title, description, image = '/og-image.png' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
