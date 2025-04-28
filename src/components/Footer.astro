@@ -9,7 +9,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <footer class='border-border mx-auto mt-12 border-t-1 py-8'>
-  <div class='grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-5'>
+  <div class='grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-6'>
     <div class='flex flex-col space-y-4 lg:col-span-2'>
       <img
         src='/logo.svg'
@@ -83,7 +83,7 @@ const currentPath = Astro.url.pathname;
         </li>
       </ul>
     </div>
-    <div class='space-y-2'>
+    <div class='space-y-2 lg:col-span-2'>
       <p class='font-semibold uppercase'>newsletter</p>
       <p>Here we talk about software engineering, tech, and productivity.</p>
       <NewsletterBeehiivForm />
