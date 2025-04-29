@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
-import { SITE_TITLE } from '../consts';
 import { ClientRouter } from 'astro:transitions';
+import { SITE_TITLE } from '../consts';
 
 interface Props {
   title: string;
@@ -110,7 +110,7 @@ const { title, description, image = '/og-image.png' } = Astro.props;
     content={new URL(image, Astro.url)}
   />
 
-  <!-- Twitter -->
+  <!-- X/Twitter -->
   <meta
     property='twitter:card'
     content='summary_large_image'
