@@ -12,12 +12,28 @@ import {
 export function ModeToggle() {
   const [theme, setThemeState] = React.useState<
     'theme-light' | 'dark' | 'system'
-  >('theme-light');
+  >(() => {
+    // Get initial theme from localStorage or system preference
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme') as 'theme-light' | 'dark' | 'system';
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'theme-light';
+  });
 
   React.useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    setThemeState(isDarkMode ? 'dark' : 'theme-light');
-  }, []);
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const handleChange = () => {
+      if (theme === 'system') {
+        document.documentElement.classList.toggle('dark', mediaQuery.matches);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [theme]);
 
   React.useEffect(() => {
     const isDark =
@@ -25,6 +41,7 @@ export function ModeToggle() {
       (theme === 'system' &&
         window.matchMedia('(prefers-color-scheme: dark)').matches);
     document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   return (

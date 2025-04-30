@@ -1,4 +1,5 @@
 ---
+import { ModeToggle } from './react/ModeToggle';
 import { NavLinks } from '../utils/utils';
 import Link from './Link.astro';
 import MobileMenu from './react/MobileMenu.tsx';
@@ -37,6 +38,7 @@ import MobileMenu from './react/MobileMenu.tsx';
   </ul>
 
   <div class='flex items-center gap-4'>
+    <ModeToggle client:only />
     <Link
       href='/contact'
       variant='primary'
