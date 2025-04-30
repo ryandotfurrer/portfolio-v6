@@ -2,13 +2,22 @@
 title: 'About Me'
 description: 'Want to know more about me? My journey? What I do?'
 pubDate: '2025-04-08T05:00:00.000Z'
-heroImage: '/blog-placeholder-3.jpg'
 tags:
   - about
   - devblog
 ---
 
+import profilePicture from '~/images/ryan.jpeg';
 import Signature from '~/components/Signature.astro';
+import { Image } from 'astro:assets';
+
+<Image
+  class="rounded-md md:w-1/2 lg:w-1/4"
+  src={profilePicture}
+  alt="Ryan Furrer"
+  width={2560}
+  height={2560}
+/>
 
 👋🏻 Hey, I’m Ryan Furrer — a Frontend Web Developer, streamer, and blogger passionate about crafting user-friendly digital experiences. From Long Island, NY, I’ve transitioned from a music career to tech, bringing creativity and problem-solving to every project.
 
