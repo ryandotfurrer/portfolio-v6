@@ -9,9 +9,15 @@ tags:
 
 import profilePicture from '~/images/ryan.jpeg';
 import Signature from '~/components/Signature.astro';
-import Image from 'astro/components/Image.astro';
+import { Image } from 'astro:assets';
 
-<Image class="w-1/5 rounded-md" src={profilePicture} alt="Ryan Furrer" />
+<Image
+  class="w-1/5 rounded-md"
+  src={profilePicture}
+  alt="Ryan Furrer"
+  width={100}
+  height={100}
+/>
 
 👋🏻 Hey, I’m Ryan Furrer — a Frontend Web Developer, streamer, and blogger passionate about crafting user-friendly digital experiences. From Long Island, NY, I’ve transitioned from a music career to tech, bringing creativity and problem-solving to every project.
 
