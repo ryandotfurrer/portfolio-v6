@@ -3,13 +3,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import Image from 'astro/components/Image.astro';
 import Link from '../components/Link.astro';
 import Navbar from '../components/Navbar.astro';
 import Newsletter from '../components/Newsletter.astro';
 import ProjectPageLinks from '~/components/ProjectPageLinks.astro';
 import Tag from '~/components/Tag.astro';
 import type { CollectionEntry } from 'astro:content';
-
 type Props = CollectionEntry<'blog'>['data'] & {
   links?: {
     site?: string;
@@ -92,10 +92,10 @@ const {
             <div class='w-full'>
               {
                 heroImage && (
-                  <img
-                    class='border-border aspect-video w-full rounded-lg'
+                  <Image
+                    class='border-border aspect-video w-full rounded-lg object-cover'
                     src={heroImage}
-                    alt={heroImageAltText}
+                    alt={heroImageAltText ?? ''}
                     width={1920}
                     height={1080}
                   />
