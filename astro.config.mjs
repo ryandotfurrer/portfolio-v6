@@ -12,7 +12,14 @@ export default defineConfig({
     contentIntellisense: true,
   },
   site: 'https://ryanfurrer.com',
-  integrations: [mdx(), react(), sitemap()],
+  integrations: [
+    mdx({
+      syntaxHighlight: 'shiki',
+      shikiConfig: { theme: 'min-light' },
+    }),
+    react(),
+    sitemap(),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
