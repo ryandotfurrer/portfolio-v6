@@ -3,13 +3,14 @@ title: 'Previous Portfolios'
 description: 'I have a habit of making new portfolios every few years as they tend to be my playground for learning new things. Here is a growing collection of all my previous ones.'
 pubDate: '2019-08-19T05:00:00.000Z'
 updatedDate: '2025-04-30T05:00:00.000Z'
-heroImage: '/previous-portfolios-cover.svg'
+heroImage: '/images/portfolio-v6.png'
 slug: 'previous-portfolios'
 tags:
   - portfolio
 ---
 
 import { PreviousPortfolios } from '~/utils/utils';
+import { Image } from 'astro:assets';
 
 ## A growing collection of my previous portfolios
 
@@ -53,11 +54,13 @@ Here is a list of links for each one (other than v1) if you want to see each of 
       rel="noopener noreferrer"
       class="group relative block"
     >
-      <img
+      <Image
         key={portfolio.title}
         src={portfolio.image}
         alt={`Screenshot of ${portfolio.title}`}
         class="transition-all duration-300"
+        width={2560}
+        height={1440}
       />
       <div class="bg-primary absolute inset-0 flex items-center justify-center rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         <span class="text-primary-foreground text-xl font-semibold">
