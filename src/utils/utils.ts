@@ -17,6 +17,9 @@ export const NavLinks = [
 export const SocialLinks = {
   bento: { href: 'https://bento.me/ryandotfurrer' },
   github: { href: 'https://github.com/ryandotfurrer' },
+  githubPortfolioRepo: {
+    href: 'https://github.com/ryandotfurrer/portfolio-v6',
+  },
   linkedin: { href: 'https://www.linkedin.com/in/ryanfurrer/' },
   twitch: { href: 'https://www.twitch.tv/ryandotfurrer' },
   x: { href: 'https://x.com/ryandotfurrer' },
