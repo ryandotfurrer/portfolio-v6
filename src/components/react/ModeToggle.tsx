@@ -20,7 +20,7 @@ export function ModeToggle({ className }: ModeToggleProps) {
   >(() => {
     // Get initial theme from localStorage or system preference
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme') as 'theme-light' | 'dark' | 'system';
+      return localStorage.getItem('theme') as 'system' | 'theme-light' | 'dark';
     }
     return window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
