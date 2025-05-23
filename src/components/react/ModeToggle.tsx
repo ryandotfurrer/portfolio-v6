@@ -16,7 +16,7 @@ interface ModeToggleProps {
 
 export function ModeToggle({ className }: ModeToggleProps) {
   const [theme, setThemeState] = React.useState<
-    'theme-light' | 'dark' | 'system'
+    'system' | 'theme-light' | 'dark'
   >(() => {
     // Get initial theme from localStorage or system preference
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
