@@ -16,11 +16,11 @@ interface ModeToggleProps {
 
 export function ModeToggle({ className }: ModeToggleProps) {
   const [theme, setThemeState] = React.useState<
-    'system' | 'theme-light' | 'dark'
+    'theme-light' | 'dark' | 'system'
   >(() => {
     // Get initial theme from localStorage or system preference
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme') as 'system' | 'theme-light' | 'dark';
+      return localStorage.getItem('theme') as 'theme-light' | 'dark' | 'system';
     }
     return window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
