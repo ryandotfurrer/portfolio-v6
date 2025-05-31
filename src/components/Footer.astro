@@ -24,18 +24,6 @@ const currentPath = Astro.url.pathname;
           >looking for work</span
         >
       </div>
-      <p class="mt-4 mb-1 text-sm">
-        &copy; {today.getFullYear()} Ryan Furrer. All rights reserved.
-      </p>
-      <p class="">
-        <Link
-          class="text-sm"
-          externalLink
-          withIcon
-          href={SocialLinks.githubPortfolioRepo.href}
-          ><Github className="size-5 text-zinc-500" />View this site's repo</Link
-        >
-      </p>
     </div>
     <div id="sitemap" class="text-left">
       <p class="mb-2 font-semibold uppercase">sitemap</p>
@@ -66,7 +54,6 @@ const currentPath = Astro.url.pathname;
         <li>
           <Link
             externalLink
-            withIcon
             href={SocialLinks.x.href}
             class="group flex w-fit items-center"
             ><Twitter
@@ -77,7 +64,6 @@ const currentPath = Astro.url.pathname;
         <li>
           <Link
             externalLink
-            withIcon
             href={SocialLinks.github.href}
             class="group flex w-fit items-center"
             ><Github
@@ -88,7 +74,6 @@ const currentPath = Astro.url.pathname;
         <li>
           <Link
             externalLink
-            withIcon
             href={SocialLinks.linkedin.href}
             class="group flex w-fit items-center"
             ><Linkedin
@@ -99,7 +84,6 @@ const currentPath = Astro.url.pathname;
         <li>
           <Link
             externalLink
-            withIcon
             href={SocialLinks.bento.href}
             class="group flex w-fit items-center"
             ><Globe className="group-hover:text-foreground size-5" />bento</Link
@@ -112,5 +96,21 @@ const currentPath = Astro.url.pathname;
       <p>Here we talk about software engineering, tech, and productivity.</p>
       <NewsletterBeehiivForm />
     </div>
+  </div>
+  <div
+    class="align-items mx-auto pt-4 text-center text-sm md:flex md:justify-between md:text-left"
+  >
+    <p>
+      &copy; {today.getFullYear()} Ryan Furrer. All rights reserved.
+    </p>
+    <p>
+      <Link
+        externalLink
+        href={SocialLinks.githubPortfolioRepo.href}
+        class="group text-sm"
+        ><Github className="group-hover:text-foreground size-4" />View this
+        site's repo</Link
+      >
+    </p>
   </div>
 </footer>
