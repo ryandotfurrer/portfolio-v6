@@ -6,20 +6,16 @@ import MobileMenu from './react/MobileMenu.tsx';
 ---
 
 <nav
-  class='bg-card border-border flex w-full items-center justify-between rounded-lg border p-4'
+  class="bg-card border-border flex w-full items-center justify-between rounded-lg border p-4"
 >
   <Link
-    href='/'
-    class='font-handwritten text-foreground hover:text-accent flex items-center gap-2 text-2xl transition-transform duration-500 ease-(--spring-small) hover:scale-110 hover:no-underline active:scale-95'
+    href="/"
+    class="text-foreground flex items-center gap-2 font-sans text-3xl font-semibold tracking-tight transition-transform duration-500 ease-(--spring-small) hover:scale-110 hover:no-underline active:scale-95"
   >
-    <img
-      src='/logo.svg'
-      alt='Logo'
-      class='size-10'
-    />
+    <img src="/logo.svg" class="size-10" />
   </Link>
 
-  <ul class='hidden gap-4 md:flex'>
+  <ul class="hidden gap-4 md:flex">
     {
       NavLinks.map((link) => (
         <li>
@@ -37,16 +33,13 @@ import MobileMenu from './react/MobileMenu.tsx';
     }
   </ul>
 
-  <div class='ml-auto flex items-center gap-4 md:ml-0'>
-    <ModeToggle
-      client:only='react'
-      className='mr-4 hidden md:mr-0 md:block'
-    />
+  <div class="ml-auto flex items-center gap-4 md:ml-0">
+    <ModeToggle client:only="react" className="mr-4 hidden md:mr-0 md:block" />
     <Link
-      href='/contact'
-      variant='primary'
-      size='sm'
-      class='hidden lowercase md:flex'
+      href="/contact"
+      variant="primary"
+      size="sm"
+      class="hidden lowercase md:flex"
     >
       Contact
     </Link>

@@ -18,7 +18,7 @@ const workStatusConfig = {
       'https://drive.google.com/file/d/1TKx0759oiqfimdtL55UCbd1pXuZl7eIy/view?usp=sharing',
   },
   unavailable: {
-    text: 'not available',
+    text: 'unavailable for work',
     dotClasses: 'bg-rose-400 border-rose-600',
     resumeUrl: '#', // You might want to disable the link entirely for unavailable status
   },
@@ -39,7 +39,7 @@ export default function WorkStatus({
   return (
     <a
       className={cn(
-        'group bg-card hover:from-card hover:to-secondary hover:via-card/50 relative flex h-10 w-fit items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 hover:bg-gradient-to-b',
+        'group bg-card hover:from-card hover:to-secondary hover:via-card/50 relative flex w-fit items-center gap-2 rounded-xs border p-2 text-xs transition-all duration-300 hover:bg-gradient-to-b md:text-sm',
         className,
       )}
       href={resumeUrl}

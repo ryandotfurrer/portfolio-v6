@@ -18,25 +18,19 @@ const { pageTitle, pageDescription, hasCTA = false } = Astro.props;
 const currentPage = Astro.url.pathname;
 ---
 
-<html lang='en'>
-  <BaseHead
-    title={SITE_TITLE}
-    description={SITE_DESCRIPTION}
-  />
+<html lang="en">
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   <body>
-    <div class='container mx-auto max-w-screen-xl p-4'>
+    <div class="container mx-auto max-w-screen-xl p-4">
       <header>
         <Navbar />
         {
-          currentPage != '/' ?
-            <HGroup
-              pageTitle={pageTitle}
-              pageDescription={pageDescription}
-            />
-          : null
+          currentPage != '/' ? (
+            <HGroup pageTitle={pageTitle} pageDescription={pageDescription} />
+          ) : null
         }
       </header>
-      <main class='space-y-24 py-12 lg:space-y-32'>
+      <main class="space-y-24 py-12 lg:space-y-32">
         <slot />
       </main>
       <Newsletter />
