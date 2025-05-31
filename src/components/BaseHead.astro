@@ -80,5 +80,25 @@ const { title, description, image = '/og-image.png' } = Astro.props;
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+  <!-- Theme script to prevent flash -->
+  <script is:inline>
+    // Check for saved theme in localStorage or use system as default
+    const theme = (() => {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      // Default to system theme
+      return 'system';
+    })();
+    
+    // Apply dark class immediately based on system preference if using system theme
+    const isDark = 
+      theme === 'dark' || 
+      (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    // Toggle dark class instead of add/remove for consistency
+    document.documentElement.classList.toggle('dark', isDark);
+  </script>
+
   <ClientRouter />
 </head>
