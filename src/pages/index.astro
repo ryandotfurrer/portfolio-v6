@@ -19,18 +19,20 @@ import WhatIDo from '../sections/WhatIDo.astro';
       class="pt-16 [transform-style:preserve-3d] perspective-[1000px] lg:w-4/5"
     >
       <div class="mb-4 flex items-center gap-2">
-        <div class="bg-secondary flex items-center rounded-xs border">
+        <div
+          class="bg-secondary/50 flex items-center rounded-sm border border-transparent"
+        >
           <span
-            class="text-foreground-muted p-2 font-sans text-xs leading-none font-normal tracking-normal md:text-sm"
+            class="text-foreground-muted p-2 font-sans text-xs leading-none font-semibold tracking-normal md:text-sm"
           >
             Ryan Furrer — Frontend Engineer
           </span>
         </div>
         <div
-          class="flex w-fit items-center rounded-xs border border-emerald-300 bg-emerald-200/20 dark:border-emerald-700 dark:bg-emerald-800/70"
+          class="dark:bg-background flex w-fit items-center rounded-sm border border-emerald-500 bg-white"
         >
           <span
-            class="mb-0 p-2 font-sans text-xs leading-none font-normal tracking-normal text-emerald-600 md:text-sm dark:text-emerald-400"
+            class="mb-0 bg-emerald-200/20 p-2 font-sans text-xs leading-none font-semibold tracking-normal text-emerald-700 md:text-sm dark:bg-emerald-800/50 dark:text-emerald-500"
             >looking for work</span
           >
         </div>
