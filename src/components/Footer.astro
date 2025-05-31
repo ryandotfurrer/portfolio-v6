@@ -2,6 +2,7 @@
 import { NavLinks, SocialLinks } from '~/utils/utils';
 import Link from './Link.astro';
 import NewsletterBeehiivForm from './NewsletterBeehiivForm.astro';
+import { Twitter, Linkedin, Github, Globe } from 'lucide-react';
 
 const today = new Date();
 const currentPath = Astro.url.pathname;
@@ -23,32 +24,6 @@ const currentPath = Astro.url.pathname;
           >looking for work</span
         >
       </div>
-      <p class="mt-4 mb-1 text-sm">
-        &copy; {today.getFullYear()} Ryan Furrer. All rights reserved.
-      </p>
-      <p class="">
-        <Link
-          class="text-sm"
-          externalLink
-          withIcon
-          href={SocialLinks.githubPortfolioRepo.href}
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-github-icon lucide-github text-foreground-muted size-5"
-            ><path
-              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
-            ></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg
-          >View this site's repo</Link
-        >
-      </p>
     </div>
     <div id="sitemap" class="text-left">
       <p class="mb-2 font-semibold uppercase">sitemap</p>
@@ -77,23 +52,41 @@ const currentPath = Astro.url.pathname;
       <p class="mb-2 font-semibold uppercase">socials</p>
       <ul class="flex flex-col gap-2">
         <li>
-          <Link externalLink withIcon href={SocialLinks.x.href}
-            >Follow me on X</Link
+          <Link
+            externalLink
+            href={SocialLinks.x.href}
+            class="group flex w-fit items-center"
+            ><Twitter
+              className="group-hover:text-foreground size-5"
+            />twitter</Link
           >
         </li>
         <li>
-          <Link externalLink withIcon href={SocialLinks.github.href}
-            >Follow me on GitHub</Link
+          <Link
+            externalLink
+            href={SocialLinks.github.href}
+            class="group flex w-fit items-center"
+            ><Github
+              className="group-hover:text-foreground size-5"
+            />github</Link
           >
         </li>
         <li>
-          <Link externalLink withIcon href={SocialLinks.linkedin.href}
-            >Follow me on LinkedIn</Link
+          <Link
+            externalLink
+            href={SocialLinks.linkedin.href}
+            class="group flex w-fit items-center"
+            ><Linkedin
+              className="group-hover:text-foreground size-5"
+            />linkedIn</Link
           >
         </li>
         <li>
-          <Link externalLink withIcon href={SocialLinks.bento.href}
-            >Find me everywhere else</Link
+          <Link
+            externalLink
+            href={SocialLinks.bento.href}
+            class="group flex w-fit items-center"
+            ><Globe className="group-hover:text-foreground size-5" />bento</Link
           >
         </li>
       </ul>
@@ -103,5 +96,21 @@ const currentPath = Astro.url.pathname;
       <p>Here we talk about software engineering, tech, and productivity.</p>
       <NewsletterBeehiivForm />
     </div>
+  </div>
+  <div
+    class="align-items mx-auto pt-8 text-center text-sm max-sm:space-y-4 md:flex md:justify-between md:text-left"
+  >
+    <p>
+      &copy; {today.getFullYear()} Ryan Furrer. All rights reserved.
+    </p>
+    <p>
+      <Link
+        externalLink
+        href={SocialLinks.githubPortfolioRepo.href}
+        class="group text-sm"
+        ><Github className="group-hover:text-foreground size-4" />View this
+        site's repo</Link
+      >
+    </p>
   </div>
 </footer>
