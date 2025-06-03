@@ -60,8 +60,3 @@ export const PreviousPortfolios = {
     image: '/images/portfolio-v5.png',
   },
 };
-
-export const Conferences = {
-  commit: 'the Commit Your Code Conference',
-  render: '🍑 RenderATL'
-}

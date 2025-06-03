@@ -2,30 +2,25 @@
 import { Github, Globe, Linkedin, Twitter } from 'lucide-react';
 import Link from '~/components/Link.astro';
 import Signature from '~/components/Signature.astro';
-import { Conferences, SocialLinks } from '~/utils/utils';
+import { SocialLinks } from '~/utils/utils';
 import CalEmbed from '../../components/react/CalEmbed.jsx';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-export const prerender = false
-const confParam = Astro.url.searchParams.get('conf')
-
-type ConferenceKey = keyof typeof Conferences
-const validEvent =
-  confParam && confParam in Conferences ? (confParam as ConferenceKey) : null
+import EventGreeting from '../../components/react/EventGreeting.tsx';
 ---
 <BaseLayout pageTitle="contact" pageDescription="tweet, email, or book a call">
     <main class='space-y-12  max-w-screen-lg mx-auto'>
     <section class="space-y-4">
-        {
+        <!-- {
           validEvent && (
             <div class="bg-gradient-to-r from-orange-500/10 to-red-500/20 dark:bg-accent/20 border-accent/50 border dark:border-accent max-sm:p-2 p-4 mb-12 rounded-md text-foreground max-w-fit mx-auto text-center text-balance">
               <p class="text-xl font-bold tracking-tight md:text-xl lg:text-2xl xl:text-3xl leading-[1.6em]">
                   👋 It was <span class='border-b-4 border-accent'>GREAT</span> connecting with you at{' '}
-                {Conferences[validEvent]}!
+                {Events[validEvent]}!
               </p>
             </div>
           )
-        }
+        } -->
+        <EventGreeting client:load />
       <p>
         I'd love to hear from you so feel free to reach out to me via social
         media, email, or book a call via Cal below!
