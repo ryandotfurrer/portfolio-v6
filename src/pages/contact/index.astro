@@ -1,12 +1,12 @@
 ---
-import { Github, Globe, Linkedin, Twitter } from "lucide-react";
+import { Github, Globe, Linkedin, Twitter } from 'lucide-react';
 import Link from '~/components/Link.astro';
 import Signature from '~/components/Signature.astro';
 import { Conferences, SocialLinks } from '~/utils/utils';
 import CalEmbed from '../../components/react/CalEmbed.jsx';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-export const prerender = false
+export const prerender = true
 const confParam = Astro.url.searchParams.get('conf')
 
 type ConferenceKey = keyof typeof Conferences
