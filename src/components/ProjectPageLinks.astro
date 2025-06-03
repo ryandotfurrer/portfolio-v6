@@ -11,15 +11,15 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<div class='mb-12 flex flex-col gap-4 md:flex-row'>
+<div class="mb-12 flex flex-col gap-4 md:flex-row">
   {
     links?.site && (
       <Link
         href={links.site}
         externalLink
-        variant='primary'
-        size='button'
-        class='font-light no-underline'
+        variant="primary"
+        size="button"
+        class="font-light no-underline"
       >
         View Project
       </Link>
@@ -30,9 +30,9 @@ const { links } = Astro.props;
       <Link
         href={links.github}
         externalLink
-        variant='outline'
-        size='button'
-        class='text-foreground-muted font-light no-underline'
+        variant="outline"
+        size="button"
+        class="text-foreground-muted font-light no-underline"
       >
         View GitHub
       </Link>

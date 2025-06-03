@@ -35,18 +35,18 @@ const { page } = Astro.props as {
 ---
 
 <BaseLayout
-  pageTitle='writing'
-  pageDescription='a collection of my writing and articles'
+  pageTitle="writing"
+  pageDescription="a collection of my writing and articles"
 >
   {
     page.currentPage === 1 && (
       <FeaturedWriting
-        title='Featured Writing'
-        description='Check out some of my featured articles'
+        title="Featured Writing"
+        description="Check out some of my featured articles"
       />
     )
   }
-  <div id='writing-list'>
+  <div id="writing-list">
     <AllItemsList
       collection={page.data.map((item: WritingEntry) => ({
         collection: item.collection,

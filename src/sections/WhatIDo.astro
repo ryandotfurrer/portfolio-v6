@@ -6,263 +6,225 @@ import ExternalLink from '~/components/icons/ExternalLink.astro';
 import Heading from '../components/Heading.astro';
 ---
 
-<section id='what-i-do'>
-  <Heading
-    level='h2'
-    size='3xl'
-  >
-    what I do
-  </Heading>
-  <div class='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+
+<section id="what-i-do">
+  <Heading level="h2" size="3xl"> what I do </Heading>
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+
     <Card
-      href='/projects'
-      class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      href="/projects"
+      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10'
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          stroke='currentColor'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          class='lucide lucide-code-xml stroke-foreground size-5 transition-colors'
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-code-xml stroke-foreground size-5 transition-colors"
         >
-          <path d='m18 16 4-4-4-4'></path>
-          <path d='m6 8-4 4 4 4'></path>
-          <path d='m14.5 4-5 16'></path>
+          <path d="m18 16 4-4-4-4"></path>
+          <path d="m6 8-4 4 4 4"></path>
+          <path d="m14.5 4-5 16"></path>
         </svg>
       </div>
-      <Heading
-        level='h3'
-        size='2xl'
-      >
-        Building a better web
-      </Heading>
+      <Heading level="h3" size="2xl"> Building a better web </Heading>
       <p>
         I build accessible, performant web applications with modern tools like
         React, TypeScript, and Next.js. Check out my latest projects.
       </p>
-      <span class='text-foreground flex items-center gap-x-2'>
+      <span class="text-foreground flex items-center gap-x-2">
         view my projects <ArrowRight
-          class='size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+          class="size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
         />
       </span>
     </Card>
     <Card
-      href='https://webdevdialogues.com'
-      class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      href="https://webdevdialogues.com"
+      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10'
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          stroke='currentColor'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          class='lucide lucide-headphones stroke-foreground size-5 transition-colors'
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-headphones stroke-foreground size-5 transition-colors"
           ><path
-            d='M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3'
+            d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"
           ></path></svg
         >
       </div>
-      <Heading
-        level='h3'
-        size='2xl'
-      >
-        Web Dev Dialogues Podcast
-      </Heading>
+      <Heading level="h3" size="2xl"> Web Dev Dialogues Podcast </Heading>
       <p>
         Join me for in-depth conversations with web developers about their
         journeys, tech stacks, and lessons learned along the way.
       </p>
-      <span class='text-foreground flex items-center gap-x-2'>
+      <span class="text-foreground flex items-center gap-x-2">
         listen to the podcast <ExternalLink
-          class='size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+          class="size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
         />
       </span>
     </Card>
     <Card
-      href='/writing'
-      class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      href="/writing"
+      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10'
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          stroke='currentColor'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          class='lucide lucide-notebook-pen stroke-foreground size-5 transition-colors'
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-notebook-pen stroke-foreground size-5 transition-colors"
         >
           <path
-            d='M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4'
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
           ></path>
-          <path d='M2 6h4'></path>
-          <path d='M2 10h4'></path>
-          <path d='M2 14h4'></path>
-          <path d='M2 18h4'></path>
+          <path d="M2 6h4"></path>
+          <path d="M2 10h4"></path>
+          <path d="M2 14h4"></path>
+          <path d="M2 18h4"></path>
           <path
-            d='M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z'
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
           ></path>
         </svg>
       </div>
-      <Heading
-        level='h3'
-        size='2xl'
-      >
-        Learn by reading
-      </Heading>
+      <Heading level="h3" size="2xl"> Learn by reading </Heading>
       <p>
         I share detailed technical guides, career advice, and insights from my
         experience as a web developer through my blog posts.
       </p>
-      <span class='text-foreground flex items-center gap-x-2'>
+      <span class="text-foreground flex items-center gap-x-2">
         read what I've written <ArrowRight
-          class='size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+          class="size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
         />
       </span>
     </Card>
     <Card
-      href='/speaking'
-      class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      href="/speaking"
+      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10'
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          stroke='currentColor'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          class='lucide lucide-presentation stroke-foreground size-5 transition-colors'
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-presentation stroke-foreground size-5 transition-colors"
         >
-          <path d='M2 3h20'></path>
-          <path d='M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3'></path>
-          <path d='m7 21 5-5 5 5'></path>
+          <path d="M2 3h20"></path>
+          <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
+          <path d="m7 21 5-5 5 5"></path>
         </svg>
       </div>
-      <Heading
-        level='h3'
-        size='2xl'
-      >
-        Learn by watching
-      </Heading>
+      <Heading level="h3" size="2xl"> Learn by watching </Heading>
       <p>
         From conference talks to live coding sessions, I break down complex web
         development concepts into clear, actionable lessons.
       </p>
-      <span class='text-foreground flex items-center gap-x-2'>
+      <span class="text-foreground flex items-center gap-x-2">
         watch my talks <ArrowRight
-          class='size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+          class="size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
         />
       </span>
     </Card>
     <Card
-      href='https://cal.com/ryandotfurrer/coffee-chat'
-      class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      href="https://cal.com/ryandotfurrer/coffee-chat"
+      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10'
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          stroke='currentColor'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          class='lucide lucide-mic stroke-foreground size-5 transition-colors'
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-mic stroke-foreground size-5 transition-colors"
         >
-          <path d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'></path>
-          <path d='M19 10v2a7 7 0 0 1-14 0v-2'></path>
-          <line
-            x1='12'
-            x2='12'
-            y1='19'
-            y2='22'
-          ></line>
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" x2="12" y1="19" y2="22"></line>
         </svg>
       </div>
-      <Heading
-        level='h3'
-        size='2xl'
-      >
-        Book a Coffee Chat
-      </Heading>
+      <Heading level="h3" size="2xl"> Book a Coffee Chat </Heading>
       <p>
         Let's chat about web development, career growth, or your next project.
         Schedule a free 15 or 25-minute video call with me.
       </p>
-      <span class='text-foreground flex items-center gap-x-2'>
+      <span class="text-foreground flex items-center gap-x-2">
         book a call <ExternalLink
-          class='size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+          class="size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
         />
       </span>
     </Card>
     <Card
       href={SocialLinks.twitch.href}
-      class='transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class='bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10'
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          stroke='currentColor'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          class='lucide lucide-twitch stroke-foreground size-5 transition-colors'
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-twitch stroke-foreground size-5 transition-colors"
         >
-          <path d='M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7'></path>
+          <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"></path>
         </svg>
       </div>
-      <Heading
-        level='h3'
-        size='2xl'
-      >
-        Hang out live
-      </Heading>
+      <Heading level="h3" size="2xl"> Hang out live </Heading>
       <p>
         Watch me code, debug, and build projects in real-time. Join the chat to
         ask questions and learn together.
       </p>
-      <span class='text-foreground flex items-center gap-x-2'>
+      <span class="text-foreground flex items-center gap-x-2">
         watch my streams <ExternalLink
-          class='size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+          class="size-4 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
         />
       </span>
     </Card>

@@ -11,58 +11,61 @@ import WhatIDo from '../sections/WhatIDo.astro';
 
 <BaseLayout
   pageTitle="Let's create something special together"
-  pageDescription='Come learn how I can help you build a better web'
+  pageDescription="Come learn how I can help you build a better web"
   hasCTA={true}
 >
   <header>
     <hgroup
-      class='pt-16 [transform-style:preserve-3d] perspective-[1000px] lg:w-4/5'
+      class="pt-16 [transform-style:preserve-3d] perspective-[1000px] lg:w-4/5"
     >
+      <div class="mb-4 flex items-center gap-2">
+        <div
+          class="bg-secondary/50 flex items-center rounded-sm border border-transparent"
+        >
+          <span
+            class="text-foreground-muted p-2 font-sans text-xs leading-none font-semibold tracking-normal md:text-sm"
+          >
+            Ryan Furrer — Frontend Engineer
+          </span>
+        </div>
+        <div
+          class="dark:bg-background flex w-fit items-center rounded-sm border border-emerald-500 bg-white"
+        >
+          <span
+            class="mb-0 rounded-sm border border-transparent bg-emerald-200/20 p-2 font-sans text-xs leading-none font-semibold tracking-normal text-emerald-700 md:text-sm dark:bg-emerald-800/50 dark:text-emerald-500"
+            >looking for work</span
+          >
+        </div>
+      </div>
       <Heading
-        level='h1'
-        size='sm'
-        class='text-foreground-muted pb-1 font-sans font-light tracking-wide uppercase md:text-base'
-      >
-        Ryan Furrer — Frontend Engineer
-      </Heading>
-      <Heading
-        level='h2'
-        size='4xl'
-        class='mb-0 pb-0 md:text-7xl lg:text-8xl xl:text-9xl'
+        level="h2"
+        size="4xl"
+        class="mb-2 pb-0 md:text-7xl lg:text-8xl xl:text-9xl"
       >
         Let's create something <AnimatedWord client:load /> together
       </Heading>
     </hgroup>
-    <div class='grid grid-cols-2 justify-start gap-4 pt-6 md:flex md:pt-8'>
+    <div class="grid grid-cols-2 justify-start gap-4 pt-6 md:flex md:pt-8">
       <Link
-        class='text-sm sm:text-base'
-        href='/contact'
-        variant='primary'
-        size='lg'
+        class="text-sm sm:text-base"
+        href="/contact"
+        variant="primary"
+        size="lg"
       >
         say hello
       </Link>
       <Link
-        class='text-sm sm:text-base'
-        href='/projects'
-        variant='outline'
-        size='lg'
+        class="text-sm sm:text-base"
+        href="/projects"
+        variant="outline"
+        size="lg"
       >
         see my work
       </Link>
     </div>
   </header>
   <WhatIDo />
-  <FeaturedProjects
-    title='Featured Projects'
-    description='Featured Projects'
-  />
-  <FeaturedWriting
-    title='Featured Writing'
-    description='Featured Writing'
-  />
-  <FeaturedSpeaking
-    title='Featured Speaking'
-    description='Featured Speaking'
-  />
+  <FeaturedProjects title="Featured Projects" description="Featured Projects" />
+  <FeaturedWriting title="Featured Writing" description="Featured Writing" />
+  <FeaturedSpeaking title="Featured Speaking" description="Featured Speaking" />
 </BaseLayout>

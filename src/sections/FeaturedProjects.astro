@@ -13,56 +13,46 @@ const featuredProjects = projectCollection.slice(-2).reverse();
 const currentPath = Astro.url.pathname;
 ---
 
-<section
-  id='featured-projects'
-  class='space-y-8'
->
-  <Heading
-    level='h2'
-    size='3xl'
-    >featured projects</Heading
-  >
+<section id="featured-projects" class="space-y-8">
+  <Heading level="h2" size="3xl">featured projects</Heading>
 
-  <div class='grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-0'>
+  <div class="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-0">
     {
       featuredProjects.map((project) => (
         <Card
-          class='group'
+          class="group"
           key={project.id}
           hasLink={true}
           href={`/projects/${project.id}`}
         >
-          <div class='w-full'>
+          <div class="w-full">
             <Image
               width={1920}
               height={1080}
               src={project.data.heroImage ?? ''}
               alt={project.data.title}
-              class='border-border aspect-video rounded-md border object-cover transition-all md:brightness-90 md:group-hover:brightness-100'
+              class="border-border aspect-video rounded-md border object-cover transition-all md:brightness-90 md:group-hover:brightness-100"
             />
           </div>
           <header>
             <Heading
-              level='h3'
-              size='2xl'
-              class='mb-0 flex items-center gap-x-4'
+              level="h3"
+              size="2xl"
+              class="mb-0 flex items-center gap-x-4"
             >
               {project.data.title}
             </Heading>
             <FormattedDate
-              classes='text-sm'
+              classes="text-sm"
               date={project.data.pubDate ?? new Date()}
             />
           </header>
-          <p class='line-clamp-2'>{project.data.description}</p>
+          <p class="line-clamp-2">{project.data.description}</p>
           {project.data.tags && project.data.tags.length > 0 && (
-            <div class='mt-2'>
-              <ul class='flex flex-wrap gap-2'>
+            <div class="mt-2">
+              <ul class="flex flex-wrap gap-2">
                 {project.data.tags.map((tag) => (
-                  <Tag
-                    key={tag}
-                    name={tag}
-                  >
+                  <Tag key={tag} name={tag}>
                     {tag}
                   </Tag>
                 ))}
@@ -76,9 +66,9 @@ const currentPath = Astro.url.pathname;
   {
     currentPath === '/' && (
       <Link
-        href='/projects'
+        href="/projects"
         withIcon
-        class='text-foreground-muted group-hover:text-foreground text-lg'
+        class="text-foreground-muted group-hover:text-foreground text-lg"
       >
         view all projects
       </Link>

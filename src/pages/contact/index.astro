@@ -1,70 +1,85 @@
 ---
-import { SocialLinks } from '~/utils/utils';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import CalEmbed from '../../components/react/CalEmbed.jsx';
+import { Github, Globe, Linkedin, Twitter } from 'lucide-react';
 import Link from '~/components/Link.astro';
 import Signature from '~/components/Signature.astro';
+import { SocialLinks } from '~/utils/utils';
+import CalEmbed from '../../components/react/CalEmbed.jsx';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EventGreeting from '../../components/react/EventGreeting.tsx';
 ---
-
-<BaseLayout
-  pageTitle='contact'
-  pageDescription='tweet, email, or book a call'
->
-  <main>
-    <section class='space-y-[1em]'>
+<BaseLayout pageTitle="contact" pageDescription="tweet, email, or book a call">
+    <main class='space-y-12  max-w-screen-lg mx-auto'>
+    <section class="space-y-4">
+        <!-- {
+          validEvent && (
+            <div class="bg-gradient-to-r from-orange-500/10 to-red-500/20 dark:bg-accent/20 border-accent/50 border dark:border-accent max-sm:p-2 p-4 mb-12 rounded-md text-foreground max-w-fit mx-auto text-center text-balance">
+              <p class="text-xl font-bold tracking-tight md:text-xl lg:text-2xl xl:text-3xl leading-[1.6em]">
+                  👋 It was <span class='border-b-4 border-accent'>GREAT</span> connecting with you at{' '}
+                {Events[validEvent]}!
+              </p>
+            </div>
+          )
+        } -->
+        <EventGreeting client:load />
       <p>
         I'd love to hear from you so feel free to reach out to me via social
         media, email, or book a call via Cal below!
       </p>
       <p>
-        I'm most active on <Link
-          externalLink
-          href={SocialLinks.x.href}
+        I'm most active on <Link externalLink href={SocialLinks.x.href}
           >X/Twitter</Link
-        > and <Link
-          externalLink
-          href={SocialLinks.linkedin.href}
-          >LinkedIn</Link
+        > and <Link externalLink href={SocialLinks.linkedin.href}>LinkedIn</Link
         > these days, but you can reach find me everywhere via <Link
           externalLink
-          href={SocialLinks.bento.href}
-          >Bento</Link
-        >. Or you can email me at <Link href='mailto:ryan@ryandotfurrer.com'
+          href={SocialLinks.bento.href}>Bento</Link>. Or you can email me at <Link href="mailto:ryan@ryandotfurrer.com"
           >ryan@ryandotfurrer.com</Link
         >
       </p>
     </section>
-
-    <div class='mt-8 space-y-4'>
-      <p class='mb-2 font-semibold uppercase'>socials</p>
-      <ul class='flex flex-col gap-2'>
+    <div>
+      <p class="mb-2 font-semibold uppercase">socials</p>
+      <ul class="flex flex-col gap-2 mb-4">
         <li>
           <Link
             externalLink
-            withIcon
             href={SocialLinks.x.href}
-            >Follow me on X</Link
+            class="group flex w-fit items-center"
+            ><Twitter
+              className="group-hover:text-foreground size-5"
+            />twitter</Link
           >
         </li>
         <li>
           <Link
             externalLink
-            withIcon
+            href={SocialLinks.github.href}
+            class="group flex w-fit items-center"
+            ><Github
+              className="group-hover:text-foreground size-5"
+            />github</Link
+          >
+        </li>
+        <li>
+          <Link
+            externalLink
             href={SocialLinks.linkedin.href}
-            >Follow me on LinkedIn</Link
+            class="group flex w-fit items-center"
+            ><Linkedin
+              className="group-hover:text-foreground size-5"
+            />linkedIn</Link
           >
         </li>
         <li>
           <Link
             externalLink
-            withIcon
             href={SocialLinks.bento.href}
-            >Find me everywhere else</Link
+            class="group flex w-fit items-center"
+            ><Globe className="group-hover:text-foreground size-5" />bento</Link
           >
         </li>
       </ul>
-      <Signature />
     </div>
+    <Signature />
     <CalEmbed client:load />
   </main>
 </BaseLayout>

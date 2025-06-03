@@ -25,23 +25,25 @@ const cardClasses =
 ---
 
 {
-  href ?
+  href ? (
     <div>
       <Link
         href={href}
         externalLink={externalLink}
         target={externalLink ? '_blank' : undefined}
         rel={externalLink ? 'noopener noreferrer' : undefined}
-        class='group/link block'
+        class="group/link block"
       >
         <div class={cn(cardClasses, className)}>
           <slot />
         </div>
       </Link>
     </div>
-  : <div class={cn(cardClasses, className)}>
+  ) : (
+    <div class={cn(cardClasses, className)}>
       <slot />
     </div>
+  )
 }
 
 <style>

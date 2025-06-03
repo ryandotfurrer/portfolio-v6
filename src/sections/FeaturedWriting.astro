@@ -21,79 +21,69 @@ const featuredWriting = allWriting.slice(0, 2);
 const currentPath = Astro.url.pathname;
 ---
 
-<section
-  id='featured-writing'
-  class='space-y-8'
->
-  <Heading
-    level='h2'
-    size='3xl'
-    >featured writing</Heading
-  >
+<section id="featured-writing" class="space-y-8">
+  <Heading level="h2" size="3xl">featured writing</Heading>
 
-  <div class='grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-0'>
+  <div class="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-0">
     {
       featuredWriting.map((post) => (
         <Card
-          class='group'
+          class="group"
           key={post.id}
           hasLink={true}
           href={
-            post.collection === 'newsletter' ?
-              post.data.webURL
-            : `/writing/${post.id}`
+            post.collection === 'newsletter'
+              ? post.data.webURL
+              : `/writing/${post.id}`
           }
         >
-          <div class='w-full'>
+          <div class="w-full">
             <Image
               width={1920}
               height={1080}
               src={post.data.heroImage ?? ''}
               alt={post.data.title}
-              class='border-border aspect-video rounded-md border transition-all md:brightness-90 md:group-hover:brightness-100'
+              class="border-border aspect-video rounded-md border transition-all md:brightness-90 md:group-hover:brightness-100"
             />
           </div>
           <header>
             <Heading
-              level='h3'
-              size='2xl'
-              class='mb-0 flex items-center gap-x-4'
+              level="h3"
+              size="2xl"
+              class="mb-0 flex items-center gap-x-4"
             >
               {post.data.title}
               {post.collection === 'newsletter' && (
                 <svg
                   data-icon
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  stroke-width='2'
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  class='lucide lucide-external-link text-foreground-muted md:text-foreground size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100'
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-external-link text-foreground-muted md:text-foreground size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
                 >
-                  <path d='M15 3h6v6' />
-                  <path d='M10 14 21 3' />
-                  <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
+                  <path d="M15 3h6v6" />
+                  <path d="M10 14 21 3" />
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                 </svg>
               )}
             </Heading>
             <FormattedDate
-              classes='text-sm'
+              classes="text-sm"
               date={post.data.pubDate ?? new Date()}
             />
           </header>
-          <p class='line-clamp-2'>{post.data.description}</p>
+          <p class="line-clamp-2">{post.data.description}</p>
           {post.data.tags && post.data.tags.length > 0 && (
-            <div class='mt-2'>
-              <ul class='flex flex-wrap gap-2'>
+            <div class="mt-2">
+              <ul class="flex flex-wrap gap-2">
                 {post.data.tags.map((tag: string) => (
-                  <Tag
-                    key={tag}
-                    name={tag}
-                  >
+                  <Tag key={tag} name={tag}>
                     {tag}
                   </Tag>
                 ))}
@@ -107,9 +97,9 @@ const currentPath = Astro.url.pathname;
   {
     currentPath === '/' && (
       <Link
-        href='/writing'
+        href="/writing"
         withIcon={true}
-        class='group-hover:text-foreground text-lg'
+        class="group-hover:text-foreground text-lg"
       >
         view all writing
       </Link>
