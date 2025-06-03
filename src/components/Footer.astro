@@ -25,6 +25,7 @@ const currentPath = Astro.url.pathname;
         >
       </div>
     </div>
+    <div class="grid grid-cols-2 md:col-span-2">
     <div id="sitemap" class="text-left">
       <p class="mb-2 font-semibold uppercase">sitemap</p>
       <nav>
@@ -34,11 +35,8 @@ const currentPath = Astro.url.pathname;
               <li>
                 <Link
                   href={link.href}
-                  class={
-                    currentPath === link.href
-                      ? 'decoration-accent underline'
-                      : 'hover:no-underline'
-                  }
+                  class:list={['nav-link', { 'hover:no-underline': true }]}
+                  data-href={link.href}
                 >
                   {link.label}
                 </Link>
@@ -91,6 +89,7 @@ const currentPath = Astro.url.pathname;
         </li>
       </ul>
     </div>
+    </div>
     <div class="space-y-2 lg:col-span-2">
       <p class="font-semibold uppercase">newsletter</p>
       <p>Here we talk about software engineering, tech, and productivity.</p>
@@ -114,3 +113,37 @@ const currentPath = Astro.url.pathname;
     </p>
   </div>
 </footer>
+
+<script>
+  function updateActiveLinks() {
+    const links = document.querySelectorAll('.nav-link');
+    links.forEach((link) => {
+      if (link instanceof HTMLElement) {
+        link.classList.remove(
+          'underline',
+          'decoration-accent',
+          'hover:no-underline',
+        );
+
+        const currentPath = window.location.pathname;
+        const linkPath = link.dataset.href;
+        const isActive =
+          linkPath === currentPath ||
+          (linkPath === '/writing' && currentPath.startsWith('/writing/')) ||
+          (linkPath === '/speaking' && currentPath.startsWith('/speaking/')) ||
+          (linkPath === '/about' && currentPath.startsWith('/about/')) ||
+          (linkPath === '/projects' && currentPath.startsWith('/projects/'));
+
+        if (isActive) {
+          link.classList.add('underline', 'decoration-accent');
+        } else {
+          link.classList.add('hover:no-underline');
+        }
+      }
+    });
+  }
+
+  updateActiveLinks();
+
+  document.addEventListener('astro:page-load', updateActiveLinks);
+</script>
