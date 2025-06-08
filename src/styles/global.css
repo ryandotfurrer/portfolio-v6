@@ -165,7 +165,7 @@
   --success: var(--color-success);
   --success-foreground: var(--color-success-foreground);
 
-  --border: var(--color-muted);
+  --border: oklch(0.87 0.01 286 / 20);
   --input: var(--color-input);
   --ring: var(--color-ring);
 
@@ -196,7 +196,7 @@
   --secondary: var(--color-zinc-800);
   --secondary-foreground: var(--color-foreground);
 
-  --muted: var(--color-zinc-800);
+  --muted: var(--color-zinc-700);
   --muted-foreground: var(--color-foreground-muted);
 
   --accent: oklch(62.52% 0.2152 32.91);
@@ -211,7 +211,7 @@
   --success: var(--color-green-500);
   --success-foreground: var(--color-foreground);
 
-  --border: var(--color-zinc-800);
+  --border: oklch(0.37 0.01 286 / 20);
   --input: var(--color-zinc-800);
   --ring: var(--color-accent);
 
