@@ -4,6 +4,7 @@ const Events = {
   commit_your_code: 'the Commit Your Code Conference',
   render_atl: '🍑 RenderATL',
   vercel_ship: '▲ Vercel Ship',
+
 };
 
 export default function EventGreeting() {
@@ -25,6 +26,7 @@ export default function EventGreeting() {
       <p className="text-xl leading-[1.6em] font-bold tracking-tight md:text-xl lg:text-2xl xl:text-3xl">
         👋 It was <span className="border-accent border-b-4">GREAT</span>{' '}
         connecting with you at {event}!
+
       </p>
     </div>
   );

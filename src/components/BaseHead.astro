@@ -88,6 +88,7 @@ const { title, description, image = '/og-image.png' } = Astro.props;
         typeof localStorage !== 'undefined' &&
         localStorage.getItem('theme')
       ) {
+
         return localStorage.getItem('theme');
       }
       // Default to system theme
@@ -99,6 +100,7 @@ const { title, description, image = '/og-image.png' } = Astro.props;
       theme === 'dark' ||
       (theme === 'system' &&
         window.matchMedia('(prefers-color-scheme: dark)').matches);
+
 
     // Toggle dark class instead of add/remove for consistency
     document.documentElement.classList.toggle('dark', isDark);
