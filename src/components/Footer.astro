@@ -25,69 +25,71 @@ const today = new Date();
       </div>
     </div>
     <div class="grid grid-cols-2 md:col-span-2">
-    <div id="sitemap" class="text-left">
-      <p class="mb-2 font-semibold uppercase">sitemap</p>
-      <nav>
+      <div id="sitemap" class="text-left">
+        <p class="mb-2 font-semibold uppercase">sitemap</p>
+        <nav>
+          <ul class="flex flex-col gap-2">
+            {
+              NavLinks.map((link) => (
+                <li>
+                  <Link
+                    href={link.href}
+                    class:list={['nav-link', { 'hover:no-underline': true }]}
+                    data-href={link.href}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+      <div>
+        <p class="mb-2 font-semibold uppercase">socials</p>
         <ul class="flex flex-col gap-2">
-          {
-            NavLinks.map((link) => (
-              <li>
-                <Link
-                  href={link.href}
-                  class:list={['nav-link', { 'hover:no-underline': true }]}
-                  data-href={link.href}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))
-          }
+          <li>
+            <Link
+              externalLink
+              href={SocialLinks.x.href}
+              class="group flex w-fit items-center"
+              ><Twitter
+                className="group-hover:text-foreground size-5"
+              />twitter</Link
+            >
+          </li>
+          <li>
+            <Link
+              externalLink
+              href={SocialLinks.github.href}
+              class="group flex w-fit items-center"
+              ><Github
+                className="group-hover:text-foreground size-5"
+              />github</Link
+            >
+          </li>
+          <li>
+            <Link
+              externalLink
+              href={SocialLinks.linkedin.href}
+              class="group flex w-fit items-center"
+              ><Linkedin
+                className="group-hover:text-foreground size-5"
+              />linkedIn</Link
+            >
+          </li>
+          <li>
+            <Link
+              externalLink
+              href={SocialLinks.bento.href}
+              class="group flex w-fit items-center"
+              ><Globe
+                className="group-hover:text-foreground size-5"
+              />bento</Link
+            >
+          </li>
         </ul>
-      </nav>
-    </div>
-    <div>
-      <p class="mb-2 font-semibold uppercase">socials</p>
-      <ul class="flex flex-col gap-2">
-        <li>
-          <Link
-            externalLink
-            href={SocialLinks.x.href}
-            class="group flex w-fit items-center"
-            ><Twitter
-              className="group-hover:text-foreground size-5"
-            />twitter</Link
-          >
-        </li>
-        <li>
-          <Link
-            externalLink
-            href={SocialLinks.github.href}
-            class="group flex w-fit items-center"
-            ><Github
-              className="group-hover:text-foreground size-5"
-            />github</Link
-          >
-        </li>
-        <li>
-          <Link
-            externalLink
-            href={SocialLinks.linkedin.href}
-            class="group flex w-fit items-center"
-            ><Linkedin
-              className="group-hover:text-foreground size-5"
-            />linkedIn</Link
-          >
-        </li>
-        <li>
-          <Link
-            externalLink
-            href={SocialLinks.bento.href}
-            class="group flex w-fit items-center"
-            ><Globe className="group-hover:text-foreground size-5" />bento</Link
-          >
-        </li>
-      </ul>
-    </div>
+      </div>
     </div>
     <div class="space-y-2 lg:col-span-2">
       <p class="font-semibold uppercase">newsletter</p>
