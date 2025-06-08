@@ -3,43 +3,71 @@ title: 'Now'
 slug: 'now'
 description: 'What am I currently up to?'
 pubDate: '2025-04-08T05:00:00.000Z'
-# updatedDate: '2025-04-08T05:00:00.000Z'
-# heroImage: 'https://ryanfurrer.com/_astro/profile-picture.BC67lo4o_Z1Oy0gk.webp'
+updatedDate: '2025-06-08T05:00:00.000Z'
 tags:
   - about
   - now
 ---
 
-import WorkStatus from '~/components/react/WorkStatus.tsx';
+import WorkTag from '~/components/WorkTag.astro';
 
-<WorkStatus status="available" className="no-underline" client:load />
+<WorkTag />
+
+**I will be at RenderATL from Tuesday, June 10 - Saturday, June 14 — be sure to
+say hello!**
+
+## 💼 Work
 
 I am currently working part-time at a consulting agency called <a href='https://ziva-tech.com/' target='_blank' rel='noopener noreferrer'>Ziva Tech</a> where I am a Frontend Engineer — though my main job there is "making things pretty" as per the owner. I work with HTML, CSS, JavaScript, React, and Tailwind CSS with a React Native project on the horizon.
 
-This is my first job in the industry and I am thrilled to have landed it, however, it certainly comes with it's learning curves on both ends — mainly around communication. That said, I'll continue to do my best while looking for a full-time role!
+That said, I am very much looking for a full-time position where I can continue to grow my skills and contribute to a team that values collaboration and innovation. If you or anyone you know is hiring please <a href='/contact'>contact me</a>!
 
-I have several side projects in the works, built with Astro or Next.js. Some of those projects include: a task app, a read-later app, and an eRacing League Management.
+## 💻 Projects
 
-I've also begun working through some <a href='https://leetcode.com/' target='_blank' rel='noopener noreferrer'>Leetcode</a> problems as well as the <a href='https://pll.harvard.edu/course/cs50-introduction-computer-science' target='_blank' rel='noopener noreferrer'>Harvard CS50</a> course to help solidify my understanding of computer science concepts.
+In the ongoing effort to improve my skills, I've got a couple of side-projects in the works; **Cadence** and **Raider.io+**.
 
-In my free time, I enjoy playing video games, reading, and catching up on shows and movies that friends have been telling me about forever (sorry everyone). For tracking media I want to watch, read, or play, I use <a href='https://www.getsequel.app/' target='_blank' rel='noopener noreferrer'>Sequel</a> and _highly_ recommend it.
+**Cadence** aims to be a browser homepage, similar to <a href='https://momentumdash.com/' target='_blank' rel='noopener noreferrer'>Momentum</a>, if you remember when that was all the rage. Cadence was inspired by <a href='https://x.com/haydenbleasel/status/1930022190453535205' target='_blank' rel='noopener noreferrer'>this post</a> on X/Twitter and I knew that I just had to create it once I saw it. It's very much a WIP (work-in-progress) but I look forward to getting the MVP complete after RenderATL so I can start using it.
+
+<div class="grid grid-cols-1 *:rounded-lg md:grid-cols-2 md:gap-4">
+  <img src="/images/cadence-light.png" alt="Cadence Screenshot" />
+  <img src="/images/cadence-dark.png" alt="Cadence Screenshot" />
+</div>
+
+**Raider.io+** is a project that aims to be a lighter, faster, and more minimal version of <a href='https://raider.io/' target='_blank' rel='noopener noreferrer'>Raider.io</a>. It is also a WIP (work-in-progress) but since Raider.io provides their API for free, all I have to do is ensure I'm getting the information I want and decide how to display it.
+
+Raider.io is a service for World of Warcraft players to showcase and track their performance in various in-game events, like dungeons and raids. However, their site is slow, riddled with ads, and could use some sprucing up, in my opinion.
+
+<div class="grid grid-cols-1 *:rounded-lg md:grid-cols-2 md:gap-4">
+  <img src="/images/rio-plus-light.png" alt="Raider.io+ Screenshot" />
+  <img src="/images/rio-plus-dark.png" alt="Raider.io+ Screenshot" />
+</div>
 
 ## 🎮 Video Games
 
-For video games I just beat <a href='https://seaofstarsgame.co/' target='_blank' rel='noopener noreferrer'>Sea of Stars</a> and give it a 9.5/10 — the art, music, and story are all fantastic, but the combat can get a bit repetitive. Now I can finally move onto the <a href='https://ffvii-remake-intergrade.square-enix-games.com/en-us/' target='_blank' rel='noopener noreferrer'>Final Fantasy VII Remake</a>!
+I've been working through the <a href='https://ffvii-remake-intergrade.square-enix-games.com/en-us/' target='_blank' rel='noopener noreferrer'>Final Fantasy VII Remake</a>, raiding in <a href='https://worldofwarcraft.blizzard.com/en-us/' target='_blank' rel='noopener noreferrer'>World of Warcraft</a> twice per week, and playing the occasional matches of <a href='https://store.steampowered.com/app/553850/HELLDIVERS_2/' target='_blank' rel='noopener noreferrer'>Helldivers 2</a>, <a href='https://crabchampions.com/' target='_blank' rel='noopener noreferrer'>Crab Champions</a>, and now <a href='https://www.splitgate.com/' target='_blank' rel='noopener noreferrer'>Splitgate 2</a> since it released on June 6.
+
+I've also really been enjoying some Pokemon ROM hacks like <a href='https://sphericalice.com/' target='_blank' rel='noopener noreferrer'>Pokemon Gaia</a> and <a href='https://www.pokecommunity.com/threads/pok%C3%A9mon-unbound-completed.382178/' target='_blank' rel='noopener noreferrer'>Pokemon Unbound</a>.
 
 ## 📚 Books
 
-I'm in the middle of reading a couple of books: <a href='https://www.engguidebook.com/' target='_blank' rel='noopener noreferrer'>The Software Engineer's Guidebook</a> and <a href='https://calnewport.com/slow/' target='_blank' rel='noopener noreferrer'>Slow Productivity</a>.
+**Currently reading**: <a href='https://store.jonacuff.com/finish-give-yourself-the-gift-of-done/' target='_blank' rel='noopener noreferrer'>Finish: Give Yourself the Gift of Done</a> by Jon Acuff.
+
+**Up next**: <a href='https://www.barnesandnoble.com/w/so-good-they-cant-ignore-you-cal-newport/1110913726?ean=9781455509126' target='_blank' rel='noopener noreferrer'>So Good They Can't Ignore You</a> by Cal Newport.
 
 ## 🎬 Shows & Movies
 
-And lastly I just finished watching a few shows: <a href='https://www.imdb.com/title/tt21209876/' target='_blank' rel='noopener noreferrer'>Solo Leveling</a>, <a href='https://www.imdb.com/title/tt28093628/' target='_blank' rel='noopener noreferrer'>Common Side Effects</a>, and <a href='https://www.imdb.com/title/tt6741278/' target='_blank' rel='noopener noreferrer'>Invincible</a>. Next up I'm watching <a href='https://www.imdb.com/title/tt0877057/' target='_blank' rel='noopener noreferrer'>Death Note</a> and <a href='https://www.imdb.com/title/tt2575988/' target='_blank' rel='noopener noreferrer'>Silicon Valley</a>.
+**Currently watching**: <a href='https://www.crunchyroll.com/series/G24H1NWKE/the-beginning-after-the-end' target='_blank' rel='noopener noreferrer'>The Beginning After the End</a>
+
+**Ongoing**: <a href='https://www.formula1.com/' target='_blank' rel='noopener noreferrer'>Formula 1</a>
+
+**Up next**: Who knows? The backlog is far too long 🫠
 
 ## 🗓️ Upcoming Events
 
 Finally, I have a few trips planned this year:
 
-- **June**: I'll be attending <a href='https://www.renderatl.com/' target='_blank' rel='noopener noreferrer'>RenderATL</a> in Atlanta, GA!
-- **September**: I'll be attending <a href='https://www.commityourcode.com/' target='_blank' rel='noopener noreferrer'>The Commit Your Code Conference</a> in Plano, TX!
-- **October**: I'll be attending the <a href='https://www.roadatlanta.com/motul-petit-le-mans' target='_blank' rel='noopener noreferrer'>Petite Le Mans</a> at Road Atlanta in Braselton, GA!
+**June**: <a href='https://www.renderatl.com/' target='_blank' rel='noopener noreferrer'>RenderATL</a> in Atlanta, GA | <a href='https://vercel.com/ship' target='_blank' rel='noopener noreferrer'>Vercel Ship</a> in New York City, NY
+
+**September**: <a href='https://www.commityourcode.com/' target='_blank' rel='noopener noreferrer'>The Commit Your Code Conference</a> in Plano, TX
+
+**October**: <a href='https://www.roadatlanta.com/motul-petit-le-mans' target='_blank' rel='noopener noreferrer'>Petite Le Mans</a> at Road Atlanta in Braselton, GA

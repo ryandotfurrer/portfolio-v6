@@ -14,27 +14,29 @@ import MobileMenu from './react/MobileMenu.tsx';
   >
     <img src="/logo.svg" class="size-10" />
   </Link>
-
-  <ul class="hidden gap-4 md:flex">
-    {
-      NavLinks.map((link) => (
-        <li>
-          {link.label !== 'contact' && (
-            <Link
-              href={link.href}
-              class:list={['nav-link', { 'hover:no-underline': true }]}
-              data-href={link.href}
-            >
-              {link.label}
-            </Link>
-          )}
-        </li>
-      ))
-    }
-  </ul>
+  <div>
+    <ul class="hidden gap-4 md:flex">
+      {
+        NavLinks.map((link) => (
+          <li>
+            {link.label !== 'contact' && (
+              <Link
+                href={link.href}
+                class:list={['nav-link', { 'hover:no-underline': true }]}
+                data-href={link.href}
+              >
+                {link.label}
+              </Link>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 
   <div class="ml-auto flex items-center gap-4 md:ml-0">
-    <ModeToggle client:only="react" className="mr-4 hidden md:mr-0 md:block" />
+    <ModeToggle client:only="react" className="max-sm:mr-2" />
+
     <Link
       href="/contact"
       variant="primary"
@@ -44,7 +46,6 @@ import MobileMenu from './react/MobileMenu.tsx';
       Contact
     </Link>
   </div>
-
   <MobileMenu client:load />
 </nav>
 
