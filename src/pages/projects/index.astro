@@ -19,6 +19,7 @@ const projects = (await getCollection('projects'))
       pubDate: project.data.pubDate?.toISOString(),
       tags: project.data.tags || [],
       slug: project.data.slug || project.id,
+      status: project.data.status,
     },
   }));
 ---

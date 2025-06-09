@@ -1,6 +1,5 @@
 import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
-import https from 'node:https';
 
 const about = defineCollection({
   loader: glob({ base: './src/content/about', pattern: '**/*.{md,mdx}' }),
@@ -85,6 +84,7 @@ const projects = defineCollection({
     mainTech: z.string(),
     pubDate: z.coerce.date().optional(),
     slug: z.string().optional(),
+    status: z.string().optional(),
     tags: z.array(z.string()).optional(),
     title: z.string(),
     updatedDate: z.coerce.date().optional(),

@@ -142,10 +142,21 @@
     var(--color-orange-200) 0%,
     var(--color-pink-300) 100%
   );
+  --nextjs: linear-gradient(
+    135deg,
+    var(--color-zinc-200) 0%,
+    var(--color-zinc-400) 100%
+  );
   --react: linear-gradient(
     135deg,
     var(--color-cyan-200) 0%,
     var(--color-sky-400) 100%
+  );
+
+  --react-router: linear-gradient(
+    135deg,
+    var(--color-red-300) 0%,
+    var(--color-red-400) 100%
   );
   --vue: linear-gradient(
     135deg,
@@ -204,10 +215,21 @@
     var(--color-orange-500) 0%,
     var(--color-pink-800) 100%
   );
+  --nextjs: linear-gradient(
+    135deg,
+    var(--color-zinc-700) 0%,
+    var(--color-zinc-950) 100%
+  );
   --react: linear-gradient(
     135deg,
     var(--color-cyan-400) 0%,
     var(--color-sky-900) 100%
+  );
+
+  --react-router: linear-gradient(
+    135deg,
+    var(--color-rose-500) 0%,
+    var(--color-red-950) 100%
   );
   --vue: linear-gradient(
     135deg,
@@ -247,8 +269,16 @@
     background: var(--astro);
   }
 
+  .bg-nextjs {
+    background: var(--nextjs);
+  }
+
   .bg-react {
     background: var(--react);
+  }
+
+  .bg-react-router {
+    background: var(--react-router);
   }
 
   .bg-vue {

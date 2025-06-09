@@ -4,15 +4,53 @@ import Card from '../components/Card.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
 import Tag from '~/components/Tag.astro';
+import { cn } from '~/utils/utils';
 
 const projectCollection = await getCollection('projects');
-const featuredProjects = projectCollection.slice(-2).reverse();
+const featuredProjects = projectCollection
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate as unknown as string).getTime() -
+      new Date(a.data.pubDate as unknown as string).getTime(),
+  )
+  .slice(0, 2);
 
 const currentPath = Astro.url.pathname;
+
+type projectStatus = 'shipped' | 'in progress' | 'abandoned';
+
+const projectStatusConfig = {
+  shipped: {
+    dotClasses: 'bg-emerald-400 border-emerald-500',
+  },
+  'in progress': {
+    dotClasses: 'bg-amber-400 border-amber-600',
+  },
+  abandoned: {
+    dotClasses: 'bg-rose-400 border-rose-600',
+  },
+} as const;
 ---
 
 <section id="featured-projects" class="space-y-8">
   <Heading level="h2" size="3xl">featured projects</Heading>
+  
+  <div class="flex items-center gap-6 text-sm text-foreground-muted">
+    <span class="font-medium">Project Status:</span>
+    <div class="flex items-center gap-2">
+      <div class={cn('size-3 rounded-full border-2', projectStatusConfig.shipped.dotClasses)}></div>
+      <span>shipped</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class={cn('size-3 rounded-full border-2', projectStatusConfig['in progress'].dotClasses)}></div>
+      <span>in progress</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class={cn('size-3 rounded-full border-2', projectStatusConfig.abandoned.dotClasses)}></div>
+      <span>abandoned</span>
+    </div>
+  </div>
+
   <div class="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-0">
     {
       featuredProjects.map((project) => (
@@ -23,14 +61,14 @@ const currentPath = Astro.url.pathname;
           href={`/projects/${project.id}`}
         >
           <div
-            class={`bg-${project.data.mainTech} bg-astro text-foreground flex aspect-video w-full flex-col items-center justify-center rounded-t-lg *:m-0 first:leading-5 last:leading-0`}
+            class={`bg-${project.data.mainTech} bg-card text-foreground flex aspect-video w-full flex-col items-center justify-center rounded-t-lg *:m-0 first:leading-5 last:leading-0`}
           >
             <p class="text-2xl font-semibold tracking-tight">
               {project.data.title}
             </p>
             <p>{project.data.descriptionShort}</p>
           </div>
-          <div class="p-4">
+          <div class="space-y-4 p-4">
             <header class="flex justify-between">
               <Heading
                 level="h3"
@@ -38,6 +76,13 @@ const currentPath = Astro.url.pathname;
                 class="mb-0 flex items-center gap-x-4 font-sans"
               >
                 {project.data.title}
+                <div
+                  class={cn(
+                    'size-3 animate-pulse rounded-full border-2',
+                    projectStatusConfig[project.data.status as projectStatus]
+                      ?.dotClasses,
+                  )}
+                ></div>
               </Heading>
               <span class="bg-secondary/50 rounded-sm p-1 text-sm font-medium">
                 #{project.data.mainTech}
