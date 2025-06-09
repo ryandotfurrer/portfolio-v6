@@ -34,19 +34,39 @@ const projectStatusConfig = {
 
 <section id="featured-projects" class="space-y-8">
   <Heading level="h2" size="3xl">featured projects</Heading>
-  
-  <div class="flex items-center gap-6 text-sm text-foreground-muted">
-    <span class="font-medium">Project Status:</span>
-    <div class="flex items-center gap-2">
-      <div class={cn('size-3 rounded-full border-2', projectStatusConfig.shipped.dotClasses)}></div>
+
+  <div
+    class="text-foreground-muted items-center gap-x-4 text-sm max-sm:space-y-1 md:flex"
+  >
+    <div class="font-semibold max-sm:mb-2">Project Status:</div>
+    <div class="flex items-center gap-1">
+      <div
+        class={cn(
+          'size-3 rounded-full border-2',
+          projectStatusConfig.shipped.dotClasses,
+        )}
+      >
+      </div>
       <span>shipped</span>
     </div>
-    <div class="flex items-center gap-2">
-      <div class={cn('size-3 rounded-full border-2', projectStatusConfig['in progress'].dotClasses)}></div>
+    <div class="flex items-center gap-1">
+      <div
+        class={cn(
+          'size-3 rounded-full border-2',
+          projectStatusConfig['in progress'].dotClasses,
+        )}
+      >
+      </div>
       <span>in progress</span>
     </div>
-    <div class="flex items-center gap-2">
-      <div class={cn('size-3 rounded-full border-2', projectStatusConfig.abandoned.dotClasses)}></div>
+    <div class="flex items-center gap-1">
+      <div
+        class={cn(
+          'size-3 rounded-full border-2',
+          projectStatusConfig.abandoned.dotClasses,
+        )}
+      >
+      </div>
       <span>abandoned</span>
     </div>
   </div>
@@ -82,7 +102,7 @@ const projectStatusConfig = {
                     projectStatusConfig[project.data.status as projectStatus]
                       ?.dotClasses,
                   )}
-                ></div>
+                />
               </Heading>
               <span class="bg-secondary/50 rounded-sm p-1 text-sm font-medium">
                 #{project.data.mainTech}
