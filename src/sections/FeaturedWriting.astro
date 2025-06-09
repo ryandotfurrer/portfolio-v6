@@ -5,7 +5,6 @@ import Card from '../components/Card.astro';
 import FormattedDate from '~/components/FormattedDate.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
-import Tag from '~/components/Tag.astro';
 import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -37,59 +36,50 @@ const currentPath = Astro.url.pathname;
               : `/writing/${post.id}`
           }
         >
-          <div class="w-full">
+          <div class="bg-card text-foreground flex aspect-video h-full w-full flex-col items-center justify-center overflow-hidden rounded-t-lg">
             <Image
               width={1920}
               height={1080}
               src={post.data.heroImage ?? ''}
               alt={post.data.title}
-              class="border-border aspect-video rounded-md border transition-all md:brightness-90 md:group-hover:brightness-100"
+              class="aspect-video h-full w-full object-fill transition-all md:brightness-90 md:group-hover:brightness-100"
             />
           </div>
-          <header>
-            <Heading
-              level="h3"
-              size="2xl"
-              class="mb-0 flex items-center gap-x-4"
-            >
-              {post.data.title}
-              {post.collection === 'newsletter' && (
-                <svg
-                  data-icon
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-external-link text-foreground-muted md:text-foreground size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
-                >
-                  <path d="M15 3h6v6" />
-                  <path d="M10 14 21 3" />
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                </svg>
-              )}
-            </Heading>
-            <FormattedDate
-              classes="text-sm"
-              date={post.data.pubDate ?? new Date()}
-            />
-          </header>
-          <p class="line-clamp-2">{post.data.description}</p>
-          {post.data.tags && post.data.tags.length > 0 && (
-            <div class="mt-2">
-              <ul class="flex flex-wrap gap-2">
-                {post.data.tags.map((tag: string) => (
-                  <Tag key={tag} name={tag} linkable={true}>
-                    {tag}
-                  </Tag>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div class="space-y-4 p-4">
+            <header class="flex items-start justify-between gap-x-4">
+              <Heading
+                level="h3"
+                size="lg"
+                class="mb-0 flex min-w-0 flex-1 items-center gap-x-4 font-sans"
+              >
+                {post.data.title}
+                {post.collection === 'newsletter' && (
+                  <svg
+                    data-icon
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-external-link text-foreground-muted md:text-foreground size-5 transition-all md:-translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 md:group-hover/link:translate-x-0 md:group-hover/link:opacity-100"
+                  >
+                    <path d="M15 3h6v6" />
+                    <path d="M10 14 21 3" />
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  </svg>
+                )}
+              </Heading>
+              <FormattedDate
+                classes="text-sm bg-secondary/50 rounded-sm px-2 py-1 font-medium border whitespace-nowrap flex-shrink-0"
+                date={post.data.pubDate ?? new Date()}
+              />
+            </header>
+            <p class="line-clamp-2">{post.data.description}</p>
+          </div>
         </Card>
       ))
     }

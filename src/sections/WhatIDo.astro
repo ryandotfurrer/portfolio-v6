@@ -8,14 +8,15 @@ import Heading from '../components/Heading.astro';
 
 <section id="what-i-do">
   <Heading level="h2" size="3xl"> what I do </Heading>
-  <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-
+  <div
+    class="grid grid-cols-1 gap-8 **:leading-relaxed md:grid-cols-2 lg:grid-cols-3"
+  >
     <Card
       href="/projects"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -47,11 +48,11 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href="https://webdevdialogues.com"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-2 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -82,10 +83,10 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href="/writing"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -124,10 +125,10 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href="/speaking"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -159,11 +160,11 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href="https://cal.com/ryandotfurrer/coffee-chat"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -195,11 +196,11 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href={SocialLinks.twitch.href}
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
