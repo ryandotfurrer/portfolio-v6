@@ -2,6 +2,7 @@
 import Card from './Card.astro';
 import FormattedDate from './FormattedDate.astro';
 import Heading from './Heading.astro';
+import { cn } from '~/utils/utils';
 
 interface Item {
   collection: string;
@@ -14,8 +15,23 @@ interface Item {
     tags: string[];
     webURL?: string;
     slug?: string;
+    status?: 'shipped' | 'in progress' | 'abandoned';
   };
 }
+
+type projectStatus = 'shipped' | 'in progress' | 'abandoned';
+
+const projectStatusConfig = {
+  shipped: {
+    dotClasses: 'bg-emerald-400 border-emerald-500',
+  },
+  'in progress': {
+    dotClasses: 'bg-amber-400 border-amber-600',
+  },
+  abandoned: {
+    dotClasses: 'bg-rose-400 border-rose-600',
+  },
+} as const;
 
 interface Props {
   collection: Item[] | { data: Item[] };
@@ -94,6 +110,14 @@ console.log(
               class="mb-0 flex items-center gap-x-4 underline md:no-underline"
             >
               {item.data.title}
+              {item.collection === 'projects' && item.data.status && (
+                <div
+                  class={cn(
+                    'size-3 animate-pulse rounded-full border-2 flex-shrink-0',
+                    projectStatusConfig[item.data.status as projectStatus]?.dotClasses,
+                  )}
+                ></div>
+              )}
               {item.collection === 'newsletter' && (
                 <svg
                   data-icon

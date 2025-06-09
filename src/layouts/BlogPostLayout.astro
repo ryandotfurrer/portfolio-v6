@@ -10,13 +10,30 @@ import Newsletter from '../components/Newsletter.astro';
 import ProjectPageLinks from '~/components/ProjectPageLinks.astro';
 import Tag from '~/components/Tag.astro';
 import type { CollectionEntry } from 'astro:content';
+import { cn } from '~/utils/utils';
+
 type Props = CollectionEntry<'blog'>['data'] & {
   links?: {
     site?: string;
     github?: string;
   };
   content?: string;
+  status?: 'shipped' | 'in progress' | 'abandoned';
 };
+
+type projectStatus = 'shipped' | 'in progress' | 'abandoned';
+
+const projectStatusConfig = {
+  shipped: {
+    dotClasses: 'bg-emerald-400 border-emerald-500',
+  },
+  'in progress': {
+    dotClasses: 'bg-amber-400 border-amber-600',
+  },
+  abandoned: {
+    dotClasses: 'bg-rose-400 border-rose-600',
+  },
+} as const;
 
 const currentPath = Astro.url.pathname;
 
@@ -46,6 +63,7 @@ const {
   heroImageAltText,
   tags,
   links,
+  status,
 } = Astro.props;
 ---
 
@@ -102,7 +120,6 @@ const {
                 {
                   pubDate ? (
                     <div class="mt-4 flex flex-col *:not-last:m-0">
-
                       <p>
                         Published: <FormattedDate date={pubDate} />
                       </p>
@@ -116,7 +133,17 @@ const {
                     ''
                   )
                 }
-                <h1 class="mb-[.25em]">{title}</h1>
+                <h1 class="mb-[.25em] flex items-center gap-x-4">
+                  {title}
+                  {currentPath.includes('projects') && status && (
+                    <div
+                      class={cn(
+                        'size-3 animate-pulse rounded-full border-2 flex-shrink-0',
+                        projectStatusConfig[status as projectStatus]?.dotClasses,
+                      )}
+                    ></div>
+                  )}
+                </h1>
                 <p class="mt-0">{description}</p>
                 {
                   currentPath.includes('projects') && links && (

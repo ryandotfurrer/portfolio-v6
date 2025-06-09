@@ -6,45 +6,48 @@ import { SocialLinks } from '~/utils/utils';
 import CalEmbed from '../../components/react/CalEmbed.jsx';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EventGreeting from '../../components/react/EventGreeting.tsx';
+import { Image } from 'astro:assets';
+import ryanPfp from './pfp-square.jpg';
 ---
 
 <BaseLayout pageTitle="contact" pageDescription="tweet, email, or book a call">
-  <main class="mx-auto max-w-screen-lg space-y-12">
-    <section class="space-y-4">
-      <!-- {
-
-          validEvent && (
-            <div class="bg-gradient-to-r from-orange-500/10 to-red-500/20 dark:bg-accent/20 border-accent/50 border dark:border-accent max-sm:p-2 p-4 mb-12 rounded-md text-foreground max-w-fit mx-auto text-center text-balance">
-              <p class="text-xl font-bold tracking-tight md:text-xl lg:text-2xl xl:text-3xl leading-[1.6em]">
-                  👋 It was <span class='border-b-4 border-accent'>GREAT</span> connecting with you at{' '}
-                {Events[validEvent]}!
-              </p>
-            </div>
-          )
-        } -->
-      <EventGreeting client:load />
-
+  <main class="space-y-12">
+    <section class="space-y-4 text-lg">
+      <div class="flex flex-col items-center gap-4 md:flex-row">
+        <EventGreeting client:load additionalClasses="block md:hidden" />
+        <Image
+          src={ryanPfp}
+          alt="A picture of Ryan, a bearded person wearing glasses and a black cap with an Astro logo, dressed in a dark hoodie, standing against a solid light green background. They are looking slightly to the side with a neutral expression."
+          class="w-full rounded-md md:w-1/3 lg:w-1/4"
+        />
+        <EventGreeting client:load additionalClasses="md:block hidden" />
+      </div>
       <p>
         I'd love to hear from you so feel free to reach out to me via social
-        media, email, or book a call via Cal below!
+        media, email, or book a call via Cal below.
       </p>
       <p>
         I'm most active on <Link externalLink href={SocialLinks.x.href}
           >X/Twitter</Link
-        > and <Link externalLink href={SocialLinks.linkedin.href}>LinkedIn</Link
         > these days, but you can reach find me everywhere via <Link
           externalLink
           href={SocialLinks.bento.href}>Bento</Link
         >. Or you can email me at <Link href="mailto:ryan@ryandotfurrer.com"
-
           >ryan@ryandotfurrer.com</Link
         >
       </p>
     </section>
+    <aside
+      class="dark:bg-background flex w-fit items-center rounded-sm border border-emerald-500 bg-white"
+    >
+      <span
+        class="mb-0 rounded-sm border border-transparent bg-emerald-200/20 p-2 font-sans text-xs leading-none font-semibold tracking-normal text-emerald-700 md:text-sm dark:bg-emerald-800/50 dark:text-emerald-500"
+        >looking for work</span
+      >
+    </aside>
     <div>
       <p class="mb-2 font-semibold uppercase">socials</p>
       <ul class="mb-4 flex flex-col gap-2">
-
         <li>
           <Link
             externalLink

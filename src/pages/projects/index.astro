@@ -1,9 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
+import AllItemsList from '~/components/AllItemsList.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FeaturedProjects from '../../sections/FeaturedProjects.astro';
-import Heading from '../../components/Heading.astro';
-import AllItemsList from '~/components/AllItemsList.astro';
-import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects'))
   .sort(
@@ -12,13 +11,15 @@ const projects = (await getCollection('projects'))
   )
   .map((project) => ({
     collection: project.collection,
+    slug: project.data.slug || project.id,
     id: project.id,
     data: {
       title: project.data.title,
       description: project.data.description,
-      pubDate: project.data.pubDate?.toISOString(),
+      pubDate: project.data.pubDate ? project.data.pubDate.toISOString() : undefined,
       tags: project.data.tags || [],
       slug: project.data.slug || project.id,
+      status: project.data.status as 'shipped' | 'in progress' | 'abandoned' | undefined,
     },
   }));
 ---
