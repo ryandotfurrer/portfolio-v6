@@ -17,7 +17,6 @@ type Props = CollectionEntry<'blog'>['data'] & {
     site?: string;
     github?: string;
   };
-  content?: string;
   status?: 'shipped' | 'in progress' | 'abandoned';
 };
 
@@ -170,15 +169,7 @@ const {
               </div>
             )
           }
-          {/* @ts-ignore */}
-          {
-            Astro.props.content && (
-              <div class="content">
-                {/* @ts-ignore */}
-                <div set:html={Astro.props.content} />
-              </div>
-            )
-          }
+
         </article>
       </main>
       <Newsletter />

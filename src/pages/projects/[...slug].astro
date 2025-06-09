@@ -26,7 +26,6 @@ const { Content } = await render(post);
   tags={post.data.tags}
   updatedDate={post.data.updatedDate}
   links={post.data.links}
-  content={post.body}
   status={post.data.status as
     | 'shipped'
     | 'in progress'
