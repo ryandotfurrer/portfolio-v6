@@ -5,6 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function generateTagUrl(tag: string): string {
+  // Handle special characters and encode for URL safety
+  return `/tags/${encodeURIComponent(tag)}`;
+}
+
 export const NavLinks = [
   { href: '/', label: 'home' },
   { href: '/projects', label: 'projects' },

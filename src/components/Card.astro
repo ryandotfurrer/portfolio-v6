@@ -16,12 +16,13 @@ const {
   externalLink = false,
 } = Astro.props;
 
-const defaultClasses =
-  'rounded-lg border border-border/80 p-4 bg-card break-words space-y-4 transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg';
+const baseClasses =
+  'rounded-lg border bg-card break-words transition-transform duration-300 group hover:-translate-y-1 hover:shadow-lg overflow-hidden';
 const transparentClasses =
-  'rounded-lg border border-none break-words group space-y-4';
+  'transition-transform rounded-lg border-none break-words group';
+
 const cardClasses =
-  variant === 'transparent' ? transparentClasses : defaultClasses;
+  variant === 'transparent' ? transparentClasses : baseClasses;
 ---
 
 {

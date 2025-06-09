@@ -1,23 +1,22 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import ProjectPageLinks from '~/components/ProjectPageLinks.astro';
+import Tag from '~/components/Tag.astro';
+import { cn } from '~/utils/utils';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import { Image } from 'astro:assets';
 import Link from '../components/Link.astro';
 import Navbar from '../components/Navbar.astro';
 import Newsletter from '../components/Newsletter.astro';
-import ProjectPageLinks from '~/components/ProjectPageLinks.astro';
-import Tag from '~/components/Tag.astro';
-import type { CollectionEntry } from 'astro:content';
-import { cn } from '~/utils/utils';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'] & {
   links?: {
     site?: string;
     github?: string;
   };
-  content?: string;
   status?: 'shipped' | 'in progress' | 'abandoned';
 };
 
@@ -135,14 +134,17 @@ const {
                 }
                 <h1 class="mb-[.25em] flex items-center gap-x-4">
                   {title}
-                  {currentPath.includes('projects') && status && (
-                    <div
-                      class={cn(
-                        'size-3 animate-pulse rounded-full border-2 flex-shrink-0',
-                        projectStatusConfig[status as projectStatus]?.dotClasses,
-                      )}
-                    ></div>
-                  )}
+                  {
+                    currentPath.includes('projects') && status && (
+                      <div
+                        class={cn(
+                          'size-3 flex-shrink-0 animate-pulse rounded-full border-2',
+                          projectStatusConfig[status as projectStatus]
+                            ?.dotClasses,
+                        )}
+                      />
+                    )
+                  }
                 </h1>
                 <p class="mt-0">{description}</p>
                 {
@@ -156,10 +158,10 @@ const {
           </header>
           {
             tags && tags.length > 0 && (
-              <div class="">
-                <ul class="flex list-none flex-wrap gap-4 pl-0">
+              <div>
+                <ul class="flex list-none flex-wrap gap-2 pl-0">
                   {tags.map((tag) => (
-                    <Tag name={tag} key={tag}>
+                    <Tag name={tag} key={tag} linkable={true}>
                       {tag}
                     </Tag>
                   ))}
@@ -167,15 +169,7 @@ const {
               </div>
             )
           }
-          {/* @ts-ignore */}
-          {
-            Astro.props.content && (
-              <div class="content">
-                {/* @ts-ignore */}
-                <div set:html={Astro.props.content} />
-              </div>
-            )
-          }
+
         </article>
       </main>
       <Newsletter />

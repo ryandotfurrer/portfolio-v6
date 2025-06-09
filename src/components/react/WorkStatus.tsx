@@ -39,7 +39,7 @@ export default function WorkStatus({
   return (
     <a
       className={cn(
-        'group bg-card hover:from-card hover:to-secondary hover:via-card/50 relative flex w-fit items-center gap-2 rounded-xs border p-2 text-xs transition-all duration-300 hover:bg-gradient-to-b md:text-sm',
+        'group bg-card hover:from-card hover:to-secondary hover:via-card/50 relative flex w-fit items-center gap-2 rounded-xs border p-2 text-xs transition-transform duration-300 hover:bg-gradient-to-b md:text-sm',
         className,
       )}
       href={resumeUrl}

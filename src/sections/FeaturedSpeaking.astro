@@ -30,38 +30,33 @@ const currentPath = Astro.url.pathname;
           hasLink={true}
           href={`/speaking/${speakingPost.id}`}
         >
-          <div class="w-full">
+          <div class="bg-card text-foreground flex aspect-video h-full w-full flex-col items-center justify-center overflow-hidden rounded-t-lg">
             {speakingPost.data.heroImage && (
               <Image
                 width={1920}
                 height={1080}
                 src={speakingPost.data.heroImage ?? ''}
                 alt={speakingPost.data.title}
-                class="border-border aspect-video rounded-md border transition-all md:brightness-90 md:group-hover:brightness-100"
+                class="h-full w-full object-cover transition-all md:brightness-90 md:group-hover:brightness-100"
               />
             )}
           </div>
-          <header>
-            <Heading level="h3" size="2xl">
-              {speakingPost.data.title}
-            </Heading>
-            <FormattedDate
-              classes="text-sm block"
-              date={speakingPost.data.pubDate ?? new Date()}
-            />
-          </header>
-          <p class="line-clamp-2">{speakingPost.data.description}</p>
-          {speakingPost.data.tags && speakingPost.data.tags.length > 0 && (
-            <div class="mt-2">
-              <ul class="flex flex-wrap gap-2">
-                {speakingPost.data.tags.map((tag) => (
-                  <Tag key={tag} name={tag}>
-                    {tag}
-                  </Tag>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div class="space-y-4 p-4">
+            <header class="flex items-start justify-between gap-x-4">
+              <Heading
+                level="h3"
+                size="lg"
+                class="mb-0 flex min-w-0 flex-1 items-center gap-x-4 font-sans"
+              >
+                {speakingPost.data.title}
+              </Heading>
+              <FormattedDate
+                classes="text-sm bg-secondary/50 rounded-sm px-2 py-1 font-medium border whitespace-nowrap flex-shrink-0"
+                date={speakingPost.data.pubDate ?? new Date()}
+              />
+            </header>
+            <p class="line-clamp-2">{speakingPost.data.description}</p>
+          </div>
         </Card>
       ))
     }

@@ -1,18 +1,27 @@
 ---
 import Link from './Link.astro';
+import { generateTagUrl } from '~/utils/utils';
 
-const { href, classes } = Astro.props;
+const { href, classes, linkable = false, name } = Astro.props;
+
+// Generate tag URL if linkable is true and no explicit href is provided
+const tagHref = linkable && !href && name ? generateTagUrl(name) : href;
 ---
 
 {
-  href ? (
-    <li class={classes}>
-      <Link href={href}>
-        <slot />
+  tagHref ? (
+    <li>
+      <Link
+        href={tagHref}
+        class={`bg-secondary/50 hover:bg-secondary/75 rounded-full border px-2 py-1 text-xs no-underline hover:no-underline ${classes}`}
+      >
+        #<slot />
       </Link>
     </li>
   ) : (
-    <li class="text-foreground-muted text-sm">
+    <li
+      class={`bg-secondary/50 hover:bg-secondary/75 rounded-full border px-2 py-1 text-xs hover:no-underline ${classes}`}
+    >
       #<slot />
     </li>
   )
