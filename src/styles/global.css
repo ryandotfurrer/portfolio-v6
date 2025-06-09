@@ -32,47 +32,6 @@
   font-style: normal;
 }
 
-@layer base {
-  * {
-    @apply border-border min-w-0;
-  }
-
-  body {
-    @apply text-foreground-muted bg-background font-sans text-pretty;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-foreground mb-[.25em] font-serif font-semibold tracking-tight text-balance;
-  }
-
-  section > h1:first-of-type,
-  section > h2:first-of-type,
-  section > h3:first-of-type,
-  section > h4:first-of-type,
-  section > h5:first-of-type,
-  section > h6:first-of-type {
-    @apply mb-[1em];
-  }
-}
-
-@keyframes blur {
-  0% {
-    opacity: 0;
-    filter: blur(8px);
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-  }
-}
-
 @theme inline {
   --font-serif: 'Fraunces', serif;
   --font-sans: 'Inter', sans-serif;
@@ -177,6 +136,22 @@
   --sidebar-accent-foreground: var(--color-sidebar-accent-foreground);
   --sidebar-border: var(--color-sidebar-border);
   --sidebar-ring: var(--color-sidebar-ring);
+
+  --astro: linear-gradient(
+    135deg,
+    var(--color-orange-200) 0%,
+    var(--color-pink-300) 100%
+  );
+  --react: linear-gradient(
+    135deg,
+    var(--color-cyan-200) 0%,
+    var(--color-sky-400) 100%
+  );
+  --vue: linear-gradient(
+    135deg,
+    var(--color-green-300) 0%,
+    var(--color-blue-400) 100%
+  );
 }
 
 .dark {
@@ -223,13 +198,73 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+
+  --astro: linear-gradient(
+    135deg,
+    var(--color-orange-500) 0%,
+    var(--color-pink-800) 100%
+  );
+  --react: linear-gradient(
+    135deg,
+    var(--color-cyan-400) 0%,
+    var(--color-sky-900) 100%
+  );
+  --vue: linear-gradient(
+    135deg,
+    var(--color-green-400) 0%,
+    var(--color-emerald-900) 100%
+  );
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 min-w-0;
   }
+
   body {
-    @apply bg-background text-foreground-muted;
+    @apply text-foreground-muted bg-background font-sans text-pretty;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground mb-[.25em] font-serif font-semibold tracking-tight text-balance;
+  }
+
+  section > h1:first-of-type,
+  section > h2:first-of-type,
+  section > h3:first-of-type,
+  section > h4:first-of-type,
+  section > h5:first-of-type,
+  section > h6:first-of-type {
+    @apply mb-[1em];
+  }
+
+  .bg-astro {
+    background: var(--astro);
+  }
+
+  .bg-react {
+    background: var(--react);
+  }
+
+  .bg-vue {
+    background: var(--vue);
+  }
+}
+
+@keyframes blur {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
   }
 }

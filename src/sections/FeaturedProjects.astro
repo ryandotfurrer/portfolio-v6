@@ -1,8 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import Card from '../components/Card.astro';
-import FormattedDate from '~/components/FormattedDate.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
 import Tag from '~/components/Tag.astro';
@@ -15,50 +13,49 @@ const currentPath = Astro.url.pathname;
 
 <section id="featured-projects" class="space-y-8">
   <Heading level="h2" size="3xl">featured projects</Heading>
-
   <div class="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-0">
     {
       featuredProjects.map((project) => (
         <Card
-          class="group"
+          class="group space-y-0 p-0"
           key={project.id}
           hasLink={true}
           href={`/projects/${project.id}`}
         >
-          <div class="w-full">
-            <Image
-              width={1920}
-              height={1080}
-              src={project.data.heroImage ?? ''}
-              alt={project.data.title}
-              class="border-border aspect-video rounded-md border object-cover transition-all md:brightness-90 md:group-hover:brightness-100"
-            />
-          </div>
-          <header>
-            <Heading
-              level="h3"
-              size="2xl"
-              class="mb-0 flex items-center gap-x-4"
-            >
+          <div
+            class={`bg-${project.data.mainTech} bg-astro text-foreground flex aspect-video w-full flex-col items-center justify-center rounded-t-lg *:m-0 first:leading-5 last:leading-0`}
+          >
+            <p class="text-2xl font-semibold tracking-tight">
               {project.data.title}
-            </Heading>
-            <FormattedDate
-              classes="text-sm"
-              date={project.data.pubDate ?? new Date()}
-            />
-          </header>
-          <p class="line-clamp-2">{project.data.description}</p>
-          {project.data.tags && project.data.tags.length > 0 && (
-            <div class="mt-2">
-              <ul class="flex flex-wrap gap-2">
-                {project.data.tags.map((tag) => (
-                  <Tag key={tag} name={tag}>
-                    {tag}
-                  </Tag>
-                ))}
-              </ul>
-            </div>
-          )}
+            </p>
+            <p>{project.data.descriptionShort}</p>
+          </div>
+          <div class="p-4">
+            <header class="flex justify-between">
+              <Heading
+                level="h3"
+                size="lg"
+                class="mb-0 flex items-center gap-x-4 font-sans"
+              >
+                {project.data.title}
+              </Heading>
+              <span class="bg-secondary/50 rounded-sm p-1 text-sm font-medium">
+                #{project.data.mainTech}
+              </span>
+            </header>
+            <p class="line-clamp-2">{project.data.description}</p>
+            {project.data.tags && project.data.tags.length > 0 && (
+              <div class="mt-2">
+                <ul class="flex flex-wrap gap-2">
+                  {project.data.tags.map((tag) => (
+                    <Tag key={tag} name={tag}>
+                      {tag}
+                    </Tag>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </Card>
       ))
     }
