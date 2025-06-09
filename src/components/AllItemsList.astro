@@ -2,6 +2,7 @@
 import Card from './Card.astro';
 import FormattedDate from './FormattedDate.astro';
 import Heading from './Heading.astro';
+import Tag from './Tag.astro';
 import { cn } from '~/utils/utils';
 
 interface Item {
@@ -39,6 +40,7 @@ interface Props {
 
 const currentPath = Astro.url.pathname;
 let itemPath = '';
+const isTagPage = currentPath.includes('/tags/');
 
 switch (true) {
   case currentPath.includes('/projects'):
@@ -52,6 +54,10 @@ switch (true) {
     break;
   case currentPath.includes('/about'):
     itemPath = 'about';
+    break;
+  case isTagPage:
+    // For tag pages, we'll determine itemPath per item
+    itemPath = '';
     break;
 }
 
@@ -67,24 +73,45 @@ const sortedCollectionData = collectionData.sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
+// Helper function to determine item path based on collection
+const getItemPath = (collection: string) => {
+  switch (collection) {
+    case 'blog':
+      return 'writing';
+    case 'newsletter':
+      return ''; // newsletters use external URLs
+    case 'projects':
+      return 'projects';
+    case 'speaking':
+      return 'speaking';
+    case 'about':
+      return 'about';
+    default:
+      return '';
+  }
+};
+
 console.log(
   'Collection items:',
-  sortedCollectionData.map((item) => ({
-    collection: item.collection,
-    slug: item.slug,
-    id: item.id,
-    dataSlug: item.data.slug,
-    href:
-      item.collection === 'newsletter'
-        ? item.data.webURL
-        : `/${itemPath}/${item.data.slug || item.slug || item.id}/`,
-  })),
+  sortedCollectionData.map((item) => {
+    const currentItemPath = isTagPage ? getItemPath(item.collection) : itemPath;
+    return {
+      collection: item.collection,
+      slug: item.slug,
+      id: item.id,
+      dataSlug: item.data.slug,
+      href:
+        item.collection === 'newsletter'
+          ? item.data.webURL
+          : `/${currentItemPath}/${item.data.slug || item.slug || item.id}/`,
+    };
+  }),
 );
 ---
 
 <section id="all-items-list" class="">
   {
-    itemPath !== 'about' && (
+    itemPath !== 'about' && !isTagPage && (
       <Heading level="h2" size="3xl" class="md:pl-4">
         all {itemPath}
       </Heading>
@@ -93,10 +120,13 @@ console.log(
   <ul class="max-w-screen-sm space-y-8 md:space-y-0">
     {
       sortedCollectionData.map((item) => {
+        const currentItemPath = isTagPage
+          ? getItemPath(item.collection)
+          : itemPath;
         const itemHref =
           item.collection === 'newsletter'
             ? item.data.webURL
-            : `/${itemPath}/${item.data.slug || item.slug || item.id}/`;
+            : `/${currentItemPath}/${item.data.slug || item.slug || item.id}/`;
         return (
           <Card
             href={itemHref}
@@ -113,10 +143,11 @@ console.log(
               {item.collection === 'projects' && item.data.status && (
                 <div
                   class={cn(
-                    'size-3 animate-pulse rounded-full border-2 flex-shrink-0',
-                    projectStatusConfig[item.data.status as projectStatus]?.dotClasses,
+                    'size-3 flex-shrink-0 animate-pulse rounded-full border-2',
+                    projectStatusConfig[item.data.status as projectStatus]
+                      ?.dotClasses,
                   )}
-                ></div>
+                />
               )}
               {item.collection === 'newsletter' && (
                 <svg
@@ -147,11 +178,13 @@ console.log(
               </span>
             </div>
             <p class="line-clamp-2 text-sm">{item.data.description}</p>
-            <div class="flex flex-wrap gap-x-2">
+            <ul class="flex -translate-x-2 list-none flex-wrap gap-2">
               {item.data.tags?.map((tag) => (
-                <span class='text-sm before:content-["#"]'>{tag}</span>
+                <Tag key={tag} name={tag} linkable={true}>
+                  {tag}
+                </Tag>
               ))}
-            </div>
+            </ul>
           </Card>
         );
       })

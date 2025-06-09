@@ -1,0 +1,17 @@
+---
+import Link from './Link.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<Link
+  href="/tags"
+  withIcon={true}
+  class={`text-foreground-muted group-hover:text-foreground text-lg ${className}`}
+>
+  view all tags
+</Link>

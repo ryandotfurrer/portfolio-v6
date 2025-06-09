@@ -83,7 +83,7 @@ const currentPath = Astro.url.pathname;
             <div class="mt-2">
               <ul class="flex flex-wrap gap-2">
                 {post.data.tags.map((tag: string) => (
-                  <Tag key={tag} name={tag}>
+                  <Tag key={tag} name={tag} linkable={true}>
                     {tag}
                   </Tag>
                 ))}

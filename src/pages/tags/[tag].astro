@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AllItemsList from '../../components/AllItemsList.astro';
+import Heading from '../../components/Heading.astro';
+
+export async function getStaticPaths() {
+  // Get all collections
+  const blogPosts = await getCollection('blog');
+  const newsletters = await getCollection('newsletter');
+  const projects = await getCollection('projects');
+  const speaking = await getCollection('speaking');
+  const about = await getCollection('about');
+
+  // Combine all content
+  const allContent = [
+    ...blogPosts,
+    ...newsletters,
+    ...projects,
+    ...speaking,
+    ...about,
+  ];
+
+  // Extract all unique tags
+  const allTags = new Set();
+  allContent.forEach((item) => {
+    if (item.data.tags) {
+      item.data.tags.forEach((tag) => allTags.add(tag));
+    }
+  });
+
+  // Create paths for each tag
+  return Array.from(allTags).map((tag) => ({
+    params: { tag: encodeURIComponent(tag) },
+    props: { tag: tag },
+  }));
+}
+
+const { tag } = Astro.props;
+const decodedTag = decodeURIComponent(tag);
+
+// Get all collections again for filtering
+const blogPosts = await getCollection('blog');
+const newsletters = await getCollection('newsletter');
+const projects = await getCollection('projects');
+const speaking = await getCollection('speaking');
+const about = await getCollection('about');
+
+// Combine all content
+const allContent = [
+  ...blogPosts,
+  ...newsletters,
+  ...projects,
+  ...speaking,
+  ...about,
+];
+
+// Filter content by the current tag
+const taggedContent = allContent
+  .filter((item) => item.data.tags && item.data.tags.includes(decodedTag))
+  .map((item) => ({
+    collection: item.collection,
+    slug: (item.data as any).slug || item.id,
+    id: item.id,
+    data: {
+      title: item.data.title,
+      description: item.data.description || '',
+      pubDate: item.data.pubDate ? item.data.pubDate.toISOString() : undefined,
+      tags: item.data.tags || [],
+      slug: (item.data as any).slug || item.id,
+      status: (item.data as any).status,
+      webURL: (item.data as any).webURL,
+    },
+  }))
+  .sort((a, b) => {
+    const dateA = a.data.pubDate ? new Date(a.data.pubDate) : new Date(0);
+    const dateB = b.data.pubDate ? new Date(b.data.pubDate) : new Date(0);
+    return dateB.getTime() - dateA.getTime();
+  });
+
+const pageTitle = `#${decodedTag}`;
+const pageDescription = `All content tagged with "${decodedTag}"`;
+---
+
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <section class="space-y-8">
+    {
+      taggedContent.length > 0 ? (
+        <AllItemsList collection={taggedContent} />
+      ) : (
+        <div class="py-16 text-center">
+          <p class="text-foreground-muted text-lg">
+            No content found with the tag "{decodedTag}".
+          </p>
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>
