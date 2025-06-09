@@ -4,10 +4,15 @@ const Events = {
   commit_your_code: 'the Commit Your Code Conference',
   render_atl: '🍑 RenderATL',
   vercel_ship: '▲ Vercel Ship',
-
 };
 
-export default function EventGreeting() {
+export interface EventGreetingProps {
+  additionalClasses?: string;
+}
+
+export default function EventGreeting({
+  additionalClasses,
+}: EventGreetingProps) {
   const [event, setEvent] = useState<string | null>(null);
 
   useEffect(() => {
@@ -22,11 +27,12 @@ export default function EventGreeting() {
   if (!event) return null;
 
   return (
-    <div className="dark:bg-accent/20 border-accent/50 dark:border-accent text-foreground mx-auto mb-12 max-w-fit rounded-md border bg-gradient-to-r from-orange-500/10 to-red-500/20 p-4 text-center text-balance max-sm:p-2">
+    <div
+      className={`dark:bg-accent/20 border-accent/50 dark:border-accent text-foreground w-fit rounded-md border bg-gradient-to-r from-orange-500/10 to-red-500/20 p-4 text-center text-balance max-sm:p-2 ${additionalClasses}`}
+    >
       <p className="text-xl leading-[1.6em] font-bold tracking-tight md:text-xl lg:text-2xl xl:text-3xl">
         👋 It was <span className="border-accent border-b-4">GREAT</span>{' '}
         connecting with you at {event}!
-
       </p>
     </div>
   );
