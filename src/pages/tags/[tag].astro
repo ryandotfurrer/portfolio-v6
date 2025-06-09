@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import AllItemsList from '../../components/AllItemsList.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ViewAllTags from '~/components/ViewAllTags.astro';
 
 export async function getStaticPaths() {
   // Get all collections
@@ -94,5 +95,6 @@ const pageDescription = `All content tagged with "${decodedTag}"`;
         </div>
       )
     }
+    <ViewAllTags />
   </section>
 </BaseLayout>
