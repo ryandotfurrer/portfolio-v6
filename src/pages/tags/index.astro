@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Tag from '../../components/Tag.astro';
+
+// Get all collections
+const blogPosts = await getCollection('blog');
+const newsletters = await getCollection('newsletter');
+const projects = await getCollection('projects');
+const speaking = await getCollection('speaking');
+const about = await getCollection('about');
+
+// Combine all content
+const allContent = [
+  ...blogPosts,
+  ...newsletters,
+  ...projects,
+  ...speaking,
+  ...about,
+];
+
+// Extract all tags with their counts
+const tagCounts = new Map();
+allContent.forEach((item) => {
+  if (item.data.tags) {
+    item.data.tags.forEach((tag) => {
+      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+    });
+  }
+});
+
+// Sort tags alphabetically
+const sortedTags = Array.from(tagCounts.entries()).sort(([a], [b]) =>
+  a.toLowerCase().localeCompare(b.toLowerCase()),
+);
+
+const pageTitle = 'Tags';
+const pageDescription =
+  'Browse all content by tags — click on any tag to see related content.';
+---
+
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <section class="space-y-8">
+    {
+      sortedTags.length > 0 ? (
+        <div class="space-y-6">
+          <p class="text-foreground-muted">
+            {sortedTags.length} {sortedTags.length === 1 ? 'tag' : 'tags'}{' '}
+            available
+          </p>
+
+          <ul class="flex flex-wrap gap-4">
+            {sortedTags.map(([tag, count]) => (
+              <div class="flex items-center gap-1">
+                <Tag key={tag} name={tag} linkable={true}>
+                  {tag}
+                </Tag>
+                <span class="text-foreground-muted text-sm">({count})</span>
+              </div>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div class="py-16 text-center">
+          <p class="text-foreground-muted text-lg">No tags found.</p>
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>

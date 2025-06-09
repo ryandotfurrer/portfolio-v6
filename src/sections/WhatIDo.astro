@@ -9,13 +9,12 @@ import Heading from '../components/Heading.astro';
 <section id="what-i-do">
   <Heading level="h2" size="3xl"> what I do </Heading>
   <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-
     <Card
       href="/projects"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +34,7 @@ import Heading from '../components/Heading.astro';
         </svg>
       </div>
       <Heading level="h3" size="2xl"> Building a better web </Heading>
-      <p>
+      <p class="leading-relaxed">
         I build accessible, performant web applications with modern tools like
         React, TypeScript, and Next.js. Check out my latest projects.
       </p>
@@ -47,11 +46,11 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href="https://webdevdialogues.com"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-2 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +69,7 @@ import Heading from '../components/Heading.astro';
         >
       </div>
       <Heading level="h3" size="2xl"> Web Dev Dialogues Podcast </Heading>
-      <p>
+      <p class="leading-relaxed">
         Join me for in-depth conversations with web developers about their
         journeys, tech stacks, and lessons learned along the way.
       </p>
@@ -82,10 +81,10 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href="/writing"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +111,7 @@ import Heading from '../components/Heading.astro';
         </svg>
       </div>
       <Heading level="h3" size="2xl"> Learn by reading </Heading>
-      <p>
+      <p class="leading-relaxed">
         I share detailed technical guides, career advice, and insights from my
         experience as a web developer through my blog posts.
       </p>
@@ -124,10 +123,10 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href="/speaking"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +146,7 @@ import Heading from '../components/Heading.astro';
         </svg>
       </div>
       <Heading level="h3" size="2xl"> Learn by watching </Heading>
-      <p>
+      <p class="leading-relaxed">
         From conference talks to live coding sessions, I break down complex web
         development concepts into clear, actionable lessons.
       </p>
@@ -159,11 +158,11 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href="https://cal.com/ryandotfurrer/coffee-chat"
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +182,7 @@ import Heading from '../components/Heading.astro';
         </svg>
       </div>
       <Heading level="h3" size="2xl"> Book a Coffee Chat </Heading>
-      <p>
+      <p class="leading-relaxed">
         Let's chat about web development, career growth, or your next project.
         Schedule a free 15 or 25-minute video call with me.
       </p>
@@ -195,11 +194,11 @@ import Heading from '../components/Heading.astro';
     </Card>
     <Card
       href={SocialLinks.twitch.href}
-      class="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      class="space-y-4 p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
       externalLink
     >
       <div
-        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-all duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
+        class="bg-secondary mb-4 w-fit rounded-lg border p-2 transition-transform duration-300 ease-(--spring) group-hover:rotate-0 md:-rotate-10"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +216,7 @@ import Heading from '../components/Heading.astro';
         </svg>
       </div>
       <Heading level="h3" size="2xl"> Hang out live </Heading>
-      <p>
+      <p class="leading-relaxed">
         Watch me code, debug, and build projects in real-time. Join the chat to
         ask questions and learn together.
       </p>

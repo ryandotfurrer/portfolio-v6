@@ -1,10 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
+import { cn } from '~/utils/utils';
 import Card from '../components/Card.astro';
 import Heading from '../components/Heading.astro';
 import Link from '../components/Link.astro';
-import Tag from '~/components/Tag.astro';
-import { cn } from '~/utils/utils';
 
 const projectCollection = await getCollection('projects');
 const featuredProjects = projectCollection
@@ -75,13 +74,14 @@ const projectStatusConfig = {
     {
       featuredProjects.map((project) => (
         <Card
-          class="group space-y-0 p-0"
+          class="group"
           key={project.id}
           hasLink={true}
           href={`/projects/${project.id}`}
         >
           <div
-            class={`bg-${project.data.mainTech} bg-card text-foreground flex aspect-video w-full flex-col items-center justify-center rounded-t-lg *:m-0 first:leading-5 last:leading-0`}
+            class={`bg-${project.data.mainTech} text-foreground flex aspect-video w-full h-full flex-col items-center justify-center rounded-t-lg overflow-hidden md:brightness-90 md:group-hover:brightness-100 transition`}
+            id={`project-${project.id}`}
           >
             <p class="text-2xl font-semibold tracking-tight">
               {project.data.title}
@@ -104,22 +104,22 @@ const projectStatusConfig = {
                   )}
                 />
               </Heading>
-              <span class="bg-secondary/50 rounded-sm p-1 text-sm font-medium">
+              <span class="bg-secondary/50 rounded-sm px-2 py-1 text-sm font-medium border">
                 #{project.data.mainTech}
               </span>
             </header>
             <p class="line-clamp-2">{project.data.description}</p>
-            {project.data.tags && project.data.tags.length > 0 && (
+            <!-- {project.data.tags && project.data.tags.length > 0 && (
               <div class="mt-2">
                 <ul class="flex flex-wrap gap-2">
                   {project.data.tags.map((tag) => (
-                    <Tag key={tag} name={tag}>
+                    <Tag key={tag} name={tag} linkable={true}>
                       {tag}
                     </Tag>
                   ))}
                 </ul>
               </div>
-            )}
+            )} -->
           </div>
         </Card>
       ))

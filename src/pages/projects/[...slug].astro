@@ -16,6 +16,21 @@ const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPostLayout {...post.data}>
+<BlogPostLayout
+  title={post.data.title}
+  description={post.data.description}
+  heroImage={post.data.heroImage}
+  heroImageAltText={post.data.heroImageAltText}
+  pubDate={post.data.pubDate}
+  slug={post.data.slug}
+  tags={post.data.tags}
+  updatedDate={post.data.updatedDate}
+  links={post.data.links}
+  status={post.data.status as
+    | 'shipped'
+    | 'in progress'
+    | 'abandoned'
+    | undefined}
+>
   <Content />
 </BlogPostLayout>
