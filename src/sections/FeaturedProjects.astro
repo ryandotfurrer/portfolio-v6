@@ -16,7 +16,7 @@ const featuredProjects = projectCollection
 
 const currentPath = Astro.url.pathname;
 
-type projectStatus = 'shipped' | 'in progress' | 'abandoned';
+type projectStatus = 'shipped' | 'in progress';
 
 const projectStatusConfig = {
   shipped: {
@@ -24,10 +24,7 @@ const projectStatusConfig = {
   },
   'in progress': {
     dotClasses: 'bg-amber-400 border-amber-600',
-  },
-  abandoned: {
-    dotClasses: 'bg-rose-400 border-rose-600',
-  },
+  }
 } as const;
 ---
 
@@ -57,16 +54,6 @@ const projectStatusConfig = {
       >
       </div>
       <span>in progress</span>
-    </div>
-    <div class="flex items-center gap-1">
-      <div
-        class={cn(
-          'size-3 rounded-full border-2',
-          projectStatusConfig.abandoned.dotClasses,
-        )}
-      >
-      </div>
-      <span>abandoned</span>
     </div>
   </div>
 
