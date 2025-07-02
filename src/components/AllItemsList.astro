@@ -112,7 +112,7 @@ console.log(
 <section id="all-items-list" class="">
   {
     itemPath !== 'about' && !isTagPage && (
-      <Heading level="h2" size="3xl" class="md:pl-4">
+      <Heading level="h2" class="md:pl-4">
         all {itemPath}
       </Heading>
     )
@@ -136,7 +136,6 @@ console.log(
           >
             <Heading
               level="h3"
-              size="xl"
               class="mb-0 flex items-center gap-x-4 underline md:no-underline"
             >
               {item.data.title}
