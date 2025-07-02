@@ -1,38 +1,43 @@
 ---
-import clsx from 'clsx';
+import { cn } from '~/utils/utils';
 
 interface Props {
   align?: 'left' | 'center' | 'right';
   class?: string;
-  level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  size?: 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+  level: 'h1' | 'h2' | 'h3';
+  variant?: 'h1' | 'h2' | 'h3';
 }
 
-const { align = 'left', class: clases, level, size = 'base' } = Astro.props;
+const { align = 'left', class: classes, level, variant } = Astro.props;
+
+// Use variant for styling, fallback to level if no variant specified
+const styleLevel = variant || level;
 
 const HeadingTag = level;
-const headingClasses = clsx(
+const headingClasses = cn(
+  // Base responsive sizing (mobile-first, minimum 24px)
   {
-    'text-4xl': size === '4xl',
-    'text-3xl': size === '3xl',
-    'text-2xl': size === '2xl',
-    'text-xl': size === 'xl',
-    'text-lg': size === 'lg',
-    'text-base': size === 'base',
-    'text-sm': size === 'sm',
+    'text-3xl md:text-5xl lg:text-6xl': styleLevel === 'h1', // 30px -> 48px -> 60px
+    'text-2xl md:text-4xl lg:text-5xl': styleLevel === 'h2', // 24px -> 36px -> 48px
+    'text-xl md:text-3xl lg:text-4xl': styleLevel === 'h3', // 20px -> 30px -> 36px
   },
+  // Text alignment
   {
     'text-left': align === 'left',
     'text-center': align === 'center',
     'text-right': align === 'right',
   },
+  // Font weight based on style level (variant or level)
   {
-    'tracking-tighter': size === '4xl' || size === '3xl' || size === '2xl',
-    'tracking-tight': size === 'xl' || size === 'lg',
+    'font-extrabold': styleLevel === 'h1', // Hero text, banners
+    'font-bold': styleLevel === 'h2', // Main headings
+    'font-semibold': styleLevel === 'h3', // Subheadings, modern look
   },
+  // Letter spacing for better readability at larger sizes
+  'tracking-tight',
 );
 ---
 
-<HeadingTag class={clsx(headingClasses, clases)}>
+<HeadingTag class={cn(headingClasses, classes)}>
   <slot />
 </HeadingTag>

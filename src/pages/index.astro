@@ -15,18 +15,16 @@ import WhatIDo from '../sections/WhatIDo.astro';
   hasCTA={true}
 >
   <header>
-    <hgroup
-      class="pt-16 [transform-style:preserve-3d] perspective-[1000px] lg:w-4/5"
-    >
+    <hgroup class="pt-16 [transform-style:preserve-3d] perspective-[1000px]">
       <div class="mb-4 flex items-center gap-2">
         <div
           class="bg-secondary/50 flex items-center rounded-sm border border-transparent"
         >
-          <span
+          <h1
             class="text-foreground-muted p-2 font-sans text-xs leading-none font-semibold tracking-normal md:text-sm"
           >
             Ryan Furrer — Frontend Engineer
-          </span>
+          </h1>
         </div>
         <div
           class="dark:bg-background flex w-fit items-center rounded-sm border border-emerald-500 bg-white"
@@ -37,11 +35,7 @@ import WhatIDo from '../sections/WhatIDo.astro';
           >
         </div>
       </div>
-      <Heading
-        level="h2"
-        size="4xl"
-        class="mb-2 pb-0 md:text-7xl lg:text-8xl xl:text-9xl"
-      >
+      <Heading level="h2" class="text-4xl md:text-6xl lg:text-8xl">
         Let's create something <AnimatedWord client:load /> together
       </Heading>
     </hgroup>

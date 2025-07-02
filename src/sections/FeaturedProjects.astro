@@ -24,12 +24,12 @@ const projectStatusConfig = {
   },
   'in progress': {
     dotClasses: 'bg-amber-400 border-amber-600',
-  }
+  },
 } as const;
 ---
 
 <section id="featured-projects" class="space-y-8">
-  <Heading level="h2" size="3xl">featured projects</Heading>
+  <Heading level="h2">Featured Projects</Heading>
 
   <div
     class="text-foreground-muted items-center gap-x-4 text-sm max-sm:space-y-1 md:flex"
@@ -67,7 +67,7 @@ const projectStatusConfig = {
           href={`/projects/${project.id}`}
         >
           <div
-            class={`bg-${project.data.mainTech} text-foreground flex aspect-video w-full h-full flex-col items-center justify-center rounded-t-lg overflow-hidden md:brightness-90 md:group-hover:brightness-100 transition`}
+            class={`bg-${project.data.mainTech} text-foreground flex aspect-video h-full w-full flex-col items-center justify-center overflow-hidden rounded-t-lg transition md:brightness-90 md:group-hover:brightness-100`}
             id={`project-${project.id}`}
           >
             <p class="text-2xl font-semibold tracking-tight">
@@ -79,8 +79,7 @@ const projectStatusConfig = {
             <header class="flex justify-between">
               <Heading
                 level="h3"
-                size="lg"
-                class="mb-0 flex items-center gap-x-4 font-sans"
+                class="line-clamp-1 flex items-center gap-x-4 md:text-xl lg:text-xl"
               >
                 {project.data.title}
                 <div
@@ -91,22 +90,11 @@ const projectStatusConfig = {
                   )}
                 />
               </Heading>
-              <span class="bg-secondary/50 rounded-sm px-2 py-1 text-sm font-medium border">
+              <span class="bg-secondary/50 rounded-sm border px-2 py-1 text-sm font-medium">
                 #{project.data.mainTech}
               </span>
             </header>
             <p class="line-clamp-2">{project.data.description}</p>
-            <!-- {project.data.tags && project.data.tags.length > 0 && (
-              <div class="mt-2">
-                <ul class="flex flex-wrap gap-2">
-                  {project.data.tags.map((tag) => (
-                    <Tag key={tag} name={tag} linkable={true}>
-                      {tag}
-                    </Tag>
-                  ))}
-                </ul>
-              </div>
-            )} -->
           </div>
         </Card>
       ))
