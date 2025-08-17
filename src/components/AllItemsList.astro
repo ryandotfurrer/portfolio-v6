@@ -11,6 +11,7 @@ interface Item {
   id: string;
   data: {
     pubDate?: string;
+    updatedDate?: string;
     title: string;
     description?: string;
     tags: string[];
@@ -170,9 +171,11 @@ console.log(
             </Heading>
             <div class="flex">
               <span class="text-muted-foreground text-sm">
-                {item.data.pubDate && (
+                {item.data.updatedDate ? (
+                  <FormattedDate date={new Date(item.data.updatedDate)} />
+                ) : item.data.pubDate ? (
                   <FormattedDate date={new Date(item.data.pubDate)} />
-                )}{' '}
+                ) : null}
                 | {item.collection}
               </span>
             </div>

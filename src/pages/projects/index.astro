@@ -17,6 +17,7 @@ const projects = (await getCollection('projects'))
       title: project.data.title,
       description: project.data.description,
       pubDate: project.data.pubDate ? project.data.pubDate.toISOString() : undefined,
+      updatedDate: project.data.updatedDate ? project.data.updatedDate.toISOString() : undefined,
       tags: project.data.tags || [],
       slug: project.data.slug || project.id,
       status: project.data.status as 'shipped' | 'in progress' | 'abandoned' | undefined,
