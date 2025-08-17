@@ -53,6 +53,7 @@ const { page } = Astro.props as {
         id: item.id,
         data: {
           pubDate: item.data.pubDate?.toISOString(),
+          updatedDate: 'updatedDate' in item.data ? item.data.updatedDate?.toISOString() : undefined,
           title: item.data.title,
           // description: item.data.description,
           tags: item.data.tags ?? [],

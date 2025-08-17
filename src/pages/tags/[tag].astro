@@ -66,6 +66,7 @@ const taggedContent = allContent
       title: item.data.title,
       description: item.data.description || '',
       pubDate: item.data.pubDate ? item.data.pubDate.toISOString() : undefined,
+      updatedDate: (item.data as any).updatedDate ? (item.data as any).updatedDate.toISOString() : undefined,
       tags: item.data.tags || [],
       slug: (item.data as any).slug || item.id,
       status: (item.data as any).status,

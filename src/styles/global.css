@@ -5,9 +5,9 @@
 @plugin 'tailwindcss-animate';
 
 @font-face {
-  font-family: 'Fraunces';
-  src: url('/fonts/Fraunces.ttf') format('truetype-variations');
-  font-weight: 400 600;
+  font-family: 'Host Grotesk';
+  src: url('/fonts/HostGrotesk.ttf') format('truetype-variations');
+  font-weight: 400 600 700 800;
   font-style: normal;
 }
 
@@ -33,7 +33,7 @@
 }
 
 @theme inline {
-  --font-serif: 'Fraunces', serif;
+  --font-display: 'Host Grotesk', sans-serif;
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'Geist Mono', monospace;
   --font-handwritten: 'Permanent Marker', var(--font-serif), script;
@@ -253,7 +253,7 @@
   h4,
   h5,
   h6 {
-    @apply text-foreground mb-[.25em] font-serif font-semibold tracking-tight text-balance;
+    @apply text-foreground font-display;
   }
 
   section > h1:first-of-type,
