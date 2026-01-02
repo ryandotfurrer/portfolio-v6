@@ -11,7 +11,7 @@ export default defineConfig({
   experimental: {
     contentIntellisense: true,
   },
-  site: 'https://ryanfurrer.com',
+  site: 'https://ryanfurrer-v6.vercel.app/',
   integrations: [
     mdx({
       syntaxHighlight: 'shiki',
